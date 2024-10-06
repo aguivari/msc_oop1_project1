@@ -27,3 +27,17 @@ Class Patient {
   //Auxiliary Methods
 }
 ```
+
+## Included programs
+
+### PatientTesterCLI 
+
+Includes a command line / text program to use the Patient class
+with basic operations like added, editing and removing patients
+and some database operations, like save, restore, etc.
+
+### PatientTesterGUI
+
+Includes a JavaFX GUI program to use the Patient class
+with basic operations like added, editing and removing patients
+and some database operations, like save, restore, etc.
