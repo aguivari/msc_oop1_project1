@@ -1,13 +1,10 @@
-# Repository: msc_oop1_project1
-Repository for Java application for Class Project - OOP1
+# Repository for Java application for Class Project - OOP1
 
-Course: MSc in Software Design With Artificial Intelligence
+## Course: [MSc in Software Design With Artificial Intelligence](https://tus.ie/courses/msc-in-software-design-with-artificial-intelligence/)
 
-Link: https://tus.ie/courses/msc-in-software-design-with-artificial-intelligence/
+## Application: Simple Patient Tracker for Basic Biomedical information
 
-Application: Simple Patient Tracker for Basic Biomedical information
-
-Class definition skeleton:
+## Class definition skeleton:
 ```
 Class Patient {
   private static int basePatientNo=1;
