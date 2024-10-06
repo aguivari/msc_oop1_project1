@@ -1,6 +1,8 @@
 # Repository for Java application for Class Project - OOP1
 
 ## Course: [MSc in Software Design With Artificial Intelligence](https://tus.ie/courses/msc-in-software-design-with-artificial-intelligence/)
+## gitHub: [aguivari/msc_oop1_project1](https://github.com/aguivari/msc_oop1_project1)
+
 
 ## Application: Simple Patient Tracker for Basic Biomedical information
 
