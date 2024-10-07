@@ -7,7 +7,6 @@ public class Patient {
     private double height;
     private double weight;
     private double circunference;
-  
 
     //Constructors
     //Constructor with no parameter
@@ -172,7 +171,6 @@ public class Patient {
         return message;
     }   
 
-     
     //Overriding toString() method
     @Override
     public String toString() {
@@ -187,5 +185,4 @@ public class Patient {
         
         return message;
     }
-    
 }

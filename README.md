@@ -9,12 +9,14 @@
 ## Class definition skeleton:
 ```
 Class Patient {
-  private static int basePatientNo=1;
-  private int patientNo;
-  private String name;
-  private String surname;
-  private float weight;
-  private float height;
+    private static int basePatientNo=0;
+    private int patientNo;
+    private String name;
+    private String surname;
+    private int gender;
+    private double height;
+    private double weight;
+    private double circunference;
 
   //No-parameters Construtor
   
