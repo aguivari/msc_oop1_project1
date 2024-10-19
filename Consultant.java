@@ -1,6 +1,4 @@
-import java.io.Serializable;
-
-public class Consultant extends Person implements Serializable  {
+public class Consultant extends Person  {
     private static int baseConsultantNo=0;
     private int consultantNo;
     private Speciality speciality;

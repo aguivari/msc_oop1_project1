@@ -1,6 +1,4 @@
-import java.io.Serializable;
-
-public class Patient extends Person implements Serializable {
+public class Patient extends Person {
     private static int basePatientNo=0;
     private int patientNo;
     private double height;

@@ -28,7 +28,7 @@ clean:
 	$(RM) *.class 
 
 distclean: clean
-	$(RM) *.zip *.bin
+	$(RM) *.zip files/*.bin
 
 default: classes
 

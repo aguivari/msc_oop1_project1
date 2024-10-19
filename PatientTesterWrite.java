@@ -6,7 +6,10 @@ public class PatientTesterWrite {
     static ArrayList<Patient> patientList = new ArrayList<Patient>();
     static ArrayList<Consultant> consultantList = new ArrayList<Consultant>();
     public static void main(String[] args) {
-        //mainMenu();
+
+        String consultantsFile = "files/consultants.bin";
+        String patientsFile = "files/patients.bin";
+        
         patientList.add(new Patient("Ivan", "The Terrible", 18,10,1985, Gender.MALE, 173,90,105));
         patientList.add(new Patient("John", "Snow", 18,10,1985, Gender.MALE, 173,60,90));
         patientList.add(new Patient("Joanne", "Blizzard", 19,10,1984, Gender.FEMALE, 174,55,100));
@@ -17,8 +20,8 @@ public class PatientTesterWrite {
                     System.out.println();
         }
 
-        System.out.println("Writing list of patients ot file patients.bin");
-        Utils.writePatientsToDisk("patients.bin", patientList);
+        System.out.println("Writing list of patients to file "+patientsFile);
+        Utils.writePatientsToDisk(patientsFile, patientList);
 
 
         consultantList.add(new Consultant());
@@ -31,8 +34,8 @@ public class PatientTesterWrite {
             System.out.println();
         }
 
-        System.out.println("Writing list of consultants ot file consultants.bin");
-        Utils.writeConsultantsToDisk("consultants.bin", consultantList);
+        System.out.println("Writing list of consultants to file "+consultantsFile);
+        Utils.writeConsultantsToDisk(consultantsFile, consultantList);
 
 
        
