@@ -17,8 +17,14 @@ CLASSES = \
 classes: $(CLASSES:.java=.class)
 
 clean:
-	$(RM) *.class
+	$(RM) *.class 
+
+distclean: clean
+	$(RM) *.zip
 
 default: classes
 
 all: clean classes
+
+dist: clean
+	zip msc_oop1_project1 *
