@@ -121,10 +121,10 @@ public class Person {
             Period age=Period.between(birth, today);
             String message="";
             if (age.getYears()>0) {
-                message+=age.getYears()+" Years, ";
+                message+=age.getYears()+" Years ";
             }
             if (age.getMonths()>0) {
-                message+=age.getMonths()+" Months, ";
+                message+=age.getMonths()+" Months ";
             }
             if (age.getDays()>0) {
                 message+=age.getDays()+" Days";
@@ -148,9 +148,8 @@ public class Person {
         message=message+ "\nperson Gender: "+ switch (this.gender) {
                 case Gender.MALE   -> "Male";
                 case Gender.FEMALE -> "Female";
-                default -> "Undefined";
-            }
-        ;        
+                case Gender.UNDEFINED -> "Undefined";
+            };
         return message;
     }
 }

@@ -9,6 +9,7 @@ JC = javac
 CLASSES = \
 	Person.java\
 	Patient.java\
+	Consultant.java\
 	PatientTesterCLI.java\
 	PatientTesterGUI.java
 

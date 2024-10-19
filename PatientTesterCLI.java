@@ -23,9 +23,24 @@ public class PatientTesterCLI {
         System.out.println(patient3);
         System.out.println();
         System.out.println(patient4);
+        System.out.println();
 
+        Consultant consultant1 = new Consultant();
+        Consultant consultant2 = new Consultant("John", "Snow", 18,10,1985, Gender.MALE, Speciality.ENDOCHRINOLOGY, ContractType.PERMANENT);
         
+        System.out.println(consultant1);
+        System.out.println();
+        System.out.println(consultant2);
+        System.out.println();
+
+        consultant2.setContractType(ContractType.TEMPORARY);
+        consultant2.setSpeciality(Speciality.PHYSIOTHERAPY);
+        System.out.println(consultant2);
+        System.out.println();
+
     }
+
+
     
     public static void mainMenu() {
         int input=-1;
