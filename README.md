@@ -8,6 +8,15 @@
 
 ## Class definition skeleton:
 
+### Enum Gender
+````
+enum gender {
+  MALE,
+  FEMALE,
+  UNDEFINED
+}
+````
+
 ### Person Class
 
 ```
@@ -17,6 +26,7 @@ public class Person {
   private int dob;
   private int mob;
   private int yob;
+  private Gender gender;
 
   //No-parameters Construtor
   //Full-parameters Construtor
@@ -50,12 +60,12 @@ class Patient extends Person {
 
 ### PatientTesterCLI 
 
-Includes a command line / text program to use the Patient class
+Includes a command line / text program to use the classes
 with basic operations like added, editing and removing patients
 and some database operations, like save, restore, etc.
 
 ### PatientTesterGUI (if time allows)
 
-Includes a JavaFX GUI program to use the Patient class
+Includes a JavaFX GUI program to use the classes
 with basic operations like added, editing and removing patients
 and some database operations, like save, restore, etc.

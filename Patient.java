@@ -1,4 +1,6 @@
-public class Patient extends Person {
+import java.io.Serializable;
+
+public class Patient extends Person implements Serializable {
     private static int basePatientNo=0;
     private int patientNo;
     private double height;
@@ -6,17 +8,22 @@ public class Patient extends Person {
     private double circunference;
 
     //Constructors
-    //Constructor with no parameter
+    //Constructor with no parameter, using this()
     public Patient() {
-        super("","",0,0,0,Gender.UNDEFINED);
-        incrementBasePatientNo();
-        this.patientNo=basePatientNo;
-        this.height=0;
-        this.weight=0;
-        this.circunference=0;
+        this("","",1,1,1,Gender.UNDEFINED, 0, 0, 0);
     }
 
-    //Constructor with all parameters 
+     //Constructor with some parameters, using this()
+    public Patient( String patientName, 
+                    String patientSurname, 
+                    int patientDoB,
+                    int patientMoB,
+                    int patientYoB,
+                    Gender patientGender) {
+        this(patientName,patientSurname,patientDoB,patientMoB,patientYoB,patientGender, 0, 0, 0);
+     }
+
+    //Constructor with all parameters , using super() to to base Person class
     public Patient( String patientName, 
                     String patientSurname, 
                     int patientDoB,
@@ -26,7 +33,7 @@ public class Patient extends Person {
                     double patientHeight, 
                     double patienteWeight, 
                     double patientCircunference) {
-        super(patientName,patientSurname,patientDoB,patientYoB,patientYoB,patientGender);
+        super(patientName,patientSurname,patientDoB,patientMoB,patientYoB,patientGender);
         incrementBasePatientNo();
         this.patientNo=basePatientNo;
         this.height=patientHeight;
@@ -73,31 +80,32 @@ public class Patient extends Person {
     //Calculation methods
     //calculate IMC
     public double getIMC() {
-        return this.weight/(this.height*this.height);
+        if ((this.weight>0) && (this.height>0)) {
+            double imc=this.weight*1E4/(this.height*this.height);
+            return Utils.round2digits(imc);
+        } else {
+            return -1;
+        }
     }
     //provide IMC health classification
     public String getIMCClass() {
         String message;
         double imc=getIMC();
-        if (imc < 17 ) {
+        if (imc<0) { //error in IMC calculation
+            message="Undefined IMC, undefined classification";
+        } else if (imc < 17 ) {
             message="Very underweight";
-        }
-        else if (imc < 18.5 ) {
+        } else if (imc < 18.5 ) {
             message="Underweight";
-        }
-        else if (imc < 25 ) {
+        } else if (imc < 25 ) {
             message="Normal weight";
-        }
-        else if (imc < 30 ) {
+        } else if (imc < 30 ) {
             message="Overweight";
-        }
-        else if (imc < 35 ) {
+        } else if (imc < 35 ) {
             message="Grade I Obesity";
-        }
-        else if (imc < 40 ) {
+        } else if (imc < 40 ) {
             message="Grade II Obesity";
-        }
-        else {
+        } else {
             message="Grade III Obesity";        
         }
         return message;
@@ -147,7 +155,7 @@ public class Patient extends Person {
     public String toString() {
         String message;
         message="Patient Id: "+patientNo;
-        message=message+"\n"+super.toString();
+        message=message+super.toString();
         message=message+"\nPatient Height: "+height;
         message=message+"\nPatient Weight: "+weight;
         message=message+"\nPatient Abdominal Circunference: "+circunference;

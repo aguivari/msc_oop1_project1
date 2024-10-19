@@ -1,7 +1,13 @@
 # Compiled class file
 *.class
 
-# Log file
+#binary object files from app
+*.bin
+
+#vim swap files
+.*swp
+
+# Log files
 *.log
 
 # BlueJ files
@@ -17,9 +23,12 @@
 *.jar
 *.war
 *.nar
+*.shar
 *.ear
 *.zip
+*.tar
 *.tar.gz
+*.tar.bz2
 *.rar
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml

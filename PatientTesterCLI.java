@@ -2,27 +2,43 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PatientTesterCLI {
-
     static Scanner keyboardIn = new Scanner(System.in);
-    ArrayList<Patient> patientList = new ArrayList<Patient>();
-
+    static ArrayList<Patient> patientList = new ArrayList<Patient>();
+    static ArrayList<Consultant> consultantList = new ArrayList<Consultant>();
     public static void main(String[] args) {
-        
         //mainMenu();
+        patientList.add(new Patient("Ivan", "The Terrible", 18,10,1985, Gender.MALE, 173,90,105));
+        patientList.add(new Patient("John", "Snow", 18,10,1985, Gender.MALE, 173,60,90));
+        patientList.add(new Patient("Joanne", "Blizzard", 19,10,1984, Gender.FEMALE, 174,55,100));
+        patientList.add(new Patient("Joan", "Heavyslit", 20,10,1984, Gender.FEMALE, 173,75,85));
 
-        Patient patient1 = new Patient();
-        Patient patient2 = new Patient("John", "Snow", 8,10,1985, Gender.MALE, 173,90,100);
-        Patient patient3 = new Patient("Joanne", "Blizzard", 2,3,1984, Gender.FEMALE, 173,90,100);
+        for (Patient patient: patientList) {
+                    System.out.println(patient);
+                    System.out.println();
+        }
+
+        Utils.dumpPatientsCSV(patientList);
+
+        System.out.println("Average Heigth: "+Utils.averageHeigth(patientList.get(1), patientList.get(2), patientList.get(3)));
+        System.out.println("Average Weigth: "+Utils.averageWeigth(patientList.get(1), patientList.get(2), patientList.get(3)));
+        System.out.println("Average Abdominal Circunference: "+Utils.averageAbdCirc(patientList.get(1), patientList.get(2), patientList.get(3)));
+
+        consultantList.add(new Consultant());
+        consultantList.add(new Consultant("John", "Snow", 18,10,1985, Gender.MALE, Speciality.ENDOCHRINOLOGY, ContractType.PERMANENT));
+
+        for (Consultant consultant: consultantList) {
+            System.out.println(consultant);
+            System.out.println();
+}
 
 
-        System.out.println(patient1);
+        consultantList.get(1).setContractType(ContractType.TEMPORARY);
+        consultantList.get(1).setSpeciality(Speciality.PHYSIOTHERAPY);
+        System.out.println(consultantList.get(1));
         System.out.println();
-        System.out.println(patient2);
-        System.out.println();
-        System.out.println(patient3);
 
-        
     }
+
     
     public static void mainMenu() {
         int input=-1;
