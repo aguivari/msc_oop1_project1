@@ -10,10 +10,10 @@ public class PatientTesterCLI {
         
         //mainMenu();
 
-        Patient patient1 = new Patient();
-        Patient patient2 = new Patient("John", "Snow", 18,10,1985, Gender.MALE, 173,90,100);
-        Patient patient3 = new Patient("Joanne", "Blizzard", 19,10,1984, Gender.FEMALE, 173,90,100);
-        Patient patient4 = new Patient("Joan", "Heavyslit", 20,10,1984, Gender.FEMALE, 173,90,100);
+        var patient1 = new Patient();
+        var patient2 = new Patient("John", "Snow", 18,10,1985, Gender.MALE, 173,60,90);
+        var patient3 = new Patient("Joanne", "Blizzard", 19,10,1984, Gender.FEMALE, 174,55,100);
+        var patient4 = new Patient("Joan", "Heavyslit", 20,10,1984, Gender.FEMALE, 173,75,85);
 
 
         System.out.println(patient1);
@@ -25,8 +25,12 @@ public class PatientTesterCLI {
         System.out.println(patient4);
         System.out.println();
 
-        Consultant consultant1 = new Consultant();
-        Consultant consultant2 = new Consultant("John", "Snow", 18,10,1985, Gender.MALE, Speciality.ENDOCHRINOLOGY, ContractType.PERMANENT);
+        System.out.println("Average Heigth: "+Utils.averageHeigth(patient2, patient3, patient4));
+        System.out.println("Average Weigth: "+Utils.averageWeigth(patient2, patient3, patient4));
+        System.out.println("Average Abdominal Circunference: "+Utils.averageAbdCirc(patient2, patient3, patient4));
+
+        var consultant1 = new Consultant();
+        var consultant2 = new Consultant("John", "Snow", 18,10,1985, Gender.MALE, Speciality.ENDOCHRINOLOGY, ContractType.PERMANENT);
         
         System.out.println(consultant1);
         System.out.println();

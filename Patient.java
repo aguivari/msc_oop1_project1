@@ -6,17 +6,22 @@ public class Patient extends Person {
     private double circunference;
 
     //Constructors
-    //Constructor with no parameter
+    //Constructor with no parameter, using this()
     public Patient() {
-        super("","",1,1,1,Gender.UNDEFINED);
-        incrementBasePatientNo();
-        this.patientNo=basePatientNo;
-        this.height=0;
-        this.weight=0;
-        this.circunference=0;
+        this("","",1,1,1,Gender.UNDEFINED, 0, 0, 0);
     }
 
-    //Constructor with all parameters 
+     //Constructor with some parameters, using this()
+    public Patient( String patientName, 
+                    String patientSurname, 
+                    int patientDoB,
+                    int patientMoB,
+                    int patientYoB,
+                    Gender patientGender) {
+        this(patientName,patientSurname,patientDoB,patientMoB,patientYoB,patientGender, 0, 0, 0);
+     }
+
+    //Constructor with all parameters , using super() to to base Person class
     public Patient( String patientName, 
                     String patientSurname, 
                     int patientDoB,

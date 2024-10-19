@@ -22,14 +22,9 @@ public class Person {
     private Gender gender;
 
     //Constructors
-    //Constructor with no parameter
+    //Constructor with no parameter, using this()
     public Person() {
-        this.name="";
-        this.surname="";
-        this.dob=1;
-        this.mob=1;
-        this.yob=1;
-        this.gender=Gender.UNDEFINED;
+        this("","",1,1,1,Gender.UNDEFINED);
     }
 
     //Constructor with all parameters 

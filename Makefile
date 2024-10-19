@@ -10,6 +10,7 @@ CLASSES = \
 	Person.java\
 	Patient.java\
 	Consultant.java\
+	Utils.java\
 	PatientTesterCLI.java\
 	PatientTesterGUI.java
 
