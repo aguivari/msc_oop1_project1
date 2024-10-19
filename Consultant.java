@@ -1,16 +1,3 @@
-enum Speciality {
-    NUTRITION,
-    ENDOCHRINOLOGY,
-    PHYSIOTHERAPY,
-    GENERALPRACTICE,
-    UNDEFINED
-}
-
-enum ContractType {
-    PERMANENT,
-    TEMPORARY,
-    UNDEFINED
-}
 public class Consultant extends Person {
     private static int baseConsultantNo=0;
     private int consultantNo;
@@ -83,18 +70,18 @@ public class Consultant extends Person {
     public String toString() {
         String message;
         message="consultant Id: "+consultantNo;
-        message=message+super.toString();
-        message=message+ "\nconsultant Speciality: "+ switch (this.speciality) {
-            case Speciality.NUTRITION   -> "Nutrition";
-            case Speciality.ENDOCHRINOLOGY -> "Endochrinology";
-            case Speciality.PHYSIOTHERAPY   -> "Physiotherapy";
-            case Speciality.GENERALPRACTICE -> "General Practice";
-            case Speciality.UNDEFINED -> "Undefined";
+        message=message + super.toString();
+        message=message + "\nconsultant Speciality: " + switch (this.speciality) {
+            case Speciality.NUTRITION   -> Speciality.NUTRITION.label;
+            case Speciality.ENDOCHRINOLOGY -> Speciality.ENDOCHRINOLOGY.label;
+            case Speciality.PHYSIOTHERAPY   -> Speciality.PHYSIOTHERAPY.label;
+            case Speciality.GENERALPRACTICE -> Speciality.GENERALPRACTICE.label;
+            case Speciality.UNDEFINED -> Speciality.UNDEFINED.label;
         }; 
-        message=message+"\nconsultant Contract Type: "+switch (this.contractType) {
-            case ContractType.PERMANENT   -> "Permanent";
-            case ContractType.TEMPORARY -> "Temporary";
-            case ContractType.UNDEFINED -> "Undefined";
+        message=message + "\nconsultant Contract Type: " + switch (this.contractType) {
+            case ContractType.PERMANENT -> ContractType.PERMANENT.label;
+            case ContractType.TEMPORARY -> ContractType.TEMPORARY.label;
+            case ContractType.UNDEFINED -> ContractType.UNDEFINED.label;
         }; 
 
         return message;

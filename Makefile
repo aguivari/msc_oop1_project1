@@ -9,11 +9,15 @@ JC = javac
 	$(JC) $(JFLAGS) $*.java
 
 CLASSES = \
-	Person.java\
-	Patient.java\
-	Consultant.java\
-	Utils.java\
-	PatientTesterCLI.java\
+	Person.java \
+	Patient.java \
+	Consultant.java \
+	Utils.java \
+	ContractType.java \
+	DateFormat.java \
+	Gender.Java \
+	Speciality.java \
+	PatientTesterCLI.java \
 	PatientTesterGUI.java
 
 classes: $(CLASSES:.java=.class)
@@ -28,5 +32,9 @@ default: classes
 
 all: clean classes
 
+PROJECTFILES= $(CLASSES) \
+	Makefile \
+	README.md \
+
 dist: clean
-	zip msc_oop1_project1 *
+	zip msc_oop1_project1 $(PROJECTFILES)

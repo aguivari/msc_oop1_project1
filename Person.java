@@ -1,18 +1,6 @@
 import java.time.LocalDate;
 import java.time.Period;
 
-enum Gender {
-    MALE,
-    FEMALE,
-    UNDEFINED
-}
-
-enum DateFormat {
-    DMY,
-    YMD,
-    MDY
-}
-
 public class Person {
     private String name;
     private String surname;
@@ -136,14 +124,14 @@ public class Person {
     public String toString() {
         String message;
         message="";
-        message=message+"\nperson Name: "+this.name;
-        message=message+"\nperson Surname: "+this.surname;
-        message=message+"\nperson DoB: "+getFullDoB(DateFormat.DMY);
-        message=message+"\nperson Age: "+this.getAge();
-        message=message+ "\nperson Gender: "+ switch (this.gender) {
-                case Gender.MALE   -> "Male";
-                case Gender.FEMALE -> "Female";
-                case Gender.UNDEFINED -> "Undefined";
+        message=message + "\nperson Name: " + this.name;
+        message=message + "\nperson Surname: " + this.surname;
+        message=message + "\nperson DoB: " + getFullDoB(DateFormat.DMY);
+        message=message + "\nperson Age: " + this.getAge();
+        message=message + "\nperson Gender: " + switch (this.gender) {
+                case Gender.MALE   -> Gender.MALE.label;
+                case Gender.FEMALE -> Gender.FEMALE.label;
+                case Gender.UNDEFINED -> Gender.UNDEFINED.label;
             };
         return message;
     }
