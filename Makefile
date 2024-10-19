@@ -18,6 +18,8 @@ CLASSES = \
 	Gender.Java \
 	Speciality.java \
 	PatientTesterCLI.java \
+	PatientTesterWrite.java \
+	PatientTesterRead.java \
 	PatientTesterGUI.java
 
 classes: $(CLASSES:.java=.class)
@@ -26,7 +28,7 @@ clean:
 	$(RM) *.class 
 
 distclean: clean
-	$(RM) *.zip
+	$(RM) *.zip *.bin
 
 default: classes
 

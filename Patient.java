@@ -1,4 +1,6 @@
-public class Patient extends Person {
+import java.io.Serializable;
+
+public class Patient extends Person implements Serializable {
     private static int basePatientNo=0;
     private int patientNo;
     private double height;
@@ -78,31 +80,32 @@ public class Patient extends Person {
     //Calculation methods
     //calculate IMC
     public double getIMC() {
-        return this.weight/(this.height*this.height);
+        if ((this.weight>0) && (this.height>0)) {
+            double imc=this.weight*1E4/(this.height*this.height);
+            return Utils.round2digits(imc);
+        } else {
+            return -1;
+        }
     }
     //provide IMC health classification
     public String getIMCClass() {
         String message;
         double imc=getIMC();
-        if (imc < 17 ) {
+        if (imc<0) { //error in IMC calculation
+            message="Undefined IMC, undefined classification";
+        } else if (imc < 17 ) {
             message="Very underweight";
-        }
-        else if (imc < 18.5 ) {
+        } else if (imc < 18.5 ) {
             message="Underweight";
-        }
-        else if (imc < 25 ) {
+        } else if (imc < 25 ) {
             message="Normal weight";
-        }
-        else if (imc < 30 ) {
+        } else if (imc < 30 ) {
             message="Overweight";
-        }
-        else if (imc < 35 ) {
+        } else if (imc < 35 ) {
             message="Grade I Obesity";
-        }
-        else if (imc < 40 ) {
+        } else if (imc < 40 ) {
             message="Grade II Obesity";
-        }
-        else {
+        } else {
             message="Grade III Obesity";        
         }
         return message;
