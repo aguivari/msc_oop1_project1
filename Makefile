@@ -1,4 +1,6 @@
-JFLAGS = --module-path ~/MSC/Java/javafx/javafx-sdk-21.0.2/lib --add-modules javafx.controls,javafx.fxml
+JAVAFXDIR=~/MSC/Java/javafx/javafx-sdk-21.0.2/lib
+JAVAFXOPT=javafx.controls,javafx.fxml
+JFLAGS = --module-path $(JAVAFXDIR) --add-modules $(JAVAFXOPT)
 JC = javac
 
 .SUFFIXES: .java .class
