@@ -1,4 +1,4 @@
-public class Patient {
+public class Patient extends Person {
     private static int basePatientNo=0;
     private int patientNo;
     private String name;

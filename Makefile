@@ -6,7 +6,9 @@ JC = javac
 .java.class:
 	$(JC) $(JFLAGS) $*.java
 
-CLASSES = Patient.java\
+CLASSES = \
+	Person.java\
+	Patient.java\
 	PatientTesterCLI.java\
 	PatientTesterGUI.java
 
