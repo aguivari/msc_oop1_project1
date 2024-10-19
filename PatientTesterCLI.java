@@ -11,8 +11,9 @@ public class PatientTesterCLI {
         //mainMenu();
 
         Patient patient1 = new Patient();
-        Patient patient2 = new Patient("John", "Snow", 8,10,1985, Gender.MALE, 173,90,100);
-        Patient patient3 = new Patient("Joanne", "Blizzard", 2,3,1984, Gender.FEMALE, 173,90,100);
+        Patient patient2 = new Patient("John", "Snow", 18,10,1985, Gender.MALE, 173,90,100);
+        Patient patient3 = new Patient("Joanne", "Blizzard", 19,10,1984, Gender.FEMALE, 173,90,100);
+        Patient patient4 = new Patient("Joan", "Heavyslit", 20,10,1984, Gender.FEMALE, 173,90,100);
 
 
         System.out.println(patient1);
@@ -20,6 +21,8 @@ public class PatientTesterCLI {
         System.out.println(patient2);
         System.out.println();
         System.out.println(patient3);
+        System.out.println();
+        System.out.println(patient4);
 
         
     }

@@ -7,23 +7,28 @@ enum Gender {
     UNDEFINED
 }
 
+enum DateFormat {
+    DMY,
+    YMD,
+    MDY
+}
+
 public class Person {
     private String name;
     private String surname;
     private int dob;
     private int mob;
     private int yob;
-    private Gender gender; // 1 = biological male, 2=biological female, 0=not defined
-
+    private Gender gender;
 
     //Constructors
     //Constructor with no parameter
     public Person() {
         this.name="";
         this.surname="";
-        this.dob=0;
-        this.mob=0;
-        this.yob=0;
+        this.dob=1;
+        this.mob=1;
+        this.yob=1;
         this.gender=Gender.UNDEFINED;
     }
 
@@ -95,19 +100,39 @@ public class Person {
     }
 
     //return person full DoB
-    public String getFullDoB(){
-        return this.dob+"/"+this.mob+"/"+this.yob;
+    public String getFullDoB(DateFormat format){
+        String sdob=String.format("%02d", this.dob);
+        String smob=String.format("%02d", this.mob);
+        String syob=String.format("%04d", this.yob);
+        return switch (format) {
+            case DateFormat.DMY   -> sdob+"-"+smob+"-"+syob;
+            case DateFormat.YMD   -> syob+"-"+smob+"-"+sdob;
+            case DateFormat.MDY   -> smob+"-"+sdob+"-"+syob;
+            default -> "Undefined";
+        };
     }
     //return person age in years
-    public int getAge()   
+    public String getAge()   
     {  
         LocalDate today = LocalDate.now();  
-        LocalDate birth = LocalDate.parse(this.yob+"-"+this.mob+"-"+this.dob);
+        LocalDate birth = LocalDate.parse(this.getFullDoB(DateFormat.YMD));
         
         if ((birth != null) && (today != null)) {  
-            return Period.between(birth, today).getYears();  
+            Period age=Period.between(birth, today);
+            String message="";
+            if (age.getYears()>0) {
+                message+=age.getYears()+" Years, ";
+            }
+            if (age.getMonths()>0) {
+                message+=age.getMonths()+" Months, ";
+            }
+            if (age.getDays()>0) {
+                message+=age.getDays()+" Days";
+            }
+            return message;
+
         } else {  
-            return -1;  
+            return "Error getting age";  
         }  
     }
 
@@ -118,16 +143,14 @@ public class Person {
         message="";
         message=message+"\nperson Name: "+this.name;
         message=message+"\nperson Surname: "+this.surname;
-        message=message+"\nperson DoB: "+this.dob+"/"+this.mob+"/"+this.yob;
-        
+        message=message+"\nperson DoB: "+getFullDoB(DateFormat.DMY);
+        message=message+"\nperson Age: "+this.getAge();
         message=message+ "\nperson Gender: "+ switch (this.gender) {
                 case Gender.MALE   -> "Male";
                 case Gender.FEMALE -> "Female";
                 default -> "Undefined";
             }
-        ;
-
-        
+        ;        
         return message;
     }
 }

@@ -8,7 +8,7 @@ public class Patient extends Person {
     //Constructors
     //Constructor with no parameter
     public Patient() {
-        super("","",0,0,0,Gender.UNDEFINED);
+        super("","",1,1,1,Gender.UNDEFINED);
         incrementBasePatientNo();
         this.patientNo=basePatientNo;
         this.height=0;
@@ -26,7 +26,7 @@ public class Patient extends Person {
                     double patientHeight, 
                     double patienteWeight, 
                     double patientCircunference) {
-        super(patientName,patientSurname,patientDoB,patientYoB,patientYoB,patientGender);
+        super(patientName,patientSurname,patientDoB,patientMoB,patientYoB,patientGender);
         incrementBasePatientNo();
         this.patientNo=basePatientNo;
         this.height=patientHeight;
@@ -147,7 +147,7 @@ public class Patient extends Person {
     public String toString() {
         String message;
         message="Patient Id: "+patientNo;
-        message=message+"\n"+super.toString();
+        message=message+super.toString();
         message=message+"\nPatient Height: "+height;
         message=message+"\nPatient Weight: "+weight;
         message=message+"\nPatient Abdominal Circunference: "+circunference;
