@@ -1,21 +1,30 @@
 import java.time.LocalDate;
 import java.time.Period;
 
+enum Gender {
+    MALE,
+    FEMALE,
+    UNDEFINED
+}
+
 public class Person {
     private String name;
     private String surname;
     private int dob;
     private int mob;
     private int yob;
+    private Gender gender; // 1 = biological male, 2=biological female, 0=not defined
+
 
     //Constructors
     //Constructor with no parameter
     public Person() {
-        name="";
-        surname="";
-        dob=0;
-        mob=0;
-        yob=0;
+        this.name="";
+        this.surname="";
+        this.dob=0;
+        this.mob=0;
+        this.yob=0;
+        this.gender=Gender.UNDEFINED;
     }
 
     //Constructor with all parameters 
@@ -23,66 +32,77 @@ public class Person {
                     String personSurname, 
                     int personDoB, 
                     int personMoB, 
-                    int personYoB) {
-        name=personName;
-        surname=personSurname;
-        dob=personDoB;
-        mob=personMoB;
-        yob=personYoB;        
+                    int personYoB,
+                    Gender personGender) {
+        this.name=personName;
+        this.surname=personSurname;
+        this.dob=personDoB;
+        this.mob=personMoB;
+        this.yob=personYoB;   
+        this.gender=personGender;     
     }
     
     //Mutator methods
     //set person Name
     public void setName(String argument) {
-        name = argument;
+        this.name = argument;
     }
     //set person Surname
     public void setSurname(String argument) {
-        surname = argument;
+        this.surname = argument;
     }
     //set person DoB
     public void setDoB(int argument) {
-        dob = argument;
+        this.dob = argument;
     }
     //set person MoB
     public void setMoB(int argument) {
-        mob = argument;
+        this.mob = argument;
     }
     //set person YoB
     public void setYoB(int argument) {
-        yob = argument;
+        this.yob = argument;
+    }
+    //set person Gender
+    public void setGender(Gender argument) {
+        this.gender = argument;
     }
  
     //Assessor methods
     //assess person Name
     public String getName(){
-        return name;
+        return this.name;
     }
     //assess person Surname
     public String getSurname(){
-        return name;
+        return this.surname;
     }
     //assess person DoB
     public int getDoB(){
-        return dob;
+        return this.dob;
     }
     //assess person MoB
     public int getMoB(){
-        return mob;
+        return this.mob;
     }
     //assess person YoB
     public int getYoB(){
-        return yob;
+        return this.yob;
     }
-    //assess person full DoB
+    //assess person gender
+    public Gender getGender(){
+        return this.gender;
+    }
+
+    //return person full DoB
     public String getFullDoB(){
-        return dob+"/"+mob+"/"+yob;
+        return this.dob+"/"+this.mob+"/"+this.yob;
     }
-    //assess person age 
+    //return person age in years
     public int getAge()   
     {  
         LocalDate today = LocalDate.now();  
-        LocalDate birth = LocalDate.parse(yob+"-"+mob+"-"+dob);
+        LocalDate birth = LocalDate.parse(this.yob+"-"+this.mob+"-"+this.dob);
         
         if ((birth != null) && (today != null)) {  
             return Period.between(birth, today).getYears();  
@@ -96,9 +116,17 @@ public class Person {
     public String toString() {
         String message;
         message="";
-        message=message+"\nperson Name: "+name;
-        message=message+"\nperson Surname: "+surname;
-        message=message+"\nperson DoB: "+dob+"/"+mob+"/"+yob;
+        message=message+"\nperson Name: "+this.name;
+        message=message+"\nperson Surname: "+this.surname;
+        message=message+"\nperson DoB: "+this.dob+"/"+this.mob+"/"+this.yob;
+        
+        message=message+ "\nperson Gender: "+ switch (this.gender) {
+                case Gender.MALE   -> "Male";
+                case Gender.FEMALE -> "Female";
+                default -> "Undefined";
+            }
+        ;
+
         
         return message;
     }

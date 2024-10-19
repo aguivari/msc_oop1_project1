@@ -1,9 +1,6 @@
 public class Patient extends Person {
     private static int basePatientNo=0;
     private int patientNo;
-    private String name;
-    private String surname;
-    private int gender; // 1 = biological male, 2=biological female, 0=not defined
     private double height;
     private double weight;
     private double circunference;
@@ -11,32 +8,30 @@ public class Patient extends Person {
     //Constructors
     //Constructor with no parameter
     public Patient() {
+        super("","",0,0,0,Gender.UNDEFINED);
         incrementBasePatientNo();
-        patientNo=basePatientNo;
-        name="";
-        surname="";
-        gender=0;
-        height=0;
-        weight=0;
-        circunference=0;
+        this.patientNo=basePatientNo;
+        this.height=0;
+        this.weight=0;
+        this.circunference=0;
     }
 
     //Constructor with all parameters 
-    public Patient(int patientId, 
-                    String patientName, 
+    public Patient( String patientName, 
                     String patientSurname, 
-                    int patientGender, 
+                    int patientDoB,
+                    int patientMoB,
+                    int patientYoB,
+                    Gender patientGender, 
                     double patientHeight, 
                     double patienteWeight, 
                     double patientCircunference) {
+        super(patientName,patientSurname,patientDoB,patientYoB,patientYoB,patientGender);
         incrementBasePatientNo();
-        patientNo=patientId;
-        name=patientName;
-        surname=patientSurname;
-        gender=patientGender;
-        height=patientHeight;
-        weight=patienteWeight;
-        circunference=patientCircunference;
+        this.patientNo=basePatientNo;
+        this.height=patientHeight;
+        this.weight=patienteWeight;
+        this.circunference=patientCircunference;
     }
     
     private void incrementBasePatientNo() {
@@ -44,29 +39,17 @@ public class Patient extends Person {
     }
 
     //Mutator methods
-    //set Patient Name
-    public void setName(String argument) {
-        name = argument;
-    }
-    //set Patient Surname
-    public void setSurname(String argument) {
-        surname = argument;
-    }
-    //set Patient Gender
-    public void setGender(int argument) {
-        gender = argument;
-    }
     //set patient Height
     public void setHeight(double argument) {
-        height = argument;
+        this.height = argument;
     }
     //set patient Weight
     public void setWeith(double argument) {
-        weight = argument;
+        this.weight = argument;
     }
     //set patient abdominal circunference
     public void setAbdCirc(double argument) {
-        circunference = argument;
+        this.circunference = argument;
     }
 
     //Assessor methods
@@ -74,35 +57,23 @@ public class Patient extends Person {
     public int getPatientNo(){
         return this.patientNo;
     }
-    //assess Patient Name
-    public String getName(){
-        return name;
-    }
-    //assess Patient Surname
-    public String getSurname(){
-        return name;
-    }
-    //assess Patient gender
-    public int getGender(){
-        return gender;
-    }
     //assess Patient Height
     public double getHeight(){
-        return height;
+        return this.height;
     }
     //assess Patient Weight
     public double getWeight(){
-        return weight;
+        return this.weight;
     }
     //assess Patient abdominal circunference
     public double getAbdCirc(){
-        return circunference;
+        return this.circunference;
     }
 
     //Calculation methods
     //calculate IMC
     public double getIMC() {
-        return weight/(height*height);
+        return this.weight/(this.height*this.height);
     }
     //provide IMC health classification
     public String getIMCClass() {
@@ -135,29 +106,29 @@ public class Patient extends Person {
     //provide Abdominal Circunderence health classification
     public String getAbdCircRisk() {
         String message;
-        switch (gender) {
-        case 1: //male        
-            if (circunference < 90 ) {
+        switch (super.getGender()) {
+        case Gender.MALE: //male        
+            if (this.circunference < 90 ) {
                 message="Normal risk";
             }
-            else if (circunference < 94 ) {
+            else if (this.circunference < 94 ) {
                 message="Average risk";
             }
-            else if (circunference < 102 ) {
+            else if (this.circunference < 102 ) {
                 message="High risk";
             }
             else {
                 message="Very high risk";        
             }
             break;
-        case 2: //female        
-            if (circunference < 80 ) {
+        case Gender.FEMALE: //female        
+            if (this.circunference < 80 ) {
                 message="Normal risk";
             }
-            else if (circunference < 84 ) {
+            else if (this.circunference < 84 ) {
                 message="Average risk";
             }
-            else if (circunference < 88 ) {
+            else if (this.circunference < 88 ) {
                 message="High risk";
             }
             else {
@@ -176,9 +147,7 @@ public class Patient extends Person {
     public String toString() {
         String message;
         message="Patient Id: "+patientNo;
-        message=message+"\nPatient Name: "+name;
-        message=message+"\nPatient Surname: "+surname;
-        message=message+"\nPatient Gender: "+gender;
+        message=message+"\n"+super.toString();
         message=message+"\nPatient Height: "+height;
         message=message+"\nPatient Weight: "+weight;
         message=message+"\nPatient Abdominal Circunference: "+circunference;

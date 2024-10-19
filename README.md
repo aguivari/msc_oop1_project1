@@ -10,7 +10,7 @@
 
 ### Person Class
 
-````
+```
 public class Person {
   private String name;
   private String surname;
@@ -23,6 +23,7 @@ public class Person {
   //Mutator Methods
   //Assessor Methods
   //Auxiliary Methods
+}
 
 ```
 
