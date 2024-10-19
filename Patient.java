@@ -148,6 +148,11 @@ public class Patient extends Person {
         return message;
     }   
 
+    //allows for setting the basePatientNo in case reading from file.
+    public void resetBasePatientNo(int argument) {
+        basePatientNo=argument;
+    }
+
     //Overriding toString() method
     @Override
     public String toString() {

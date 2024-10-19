@@ -78,7 +78,7 @@ public class Utils {
         //print header
         System.out.println("Consultant Number,Name,Surname,DoB,Age,Gender,Speciality,Contract Type");
         for (Consultant consultant: consultants) {
-            System.out.print(consultant.getconsultantNo()+",");
+            System.out.print(consultant.getConsultantNo()+",");
             System.out.print(consultant.getName()+",");
             System.out.print(consultant.getSurname()+",");
             System.out.print(consultant.getFullDoB(DateFormat.DMY)+",");
@@ -159,7 +159,24 @@ public class Utils {
         return consultants;
     }
 
+    public static int getMaxPatientNo(ArrayList<Patient> patients) {
+        int maxPatientNo=0;
+        for (Patient patient: patients) {
+            if (patient.getPatientNo()>maxPatientNo) {
+                maxPatientNo=patient.getPatientNo();
+            }
+        }
+        return maxPatientNo;
+    }
 
-
+    public static int getMaxConsultantNo(ArrayList<Consultant> consultants) {
+        int maxConsultantNo=0;
+        for (Consultant consultant: consultants) {
+            if (consultant.getConsultantNo()>maxConsultantNo) {
+                maxConsultantNo=consultant.getConsultantNo();
+            }
+        }
+        return maxConsultantNo;
+    }
 
 }

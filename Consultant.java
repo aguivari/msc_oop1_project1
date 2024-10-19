@@ -53,7 +53,7 @@ public class Consultant extends Person  {
 
     //Assessor methods
     //assess consultant Id
-    public int getconsultantNo(){
+    public int getConsultantNo(){
         return this.consultantNo;
     }
     //assess consultant Speciality
@@ -63,6 +63,11 @@ public class Consultant extends Person  {
     //assess consultant Weight
     public ContractType getContractType(){
         return this.contractType;
+    }
+
+    //allows for setting the baseConsultantNo in case reading from file.
+    public void resetBaseConsultantNo(int argument) {
+        baseConsultantNo=argument;
     }
 
     //Overriding toString() method
