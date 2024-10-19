@@ -1,6 +1,4 @@
-import java.io.Serializable;
-
-public class Patient extends Person implements Serializable {
+public class Patient extends Person {
     private static int basePatientNo=0;
     private int patientNo;
     private double height;
@@ -149,6 +147,11 @@ public class Patient extends Person implements Serializable {
         }
         return message;
     }   
+
+    //allows for setting the basePatientNo in case reading from file.
+    public void resetBasePatientNo(int argument) {
+        basePatientNo=argument;
+    }
 
     //Overriding toString() method
     @Override
