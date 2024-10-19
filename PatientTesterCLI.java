@@ -6,10 +6,6 @@ public class PatientTesterCLI {
     static ArrayList<Patient> patientList = new ArrayList<Patient>();
     static ArrayList<Consultant> consultantList = new ArrayList<Consultant>();
     public static void main(String[] args) {
-        
-        
-        
-
         //mainMenu();
         patientList.add(new Patient("Ivan", "The Terrible", 18,10,1985, Gender.MALE, 173,90,105));
         patientList.add(new Patient("John", "Snow", 18,10,1985, Gender.MALE, 173,60,90));
