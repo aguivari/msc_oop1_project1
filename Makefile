@@ -1,6 +1,6 @@
 JAVAFXDIR=~/MSC/Java/javafx/javafx-sdk-21.0.2/lib
 JAVAFXOPT=javafx.controls,javafx.fxml
-JFLAGS = --module-path $(JAVAFXDIR) --add-modules $(JAVAFXOPT)
+JFXFLAGS = --module-path $(JAVAFXDIR) --add-modules $(JAVAFXOPT)
 JC = javac
 
 .SUFFIXES: .java .class
@@ -56,7 +56,8 @@ CLASSES = $(CLASSES_BASE) \
 classes: $(CLASSES:.java=.class)
 
 javafx: $(CLASSES_JAVAFX_APPS:.java=.class)
-
+	$(JC) $(JFXFLAGS) $*.java
+	
 clean:
 	$(RM) -R */*.class *.class
 
