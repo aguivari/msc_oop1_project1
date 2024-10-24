@@ -1,6 +1,11 @@
+package BaseClasses;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
+
+import Enums.DateFormat;
+import Enums.Gender;
+import AuxClasses.Utils;
 
 public class Person implements Serializable {
     private String name;
@@ -82,54 +87,62 @@ public class Person implements Serializable {
     public Gender getGender(){
         return this.gender;
     }
+    // //return person full DoB
+    // public String getFullDoB(DateFormat format){
+    //     String sdob=String.format("%02d", this.dob);
+    //     String smob=String.format("%02d", this.mob);
+    //     String syob=String.format("%04d", this.yob);
+    //     return switch (format) {
+    //         case DateFormat.DMY   -> sdob+"-"+smob+"-"+syob;
+    //         case DateFormat.YMD   -> syob+"-"+smob+"-"+sdob;
+    //         case DateFormat.MDY   -> smob+"-"+sdob+"-"+syob;
+    //         default -> "Undefined";
+    //     };
+    // }
 
-    //return person full DoB
-    public String getFullDoB(DateFormat format){
-        String sdob=String.format("%02d", this.dob);
-        String smob=String.format("%02d", this.mob);
-        String syob=String.format("%04d", this.yob);
-        return switch (format) {
-            case DateFormat.DMY   -> sdob+"-"+smob+"-"+syob;
-            case DateFormat.YMD   -> syob+"-"+smob+"-"+sdob;
-            case DateFormat.MDY   -> smob+"-"+sdob+"-"+syob;
-            default -> "Undefined";
-        };
-    }
-    //return person age in years
-    public String getAge()   
-    {  
-        LocalDate today = LocalDate.now();  
-        LocalDate birth = LocalDate.parse(this.getFullDoB(DateFormat.YMD));
+    // //return person age in years
+    // public String getAge()   
+    // {  
+    //     LocalDate today = LocalDate.now();  
+    //     LocalDate birth = LocalDate.parse(this.getFullDoB(DateFormat.YMD));
         
-        if ((birth != null) && (today != null)) {  
-            Period age=Period.between(birth, today);
-            String message="";
-            if (age.getYears()>0) {
-                message+=age.getYears()+" Years ";
-            }
-            if (age.getMonths()>0) {
-                message+=age.getMonths()+" Months ";
-            }
-            if (age.getDays()>0) {
-                message+=age.getDays()+" Days";
-            }
-            return message;
+    //     if ((birth != null) && (today != null)) {  
+    //         Period age=Period.between(birth, today);
+    //         String message="";
+    //         if (age.getYears()>0) {
+    //             message+=age.getYears()+" Years ";
+    //         }
+    //         if (age.getMonths()>0) {
+    //             message+=age.getMonths()+" Months ";
+    //         }
+    //         if (age.getDays()>0) {
+    //             message+=age.getDays()+" Days";
+    //         }
+    //         return message;
 
-        } else {  
-            return "Error getting age";  
-        }  
-    }
-
+    //     } else {  
+    //         return "Error getting age";  
+    //     }  
+    // }
     //Overriding toString() method
     @Override
     public String toString() {
         String message;
+        String childType;
+
+        childType="Person";
+        if ( this instanceof Patient) {
+            childType="Patient";
+        } else if ( this instanceof Consultant) {
+            childType="Consultant";
+        }        
+
         message="";
-        message=message + "\nperson Name: " + this.name;
-        message=message + "\nperson Surname: " + this.surname;
-        message=message + "\nperson DoB: " + getFullDoB(DateFormat.DMY);
-        message=message + "\nperson Age: " + this.getAge();
-        message=message + "\nperson Gender: " + switch (this.gender) {
+        message=message + "\n"+childType+" Name: " + this.name;
+        message=message + "\n"+childType+" Surname: " + this.surname;
+        message=message + "\n"+childType+" DoB: " + Utils.getFullDoB(this, DateFormat.DMY);
+        message=message + "\n"+childType+" Age: " + Utils.getAge(this);
+        message=message + "\n"+childType+" Gender: " + switch (this.gender) {
                 case Gender.MALE   -> Gender.MALE.label;
                 case Gender.FEMALE -> Gender.FEMALE.label;
                 case Gender.UNDEFINED -> Gender.UNDEFINED.label;

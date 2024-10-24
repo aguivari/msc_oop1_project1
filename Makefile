@@ -8,24 +8,53 @@ JC = javac
 .java.class:
 	$(JC) $(JFLAGS) $*.java
 
-CLASSES = \
-	Person.java \
-	Patient.java \
-	Consultant.java \
-	Utils.java \
-	ContractType.java \
-	DateFormat.java \
-	Gender.Java \
-	Speciality.java \
-	PatientTesterCLI.java \
-	PatientTesterWrite.java \
-	PatientTesterRead.java \
-	PatientTesterGUI.java
+SRC=.
+
+DIR_AUX=$(SRC)/AuxClasses
+CLASSES_AUX=$(DIR_AUX)/Utils.java
+
+DIR_BASE=$(SRC)/BaseClasses
+CLASSES_BASE=$(DIR_BASE)/Person.java \
+			$(DIR_BASE)/Patient.java \
+			$(DIR_BASE)/Consultant.java \
+			$(DIR_BASE)/Person.java \
+			$(DIR_BASE)/Date.java 			
+
+DIR_ENUM=$(SRC)/Enums
+CLASSES_ENUM=$(DIR_ENUM)/ContractType.java \
+			$(DIR_ENUM)/DateFormat.java \
+			$(DIR_ENUM)/Gender.java \
+			$(DIR_ENUM)/Speciality.java
+
+DIR_INTERFACES=$(SRC)/Interfaces
+CLASSES_INTERFACES=$(DIR_INTERFACES)/ConsultantInterface.java \
+	$(DIR_INTERFACES)/ConsultantInterfaceImpl.java \
+	$(DIR_INTERFACES)/PatientInterface.java \
+	$(DIR_INTERFACES)/PatientInterfaceImpl.java \
+	$(DIR_INTERFACES)/MeasurementsInterface.java \
+	$(DIR_INTERFACES)/MeasurementsInterfaceImpl.java
+
+DIR_RECORDS=$(SRC)/Records
+CLASSES_RECORDS=$(DIR_RECORDS)/Measurement.java
+
+DIR_APPS=$(SRC)/TestApplications
+CLASSES_APPS=HealthCollector.java \
+			$(DIR_APPS)/PatientTesterCLI.java \
+			$(DIR_APPS)/PatientTesterWrite.java \
+			$(DIR_APPS)/PatientTesterRead.java \
+			$(DIR_APPS)/PatientTesterGUI.java
+
+CLASSES = $(CLASSES_BASE) \
+		$(CLASSES_AUX) \
+		$(CLASSES_ENUM) \
+		$(CLASSES_APPS) \
+		$(CLASSES_INTERFACES) \
+		$(CLASSES_RECORDS)
 
 classes: $(CLASSES:.java=.class)
 
 clean:
-	$(RM) *.class 
+	$(RM) -R */*.class *.class
 
 distclean: clean
 	$(RM) *.zip files/*.bin
@@ -39,4 +68,4 @@ PROJECTFILES= $(CLASSES) \
 	README.md \
 
 dist: clean
-	zip msc_oop1_project1 $(PROJECTFILES)
+	zip msc_oop1_1 $(PROJECTFILES)
