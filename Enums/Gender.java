@@ -1,3 +1,5 @@
+package Enums;
+
 public enum Gender {
     MALE("Male"),
     FEMALE("Female"),

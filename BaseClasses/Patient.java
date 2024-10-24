@@ -1,3 +1,8 @@
+package BaseClasses;
+
+import AuxClasses.Utils;
+import Enums.Gender;
+
 public class Patient extends Person {
     private static int basePatientNo=0;
     private int patientNo;
@@ -70,6 +75,7 @@ public class Patient extends Person {
     public double getWeight(){
         return this.weight;
     }
+
     //assess Patient abdominal circunference
     public double getAbdCirc(){
         return this.circunference;

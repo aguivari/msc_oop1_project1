@@ -1,3 +1,5 @@
+package Enums;
+
 public enum Speciality {
     NUTRITION("Nutrition"),
     ENDOCHRINOLOGY("Endochrinology"),

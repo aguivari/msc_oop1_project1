@@ -1,3 +1,5 @@
+package Enums;
+
 public enum ContractType {
     PERMANENT("Permanent"),
     TEMPORARY("Temporary"),

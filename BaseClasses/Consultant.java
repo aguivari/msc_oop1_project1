@@ -1,3 +1,9 @@
+package BaseClasses;
+
+import  Enums.ContractType;
+import  Enums.Gender;
+import  Enums.Speciality;
+
 public class Consultant extends Person  {
     private static int baseConsultantNo=0;
     private int consultantNo;
@@ -60,7 +66,7 @@ public class Consultant extends Person  {
     public Speciality getSpeciality(){
         return this.speciality;
     }
-    //assess consultant Weight
+    //assess consultant contract type
     public ContractType getContractType(){
         return this.contractType;
     }
@@ -74,16 +80,16 @@ public class Consultant extends Person  {
     @Override
     public String toString() {
         String message;
-        message="consultant Id: "+consultantNo;
+        message="Consultant Id: "+consultantNo;
         message=message + super.toString();
-        message=message + "\nconsultant Speciality: " + switch (this.speciality) {
+        message=message + "\nConsultant Speciality: " + switch (this.speciality) {
             case Speciality.NUTRITION   -> Speciality.NUTRITION.label;
             case Speciality.ENDOCHRINOLOGY -> Speciality.ENDOCHRINOLOGY.label;
             case Speciality.PHYSIOTHERAPY   -> Speciality.PHYSIOTHERAPY.label;
             case Speciality.GENERALPRACTICE -> Speciality.GENERALPRACTICE.label;
             case Speciality.UNDEFINED -> Speciality.UNDEFINED.label;
         }; 
-        message=message + "\nconsultant Contract Type: " + switch (this.contractType) {
+        message=message + "\nConsultant Contract Type: " + switch (this.contractType) {
             case ContractType.PERMANENT -> ContractType.PERMANENT.label;
             case ContractType.TEMPORARY -> ContractType.TEMPORARY.label;
             case ContractType.UNDEFINED -> ContractType.UNDEFINED.label;

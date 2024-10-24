@@ -1,5 +1,13 @@
+package TestApplications;
 import java.util.ArrayList; 
 import java.util.Scanner;
+
+import  AuxClasses.Utils;
+import  BaseClasses.Consultant;
+import  BaseClasses.Patient;
+import  Enums.ContractType;
+import  Enums.Gender;
+import  Enums.Speciality;
 
 public class PatientTesterCLI {
     static Scanner keyboardIn = new Scanner(System.in);
@@ -29,8 +37,7 @@ public class PatientTesterCLI {
         for (Consultant consultant: consultantList) {
             System.out.println(consultant);
             System.out.println();
-}
-
+        }
 
         consultantList.get(1).setContractType(ContractType.TEMPORARY);
         consultantList.get(1).setSpeciality(Speciality.PHYSIOTHERAPY);
