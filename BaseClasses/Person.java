@@ -1,7 +1,5 @@
 package BaseClasses;
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.Period;
 
 import Enums.DateFormat;
 import Enums.Gender;
@@ -87,43 +85,7 @@ public class Person implements Serializable {
     public Gender getGender(){
         return this.gender;
     }
-    // //return person full DoB
-    // public String getFullDoB(DateFormat format){
-    //     String sdob=String.format("%02d", this.dob);
-    //     String smob=String.format("%02d", this.mob);
-    //     String syob=String.format("%04d", this.yob);
-    //     return switch (format) {
-    //         case DateFormat.DMY   -> sdob+"-"+smob+"-"+syob;
-    //         case DateFormat.YMD   -> syob+"-"+smob+"-"+sdob;
-    //         case DateFormat.MDY   -> smob+"-"+sdob+"-"+syob;
-    //         default -> "Undefined";
-    //     };
-    // }
-
-    // //return person age in years
-    // public String getAge()   
-    // {  
-    //     LocalDate today = LocalDate.now();  
-    //     LocalDate birth = LocalDate.parse(this.getFullDoB(DateFormat.YMD));
-        
-    //     if ((birth != null) && (today != null)) {  
-    //         Period age=Period.between(birth, today);
-    //         String message="";
-    //         if (age.getYears()>0) {
-    //             message+=age.getYears()+" Years ";
-    //         }
-    //         if (age.getMonths()>0) {
-    //             message+=age.getMonths()+" Months ";
-    //         }
-    //         if (age.getDays()>0) {
-    //             message+=age.getDays()+" Days";
-    //         }
-    //         return message;
-
-    //     } else {  
-    //         return "Error getting age";  
-    //     }  
-    // }
+    
     //Overriding toString() method
     @Override
     public String toString() {
