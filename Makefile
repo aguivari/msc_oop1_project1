@@ -41,8 +41,10 @@ DIR_APPS=$(SRC)/TestApplications
 CLASSES_APPS=HealthCollector.java \
 			$(DIR_APPS)/PatientTesterCLI.java \
 			$(DIR_APPS)/PatientTesterWrite.java \
-			$(DIR_APPS)/PatientTesterRead.java \
-			$(DIR_APPS)/PatientTesterGUI.java
+			$(DIR_APPS)/PatientTesterRead.java 
+			
+
+CLASSES_JAVAFX_APPS=$(DIR_APPS)/PatientTesterGUI.java
 
 CLASSES = $(CLASSES_BASE) \
 		$(CLASSES_AUX) \
@@ -52,6 +54,8 @@ CLASSES = $(CLASSES_BASE) \
 		$(CLASSES_RECORDS)
 
 classes: $(CLASSES:.java=.class)
+
+javafx: $(CLASSES_JAVAFX_APPS:.java=.class)
 
 clean:
 	$(RM) -R */*.class *.class
