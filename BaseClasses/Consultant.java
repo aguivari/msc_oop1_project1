@@ -39,9 +39,9 @@ public class Consultant extends Person  {
         incrementBaseConsultantNo();
         this.consultantNo=baseConsultantNo;
         this.speciality=consultantSpeciality;
-        this.contractType=consultantContractType;       
+        this.contractType=consultantContractType;
     }
-    
+
     private void incrementBaseConsultantNo() {
         baseConsultantNo++;
     }
@@ -55,7 +55,6 @@ public class Consultant extends Person  {
     public void setContractType(ContractType argument) {
         this.contractType = argument;
     }
-    
 
     //Assessor methods
     //assess consultant Id

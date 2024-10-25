@@ -24,15 +24,11 @@ public class PatientTesterGUI extends Application
 
         Label label1 = new Label("Patient Class Tester");
 
-
-            
         contentVBox.setAlignment(Pos.CENTER);
         contentVBox.getChildren().addAll(label1); 
-
 
         stage.setScene(scene);
         stage.setTitle("Patient Class Tester");
         stage.show();
     }
-    
 }

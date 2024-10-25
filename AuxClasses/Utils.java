@@ -16,6 +16,7 @@ import BaseClasses.Consultant;
 import BaseClasses.Patient;
 import BaseClasses.Person;
 import Enums.DateFormat;
+import Records.Measurement;
 
 public class Utils {
 
@@ -25,20 +26,20 @@ public class Utils {
         String smob=String.format("%02d", person.getMoB());
         String syob=String.format("%04d", person.getYoB());
         return switch (format) {
-            case DateFormat.DMY   -> sdob+"-"+smob+"-"+syob;
-            case DateFormat.YMD   -> syob+"-"+smob+"-"+sdob;
-            case DateFormat.MDY   -> smob+"-"+sdob+"-"+syob;
+            case DateFormat.DMY -> sdob+"-"+smob+"-"+syob;
+            case DateFormat.YMD -> syob+"-"+smob+"-"+sdob;
+            case DateFormat.MDY -> smob+"-"+sdob+"-"+syob;
             default -> "Undefined";
         };
     }
 
     //return person class type (or descentant class) age in years
-    public static String getAge(Person person)   
-    {  
-        LocalDate today = LocalDate.now();  
+    public static String getAge(Person person)
+    {
+        LocalDate today = LocalDate.now();
         LocalDate birth = LocalDate.parse(getFullDoB(person, DateFormat.YMD));
-        
-        if ((birth != null) && (today != null)) {  
+
+        if ((birth != null) && (today != null)) {
             Period age=Period.between(birth, today);
             String message="";
             if (age.getYears()>0) {
@@ -51,10 +52,9 @@ public class Utils {
                 message+=age.getDays()+" Days";
             }
             return message;
-
-        } else {  
-            return "Error getting age";  
-        }  
+        } else {
+            return "Error getting age";
+        }
     }
 
     public static double averageHeigth(Patient... patients) {
@@ -82,7 +82,7 @@ public class Utils {
             return 0;
         }
     }
-    
+
     public static double averageAbdCirc(Patient... patients) {
         if (patients.length>0) {
             double aux=0; 
@@ -133,11 +133,10 @@ public class Utils {
             System.out.print(consultant.getGender().label+",");
             System.out.print(consultant.getSpeciality()+",");
             System.out.println(consultant.getContractType());
-            
         }
     }
 
-    public static void writePatientsToDisk(String filename, ArrayList <Patient> patients)  {
+    public static void writePatientsToDisk(String filename, ArrayList <Patient> patients) {
         //write list of patients to file patients.bin
         try{
             FileOutputStream writeData = new FileOutputStream(filename);
@@ -150,7 +149,7 @@ public class Utils {
         }
     }
 
-    public static void writeConsultantsToDisk(String filename, ArrayList <Consultant> consultants)  {
+    public static void writeConsultantsToDisk(String filename, ArrayList <Consultant> consultants) {
         //write list of patients to file patients.bin
         try{
             FileOutputStream writeData = new FileOutputStream(filename);
@@ -163,16 +162,26 @@ public class Utils {
         }
     }
 
+    public static void writeMeasurementsToDisk(String filename, ArrayList <Measurement> measurements) {
+        //write list of patients to file patients.bin
+        try{
+            FileOutputStream writeData = new FileOutputStream(filename);
+            ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
+            writeStream.writeObject(measurements);
+            writeStream.flush();
+            writeStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static ArrayList <Patient> readPatientsFromDisk(String filename) {
         ArrayList<Patient> patients = new ArrayList<Patient>();
         try{
             FileInputStream readData = new FileInputStream(filename);
             ObjectInputStream readStream = new ObjectInputStream(readData);
-            
             try {
-                
-                    patients= (ArrayList<Patient>)readStream.readObject();
-                
+                 patients= (ArrayList<Patient>)readStream.readObject();
             } catch (EOFException e) {
                 // End of stream
                 System.out.println("reached end of file");
@@ -184,25 +193,43 @@ public class Utils {
         return patients;
     }
 
-    public static ArrayList <Consultant> readConsultantsFromDisk(String filename)  {
+    public static ArrayList <Consultant> readConsultantsFromDisk(String filename) {
         ArrayList<Consultant> consultants = new ArrayList<Consultant>();
         try{
             FileInputStream readData = new FileInputStream(filename);
             ObjectInputStream readStream = new ObjectInputStream(readData);
-
             try {
                 consultants= (ArrayList<Consultant>)readStream.readObject();
             } catch (EOFException e) {
                 // End of stream
                 System.out.println("reached end of file");
-            } 
+            }
             readStream.close();
-            
         }catch (Exception e) {
             e.printStackTrace();
         }
         return consultants;
     }
+
+
+    public static ArrayList <Measurement> readMeasurementsFromDisk(String filename) {
+        ArrayList<Measurement> measurements = new ArrayList<Measurement>();
+        try{
+            FileInputStream readData = new FileInputStream(filename);
+            ObjectInputStream readStream = new ObjectInputStream(readData);
+            try {
+                measurements = (ArrayList<Measurement>)readStream.readObject();
+            } catch (EOFException e) {
+                // End of stream
+                System.out.println("reached end of file");
+            }
+            readStream.close();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return measurements;
+    }
+
 
     public static int getMaxPatientNo(ArrayList<Patient> patients) {
         int maxPatientNo=0;

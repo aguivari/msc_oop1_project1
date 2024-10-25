@@ -1,3 +1,4 @@
+#set Java FX location below
 JAVAFXDIR=~/MSC/Java/javafx/javafx-sdk-21.0.2/lib
 JAVAFXOPT=javafx.controls,javafx.fxml
 JFXFLAGS = --module-path $(JAVAFXDIR) --add-modules $(JAVAFXOPT)
@@ -41,7 +42,10 @@ DIR_APPS=$(SRC)/TestApplications
 CLASSES_APPS=HealthCollector.java \
 			$(DIR_APPS)/PatientTesterCLI.java \
 			$(DIR_APPS)/PatientTesterWrite.java \
-			$(DIR_APPS)/PatientTesterRead.java 
+			$(DIR_APPS)/PatientTesterRead.java \
+			$(DIR_APPS)/ConsultantTesterWrite.java \
+			$(DIR_APPS)/MeasurementsTesterWrite.java \
+			$(DIR_APPS)/MeasurementsTesterRead.java
 			
 
 CLASSES_JAVAFX_APPS=$(DIR_APPS)/PatientTesterGUI.java
@@ -55,9 +59,9 @@ CLASSES = $(CLASSES_BASE) \
 
 classes: $(CLASSES:.java=.class)
 
-javafx: $(CLASSES_JAVAFX_APPS:.java=.class)
-	$(JC) $(JFXFLAGS) $*.java
-	
+javafx: 
+	$(JC) $(JFXFLAGS) $(CLASSES_JAVAFX_APPS)
+
 clean:
 	$(RM) -R */*.class *.class
 
@@ -68,7 +72,7 @@ default: classes
 
 all: clean classes
 
-PROJECTFILES= $(CLASSES) \
+PROJECTFILES= $(CLASSES) $(CLASSES_JAVAFX_APPS) \
 	Makefile \
 	README.md \
 
