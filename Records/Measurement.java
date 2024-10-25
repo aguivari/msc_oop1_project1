@@ -4,13 +4,14 @@ import  BaseClasses.Consultant;
 import  BaseClasses.Patient;
 import  BaseClasses.Date;
 
-public class Measurement {
-    private static int measurementBaseNo;
-    private int measurementNo;
-    private Patient patientRef;
-    private Consultant consultantRef;
-    private Date measurementDate;
-    private double height;
-    private double weight;
-    private double circunference;    
-}
+public record Measurement (
+     Patient patient, 
+     Consultant consultant,
+     Date measurementDate,
+     double height,
+     double weight,
+     double circunference)
+     {
+
+
+     }
