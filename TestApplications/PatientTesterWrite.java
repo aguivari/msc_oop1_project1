@@ -10,7 +10,6 @@ public class PatientTesterWrite {
     public static void main(String[] args) {
 
         String patientsFile = "files/patients.bin";
-        
         patientList.add(new Patient("Ivan", "The Terrible", 24,10,1985, Gender.MALE, 173,90,105));
         patientList.add(new Patient("John", "Snow", 23,10,1984, Gender.MALE, 173,60,90));
         patientList.add(new Patient("Joanne", "Blizzard", 24,10,1984, Gender.FEMALE, 174,55,100));
@@ -22,7 +21,7 @@ public class PatientTesterWrite {
         }
 
         System.out.println("Writing list of patients to file "+patientsFile);
-        Utils.writePatientsToDisk(patientsFile, patientList);       
+        Utils.writePatientsToDisk(patientsFile, patientList);
 
     }
 }

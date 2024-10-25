@@ -47,7 +47,7 @@ public class Date implements Serializable {
     public void getYear(int argument) {
         this.year=argument;
     }
-    
+
     //return full date in specified format
     public String getFullDoB(DateFormat format){
         String sdob=String.format("%02d", this.day);
@@ -61,12 +61,11 @@ public class Date implements Serializable {
         };
     }
     //return date age in years, months, days
-    public String getAge()   
-    {  
-        LocalDate today = LocalDate.now();  
+    public String getAge() {
+        LocalDate today = LocalDate.now();
         LocalDate birth = LocalDate.parse(this.getFullDoB(DateFormat.YMD));
-        
-        if ((birth != null) && (today != null)) {  
+
+        if ((birth != null) && (today != null)) {
             Period age=Period.between(birth, today);
             String message="";
             if (age.getYears()>0) {
@@ -80,8 +79,8 @@ public class Date implements Serializable {
             }
             return message;
 
-        } else {  
-            return "Error getting age";  
-        }  
-    }    
+        } else {
+            return "Error getting age";
+        }
+    }
 }

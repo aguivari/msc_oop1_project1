@@ -20,7 +20,7 @@ public class MeasurementsTesterWrite {
     public static void main(String[] args) {
 
         String measurementsFile = "files/measurements.bin";
-        
+
         //set list of patients
         patientList.add(new Patient("Ivan", "The Terrible", 24,10,1985, Gender.MALE, 173,90,105));
         patientList.add(new Patient("John", "Snow", 23,10,1984, Gender.MALE, 173,60,90));
@@ -34,7 +34,6 @@ public class MeasurementsTesterWrite {
         //add some measurements
         for (Consultant consultant: consultantList) {
             System.out.println("Using consultant:"+consultant.getName()+" "+consultant.getSurname());
-            
             for (Patient patient: patientList) {
                 System.out.println("Using patient:"+patient.getName()+" "+patient.getSurname());
                 LocalDate today = LocalDate.now();
@@ -51,7 +50,5 @@ public class MeasurementsTesterWrite {
         }
         System.out.println("Writing list of consultants to file "+measurementsFile);
         Utils.writeMeasurementsToDisk(measurementsFile, measurementList);
-             
-
     }
 }

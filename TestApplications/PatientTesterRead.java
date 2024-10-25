@@ -12,7 +12,6 @@ public class PatientTesterRead {
     static ArrayList<Patient> patientList = new ArrayList<Patient>();
     static ArrayList<Consultant> consultantList = new ArrayList<Consultant>();
     public static void main(String[] args) {
-        
 
         String consultantsFile = "files/consultants.bin";
         String patientsFile = "files/patients.bin";

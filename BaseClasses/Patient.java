@@ -43,7 +43,7 @@ public class Patient extends Person {
         this.weight=patienteWeight;
         this.circunference=patientCircunference;
     }
-    
+
     private void incrementBasePatientNo() {
         basePatientNo++;
     }
@@ -110,7 +110,7 @@ public class Patient extends Person {
         } else if (imc < 40 ) {
             message="Grade II Obesity";
         } else {
-            message="Grade III Obesity";        
+            message="Grade III Obesity";
         }
         return message;
     }
@@ -119,7 +119,7 @@ public class Patient extends Person {
     public String getAbdCircRisk() {
         String message;
         switch (super.getGender()) {
-        case Gender.MALE: //male        
+        case Gender.MALE: //male
             if (this.circunference < 90 ) {
                 message="Normal risk";
             }
@@ -130,10 +130,10 @@ public class Patient extends Person {
                 message="High risk";
             }
             else {
-                message="Very high risk";        
+                message="Very high risk";
             }
             break;
-        case Gender.FEMALE: //female        
+        case Gender.FEMALE: //female
             if (this.circunference < 80 ) {
                 message="Normal risk";
             }
@@ -152,7 +152,7 @@ public class Patient extends Person {
             break;
         }
         return message;
-    }   
+    }
 
     //allows for setting the basePatientNo in case reading from file.
     public void resetBasePatientNo(int argument) {
@@ -168,7 +168,6 @@ public class Patient extends Person {
         message=message+"\nPatient Height: "+height;
         message=message+"\nPatient Weight: "+weight;
         message=message+"\nPatient Abdominal Circunference: "+circunference;
-        
         return message;
     }
 }

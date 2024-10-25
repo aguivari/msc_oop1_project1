@@ -30,10 +30,10 @@ public class Person implements Serializable {
         this.surname=personSurname;
         this.dob=personDoB;
         this.mob=personMoB;
-        this.yob=personYoB;   
-        this.gender=personGender;     
+        this.yob=personYoB;
+        this.gender=personGender;
     }
-    
+
     //Mutator methods
     //set person Name
     public void setName(String argument) {
@@ -85,7 +85,7 @@ public class Person implements Serializable {
     public Gender getGender(){
         return this.gender;
     }
-    
+
     //Overriding toString() method
     @Override
     public String toString() {
@@ -97,7 +97,7 @@ public class Person implements Serializable {
             childType="Patient";
         } else if ( this instanceof Consultant) {
             childType="Consultant";
-        }        
+        }
 
         message="";
         message=message + "\n"+childType+" Name: " + this.name;

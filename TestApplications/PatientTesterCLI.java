@@ -46,7 +46,6 @@ public class PatientTesterCLI {
 
     }
 
-    
     public static void mainMenu() {
         int input=-1;
         while (input!=0) {
