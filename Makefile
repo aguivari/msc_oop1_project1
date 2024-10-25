@@ -44,6 +44,7 @@ CLASSES_APPS=HealthCollector.java \
 			$(DIR_APPS)/PatientTesterWrite.java \
 			$(DIR_APPS)/PatientTesterRead.java \
 			$(DIR_APPS)/ConsultantTesterWrite.java \
+			$(DIR_APPS)/ConsultantTesterRead.java \
 			$(DIR_APPS)/MeasurementsTesterWrite.java \
 			$(DIR_APPS)/MeasurementsTesterRead.java
 			
