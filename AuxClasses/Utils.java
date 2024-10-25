@@ -16,6 +16,7 @@ import BaseClasses.Consultant;
 import BaseClasses.Patient;
 import BaseClasses.Person;
 import Enums.DateFormat;
+import Records.Measurement;
 
 public class Utils {
 
@@ -163,6 +164,19 @@ public class Utils {
         }
     }
 
+    public static void writeMeasurementsToDisk(String filename, ArrayList <Measurement> measurements)  {
+        //write list of patients to file patients.bin
+        try{
+            FileOutputStream writeData = new FileOutputStream(filename);
+            ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
+            writeStream.writeObject(measurements);
+            writeStream.flush();
+            writeStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static ArrayList <Patient> readPatientsFromDisk(String filename) {
         ArrayList<Patient> patients = new ArrayList<Patient>();
         try{
@@ -203,6 +217,28 @@ public class Utils {
         }
         return consultants;
     }
+
+
+    public static ArrayList <Measurement> readMeasurementsFromDisk(String filename)  {
+        ArrayList<Measurement> measurements = new ArrayList<Measurement>();
+        try{
+            FileInputStream readData = new FileInputStream(filename);
+            ObjectInputStream readStream = new ObjectInputStream(readData);
+
+            try {
+                measurements = (ArrayList<Measurement>)readStream.readObject();
+            } catch (EOFException e) {
+                // End of stream
+                System.out.println("reached end of file");
+            } 
+            readStream.close();
+            
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return measurements;
+    }
+
 
     public static int getMaxPatientNo(ArrayList<Patient> patients) {
         int maxPatientNo=0;

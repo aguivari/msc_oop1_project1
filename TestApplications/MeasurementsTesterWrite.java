@@ -46,11 +46,12 @@ public class MeasurementsTesterWrite {
             }
         }
 
-        //System.out.println("Writing list of consultants to file "+measurementsFile);
-        //Utils.writeConsultantsToDisk(measurementsFile, measurementList);
         for (Measurement measurement: measurementList) {
             System.out.println(measurement);
-        }     
+        }
+        System.out.println("Writing list of consultants to file "+measurementsFile);
+        Utils.writeMeasurementsToDisk(measurementsFile, measurementList);
+             
 
     }
 }
