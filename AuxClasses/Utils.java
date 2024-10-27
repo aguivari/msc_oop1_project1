@@ -163,7 +163,7 @@ public class Utils {
     }
 
     public static void writeMeasurementsToDisk(String filename, ArrayList <Measurement> measurements) {
-        //write list of patients to file patients.bin
+        //write list of patients to file 
         try{
             FileOutputStream writeData = new FileOutputStream(filename);
             ObjectOutputStream writeStream = new ObjectOutputStream(writeData);

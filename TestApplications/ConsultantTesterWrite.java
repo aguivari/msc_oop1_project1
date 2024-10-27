@@ -8,9 +8,10 @@ import  Enums.Gender;
 import  Enums.Speciality;
 
 public class ConsultantTesterWrite {
-    static ArrayList<Consultant> consultantList = new ArrayList<Consultant>();
+    
     public static void main(String[] args) {
         String consultantsFile = "files/consultants.bin";
+        ArrayList<Consultant> consultantList = new ArrayList<Consultant>();
 
         consultantList.add(new Consultant());
         consultantList.add(new Consultant("John", "Snow", 23,10,1985, Gender.MALE, Speciality.ENDOCHRINOLOGY, ContractType.PERMANENT));
