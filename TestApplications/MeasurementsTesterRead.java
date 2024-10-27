@@ -1,7 +1,7 @@
 package TestApplications;
 import java.util.ArrayList;
 
-import  AuxClasses.Utils;
+import AuxClasses.Utils;
 import Records.Measurement; 
 
 public class MeasurementsTesterRead {

@@ -2,10 +2,10 @@ package Records;
 
 import java.io.Serializable;
 
-import  BaseClasses.Consultant;
-import  BaseClasses.Patient;
+import AuxClasses.Date;
+import BaseClasses.Consultant;
+import BaseClasses.Patient;
 import Enums.DateFormat;
-import  BaseClasses.Date;
 
 public record Measurement  (
      Patient patient, 

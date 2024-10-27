@@ -4,6 +4,7 @@ import java.io.Serializable;
 import Enums.DateFormat;
 import Enums.Gender;
 import AuxClasses.Utils;
+import AuxClasses.Date;
 
 public class Person implements Serializable {
     private String name;
