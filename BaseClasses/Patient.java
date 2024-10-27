@@ -169,7 +169,10 @@ public class Patient extends Person {
         sb.append(super.toString());
         sb.append("\n").append("Patient Height: ").append(this.height);
         sb.append("\n").append("Patient Weight: ").append(this.weight);
+        sb.append("\n").append("Patient IMC: ").append(this.getIMC());
+        sb.append("\n").append("Patient IMC Classification: ").append(this.getIMCClass());
         sb.append("\n").append("Patient Abdominal Circunference: ").append(this.circunference);
+        sb.append("\n").append("Patient Abdominal Circunference Risk Classification: ").append(getAbdCircRisk());
         return sb.toString();
     }
 }
