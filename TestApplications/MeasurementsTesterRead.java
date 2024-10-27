@@ -2,11 +2,6 @@ package TestApplications;
 import java.util.ArrayList;
 
 import  AuxClasses.Utils;
-import  BaseClasses.Consultant;
-import  BaseClasses.Patient;
-import  Enums.ContractType;
-import  Enums.Gender;
-import  Enums.Speciality;
 import Records.Measurement; 
 
 public class MeasurementsTesterRead {

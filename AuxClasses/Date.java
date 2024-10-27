@@ -1,4 +1,4 @@
-package BaseClasses;
+package AuxClasses;
 import java.time.LocalDate;
 import java.time.Period;
 import java.io.Serializable;

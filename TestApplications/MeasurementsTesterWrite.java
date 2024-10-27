@@ -18,7 +18,6 @@ public class MeasurementsTesterWrite {
     static ArrayList<Patient> patientList = new ArrayList<Patient>();
 
     public static void main(String[] args) {
-
         String measurementsFile = "files/measurements.bin";
 
         //set list of patients
