@@ -17,7 +17,7 @@ public class PatientTesterGUI extends Application
         Menu menuPatientManagement = new Menu("Patient Management");
         Menu menuPatientOperations = new Menu("Patient Operations");
         Menu menuDatabaseManagement = new Menu("Patient Management");
- 
+
         menuBar.getMenus().addAll(menuPatientManagement, menuPatientOperations, menuDatabaseManagement);
         VBox contentVBox = new VBox(10);
         ((VBox) scene.getRoot()).getChildren().addAll(menuBar,contentVBox );
@@ -25,7 +25,7 @@ public class PatientTesterGUI extends Application
         Label label1 = new Label("Patient Class Tester");
 
         contentVBox.setAlignment(Pos.CENTER);
-        contentVBox.getChildren().addAll(label1); 
+        contentVBox.getChildren().addAll(label1);
 
         stage.setScene(scene);
         stage.setTitle("Patient Class Tester");

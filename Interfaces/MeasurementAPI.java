@@ -22,7 +22,7 @@ public class MeasurementAPI implements MeasurementAPIDefinitions {
         measurementList.clear();
 
     };
-    
+   
     public int getSize() {
         return this.measurementList.size();
     };
@@ -36,7 +36,7 @@ public class MeasurementAPI implements MeasurementAPIDefinitions {
     }
 
     public Measurement getLast() {
-        return measurementList.get(measurementList.size());
+        return measurementList.get(measurementList.size()-1);
     }
 
     public ArrayList<Measurement> getAllByDate(Date argument) {

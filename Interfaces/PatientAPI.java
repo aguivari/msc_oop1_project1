@@ -21,7 +21,7 @@ public class PatientAPI implements PatientAPIDefinitions {
         patientList.clear();
 
     };
-    
+   
     public int getSize() {
         return this.patientList.size();
     };
@@ -35,7 +35,7 @@ public class PatientAPI implements PatientAPIDefinitions {
     }
 
     public Patient getLast() {
-        return patientList.get(patientList.size());
+        return patientList.get(patientList.size()-1);
     }
 
     public void writeToDisk(String filename) {
@@ -65,10 +65,22 @@ public class PatientAPI implements PatientAPIDefinitions {
             for (Patient patient: tempList) {
                 this.add(patient);
             }
+            int max=getMaxIndex();
+            System.out.println("Resetting basePatientNo to "+max);
+            patientList.get(0).resetBasePatientNo(max);
 
         }catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    private int getMaxIndex() {
+        int maxIndex=0;
+        for (Patient patient: this.patientList) {
+            if (patient.getPatientNo()>maxIndex) {
+                maxIndex=patient.getPatientNo();
+            }
+        }
+        return maxIndex;
+    }
 }

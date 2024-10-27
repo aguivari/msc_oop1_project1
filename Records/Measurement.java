@@ -8,7 +8,7 @@ import BaseClasses.Patient;
 import Enums.DateFormat;
 
 public record Measurement  (
-     Patient patient, 
+     Patient patient,
      Consultant consultant,
      Date measurementDate,
      double height,

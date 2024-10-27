@@ -1,5 +1,5 @@
 package TestApplications;
-import java.util.ArrayList; 
+import java.util.ArrayList;
 import java.time.LocalDate;
 import java.lang.Math;
 
@@ -49,7 +49,10 @@ public class MeasurementsTesterWrite {
         for (Measurement measurement: measurements.getAll()) {
             System.out.println(measurement);
         }
-        System.out.println("Writing list of consultants to file "+measurementsFile);
+
+        System.out.println(measurements.getLast());
+
+        System.out.println("Writing list of measurements to file "+measurementsFile);
         measurements.writeToDisk(measurementsFile);
     }
 }

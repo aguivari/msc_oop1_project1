@@ -13,7 +13,7 @@ SRC=.
 
 DIR_AUX=$(SRC)/AuxClasses
 CLASSES_AUX=$(DIR_AUX)/Utils.java \
-			$(DIR_AUX)/Date.java 
+			$(DIR_AUX)/Date.java
 
 DIR_BASE=$(SRC)/BaseClasses
 CLASSES_BASE=$(DIR_BASE)/Person.java \
@@ -61,7 +61,7 @@ CLASSES = $(CLASSES_BASE) \
 
 classes: $(CLASSES:.java=.class)
 
-javafx: 
+javafx:
 	$(JC) $(JFXFLAGS) $(CLASSES_JAVAFX_APPS)
 
 clean:

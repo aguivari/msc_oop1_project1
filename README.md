@@ -68,8 +68,8 @@ enum gender {
 
 #### Measurements
 ````
-record Measurement  (
-    Patient patient, 
+record Measurement (
+    Patient patient,
     Consultant consultant,
     Date measurementDate,
     double height,
@@ -79,7 +79,7 @@ record Measurement  (
 
 ### Classes
 
-#### Person 
+#### Person
 ```
 class Person {
     private String name;
@@ -91,7 +91,7 @@ class Person {
 }
 ```
 
-#### Patient 
+#### Patient
 ```
 class Patient extends Person {
     private static int basePatientNo=0;
@@ -102,7 +102,7 @@ class Patient extends Person {
 }
 ```
 
-#### Consultant 
+#### Consultant
 ```
 class Consultant extends Person {
     private static int baseConsultantNo=0;
@@ -112,7 +112,7 @@ class Consultant extends Person {
 }
 ```
 
-#### Date 
+#### Date
 ```
 class Date {
     private int day;
@@ -123,7 +123,7 @@ class Date {
 
 ## Included programs
 
-### HealthCollector (CLI) 
+### HealthCollector (CLI)
 
 Includes a command line / text program to use the classes
 with basic operations like added, editing and removing patients

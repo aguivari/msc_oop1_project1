@@ -18,8 +18,8 @@ public class Patient extends Person {
     }
 
      //Constructor with some parameters, using this()
-    public Patient( String patientName, 
-                    String patientSurname, 
+    public Patient( String patientName,
+                    String patientSurname,
                     int patientDoB,
                     int patientMoB,
                     int patientYoB,
@@ -28,14 +28,14 @@ public class Patient extends Person {
      }
 
     //Constructor with all parameters , using super() to to base Person class
-    public Patient( String patientName, 
-                    String patientSurname, 
+    public Patient( String patientName,
+                    String patientSurname,
                     int patientDoB,
                     int patientMoB,
                     int patientYoB,
-                    Gender patientGender, 
-                    double patientHeight, 
-                    double patienteWeight, 
+                    Gender patientGender,
+                    double patientHeight,
+                    double patienteWeight,
                     double patientCircunference) {
         super(patientName,patientSurname,patientDoB,patientMoB,patientYoB,patientGender);
         incrementBasePatientNo();

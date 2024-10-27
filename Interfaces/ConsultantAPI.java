@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import BaseClasses.Consultant;
+import BaseClasses.Patient;
 
 public class ConsultantAPI implements ConsultantAPIDefinitions {
     private ArrayList<Consultant> consultantList;
@@ -20,7 +21,7 @@ public class ConsultantAPI implements ConsultantAPIDefinitions {
         consultantList.clear();
 
     };
-    
+   
     public int getSize() {
         return this.consultantList.size();
     };
@@ -34,7 +35,7 @@ public class ConsultantAPI implements ConsultantAPIDefinitions {
     }
 
     public Consultant getLast() {
-        return consultantList.get(consultantList.size());
+        return consultantList.get(consultantList.size()-1);
     }
 
     public void writeToDisk(String filename) {
@@ -64,10 +65,24 @@ public class ConsultantAPI implements ConsultantAPIDefinitions {
             for (Consultant consultant: tempList) {
                 this.add(consultant);
             }
+            int max=getMaxIndex();
+            System.out.println("Resetting baseConsultantNo to "+max);
+            this.consultantList.get(0).resetBaseConsultantNo(max);
+
 
         }catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private int getMaxIndex() {
+        int maxIndex=0;
+        for (Consultant consultant: this.consultantList) {
+            if (consultant.getConsultantNo()>maxIndex) {
+                maxIndex=consultant.getConsultantNo();
+            }
+        }
+        return maxIndex;
     }
 
 }
