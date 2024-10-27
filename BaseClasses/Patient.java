@@ -1,6 +1,7 @@
 package BaseClasses;
 
 import AuxClasses.Utils;
+import Enums.DateFormat;
 import Enums.Gender;
 
 public class Patient extends Person {
@@ -162,12 +163,13 @@ public class Patient extends Person {
     //Overriding toString() method
     @Override
     public String toString() {
-        String message;
-        message="Patient Id: "+patientNo;
-        message=message+super.toString();
-        message=message+"\nPatient Height: "+height;
-        message=message+"\nPatient Weight: "+weight;
-        message=message+"\nPatient Abdominal Circunference: "+circunference;
-        return message;
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Patient Id: ").append(this.patientNo);
+        sb.append(super.toString());
+        sb.append("\n").append("Patient Height: ").append(this.height);
+        sb.append("\n").append("Patient Weight: ").append(this.weight);
+        sb.append("\n").append("Patient Abdominal Circunference: ").append(this.circunference);
+        return sb.toString();
     }
 }
