@@ -3,9 +3,9 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 import java.lang.Math;
 
+import AuxClasses.Date;
 import AuxClasses.Utils;
 import BaseClasses.Consultant;
-import BaseClasses.Date;
 import BaseClasses.Patient;
 import Enums.ContractType;
 import Enums.Gender;
@@ -18,7 +18,6 @@ public class MeasurementsTesterWrite {
     static ArrayList<Patient> patientList = new ArrayList<Patient>();
 
     public static void main(String[] args) {
-
         String measurementsFile = "files/measurements.bin";
 
         //set list of patients

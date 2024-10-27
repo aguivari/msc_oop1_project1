@@ -12,14 +12,14 @@ JC = javac
 SRC=.
 
 DIR_AUX=$(SRC)/AuxClasses
-CLASSES_AUX=$(DIR_AUX)/Utils.java
+CLASSES_AUX=$(DIR_AUX)/Utils.java \
+			$(DIR_AUX)/Date.java 
 
 DIR_BASE=$(SRC)/BaseClasses
 CLASSES_BASE=$(DIR_BASE)/Person.java \
 			$(DIR_BASE)/Patient.java \
 			$(DIR_BASE)/Consultant.java \
-			$(DIR_BASE)/Person.java \
-			$(DIR_BASE)/Date.java 			
+
 
 DIR_ENUM=$(SRC)/Enums
 CLASSES_ENUM=$(DIR_ENUM)/ContractType.java \

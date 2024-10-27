@@ -2,19 +2,15 @@ package TestApplications;
 import java.util.ArrayList;
 
 import  AuxClasses.Utils;
-import  BaseClasses.Consultant;
 import  BaseClasses.Patient;
-import  Enums.ContractType;
 import  Enums.Gender;
-import  Enums.Speciality; 
 
 public class PatientTesterRead {
     static ArrayList<Patient> patientList = new ArrayList<Patient>();
     public static void main(String[] args) {
-
         String patientsFile = "files/patients.bin";
         int max;
-        
+
         System.out.println("Reading list of patients from file"+ patientsFile);
         patientList=Utils.readPatientsFromDisk(patientsFile);
 

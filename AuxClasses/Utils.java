@@ -211,7 +211,6 @@ public class Utils {
         return consultants;
     }
 
-
     public static ArrayList <Measurement> readMeasurementsFromDisk(String filename) {
         ArrayList<Measurement> measurements = new ArrayList<Measurement>();
         try{
@@ -229,7 +228,6 @@ public class Utils {
         }
         return measurements;
     }
-
 
     public static int getMaxPatientNo(ArrayList<Patient> patients) {
         int maxPatientNo=0;
@@ -250,5 +248,4 @@ public class Utils {
         }
         return maxConsultantNo;
     }
-
 }

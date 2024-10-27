@@ -4,6 +4,7 @@ import java.io.Serializable;
 import Enums.DateFormat;
 import Enums.Gender;
 import AuxClasses.Utils;
+import AuxClasses.Date;
 
 public class Person implements Serializable {
     private String name;
@@ -89,8 +90,8 @@ public class Person implements Serializable {
     //Overriding toString() method
     @Override
     public String toString() {
-        String message;
         String childType;
+        StringBuilder sb = new StringBuilder(); 
 
         childType="Person";
         if ( this instanceof Patient) {
@@ -99,16 +100,17 @@ public class Person implements Serializable {
             childType="Consultant";
         }
 
-        message="";
-        message=message + "\n"+childType+" Name: " + this.name;
-        message=message + "\n"+childType+" Surname: " + this.surname;
-        message=message + "\n"+childType+" DoB: " + Utils.getFullDoB(this, DateFormat.DMY);
-        message=message + "\n"+childType+" Age: " + Utils.getAge(this);
-        message=message + "\n"+childType+" Gender: " + switch (this.gender) {
+        sb.append("\n").append(childType).append(" Name: ").append(this.name);
+        sb.append("\n").append(childType).append(" Surname: ").append(this.surname);
+        sb.append("\n").append(childType).append(" DoB: ").append(Utils.getFullDoB(this, DateFormat.DMY));
+        sb.append("\n").append(childType).append(" Age: ").append(Utils.getAge(this));
+        sb.append("\n").append(childType).append(" Gender: ").append(
+            switch (this.gender) {
                 case Gender.MALE   -> Gender.MALE.label;
                 case Gender.FEMALE -> Gender.FEMALE.label;
                 case Gender.UNDEFINED -> Gender.UNDEFINED.label;
-            };
-        return message;
+            }
+        );
+        return sb.toString();
     }
 }

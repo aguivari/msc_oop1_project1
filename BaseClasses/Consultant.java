@@ -78,22 +78,26 @@ public class Consultant extends Person  {
     //Overriding toString() method
     @Override
     public String toString() {
-        String message;
-        message="Consultant Id: "+consultantNo;
-        message=message + super.toString();
-        message=message + "\nConsultant Speciality: " + switch (this.speciality) {
-            case Speciality.NUTRITION   -> Speciality.NUTRITION.label;
-            case Speciality.ENDOCHRINOLOGY -> Speciality.ENDOCHRINOLOGY.label;
-            case Speciality.PHYSIOTHERAPY   -> Speciality.PHYSIOTHERAPY.label;
-            case Speciality.GENERALPRACTICE -> Speciality.GENERALPRACTICE.label;
-            case Speciality.UNDEFINED -> Speciality.UNDEFINED.label;
-        }; 
-        message=message + "\nConsultant Contract Type: " + switch (this.contractType) {
-            case ContractType.PERMANENT -> ContractType.PERMANENT.label;
-            case ContractType.TEMPORARY -> ContractType.TEMPORARY.label;
-            case ContractType.UNDEFINED -> ContractType.UNDEFINED.label;
-        }; 
+        StringBuilder sb = new StringBuilder();
 
-        return message;
+        sb.append("Consultant Id: ").append(this.consultantNo);
+        sb.append(super.toString());
+        sb.append("\n").append("Consultant Speciality: ").append(
+            switch (this.speciality) {
+                    case Speciality.NUTRITION   -> Speciality.NUTRITION.label;
+                    case Speciality.ENDOCHRINOLOGY -> Speciality.ENDOCHRINOLOGY.label;
+                    case Speciality.PHYSIOTHERAPY   -> Speciality.PHYSIOTHERAPY.label;
+                    case Speciality.GENERALPRACTICE -> Speciality.GENERALPRACTICE.label;
+                    case Speciality.UNDEFINED -> Speciality.UNDEFINED.label;
+                } 
+        );
+        sb.append("\n").append("Consultant Contract Type: ").append(
+            switch (this.contractType) {
+                    case ContractType.PERMANENT -> ContractType.PERMANENT.label;
+                    case ContractType.TEMPORARY -> ContractType.TEMPORARY.label;
+                    case ContractType.UNDEFINED -> ContractType.UNDEFINED.label;
+                }
+        );
+        return sb.toString();
     }
 }
