@@ -17,8 +17,8 @@ public class Consultant extends Person  {
     }
 
     //Constructor with some parameter, using this()
-    public Consultant(String consultantName, 
-                String consultantSurname, 
+    public Consultant(String consultantName,
+                String consultantSurname,
                 int consultantDoB,
                 int consultantMoB,
                 int consultantYoB,
@@ -27,12 +27,12 @@ public class Consultant extends Person  {
     }
 
     //Constructor with all parameters , using super() to pass values to base Person class
-    public Consultant( String consultantName, 
-                    String consultantSurname, 
+    public Consultant( String consultantName,
+                    String consultantSurname,
                     int consultantDoB,
                     int consultantMoB,
                     int consultantYoB,
-                    Gender consultantGender, 
+                    Gender consultantGender,
                     Speciality consultantSpeciality,
                     ContractType consultantContractType) {
         super(consultantName,consultantSurname,consultantDoB,consultantMoB,consultantYoB,consultantGender);
@@ -89,7 +89,7 @@ public class Consultant extends Person  {
                     case Speciality.PHYSIOTHERAPY   -> Speciality.PHYSIOTHERAPY.label;
                     case Speciality.GENERALPRACTICE -> Speciality.GENERALPRACTICE.label;
                     case Speciality.UNDEFINED -> Speciality.UNDEFINED.label;
-                } 
+                }
         );
         sb.append("\n").append("Consultant Contract Type: ").append(
             switch (this.contractType) {

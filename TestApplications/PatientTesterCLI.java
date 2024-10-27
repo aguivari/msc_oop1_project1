@@ -1,5 +1,5 @@
 package TestApplications;
-import java.util.ArrayList; 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import  AuxClasses.Utils;

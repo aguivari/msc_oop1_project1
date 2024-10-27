@@ -54,9 +54,9 @@ public class Date implements Serializable {
         String smob=String.format("%02d", this.month);
         String syob=String.format("%04d", this.year);
         return switch (format) {
-            case DateFormat.DMY   -> sdob+"-"+smob+"-"+syob;
-            case DateFormat.YMD   -> syob+"-"+smob+"-"+sdob;
-            case DateFormat.MDY   -> smob+"-"+sdob+"-"+syob;
+            case DateFormat.DMY -> sdob+"-"+smob+"-"+syob;
+            case DateFormat.YMD -> syob+"-"+smob+"-"+sdob;
+            case DateFormat.MDY -> smob+"-"+sdob+"-"+syob;
             default -> "Undefined";
         };
     }
@@ -78,7 +78,6 @@ public class Date implements Serializable {
                 message+=age.getDays()+" Days";
             }
             return message;
-
         } else {
             return "Error getting age";
         }

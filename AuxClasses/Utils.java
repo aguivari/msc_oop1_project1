@@ -59,7 +59,7 @@ public class Utils {
 
     public static double averageHeigth(Patient... patients) {
         if (patients.length>0) {
-            double aux=0; 
+            double aux=0;
             for (Patient patient: patients) {
                 aux+=patient.getHeight();
             }
@@ -72,7 +72,7 @@ public class Utils {
 
     public static double averageWeigth(Patient... patients) {
         if (patients.length>0) {
-            double aux=0; 
+            double aux=0;
             for (Patient patient: patients) {
                 aux+=patient.getWeight();
             }
@@ -85,7 +85,7 @@ public class Utils {
 
     public static double averageAbdCirc(Patient... patients) {
         if (patients.length>0) {
-            double aux=0; 
+            double aux=0;
             for (Patient patient: patients) {
                 aux+=patient.getAbdCirc();
             }
@@ -134,118 +134,5 @@ public class Utils {
             System.out.print(consultant.getSpeciality()+",");
             System.out.println(consultant.getContractType());
         }
-    }
-
-    public static void writePatientsToDisk(String filename, ArrayList <Patient> patients) {
-        //write list of patients to file patients.bin
-        try{
-            FileOutputStream writeData = new FileOutputStream(filename);
-            ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
-            writeStream.writeObject(patients);
-            writeStream.flush();
-            writeStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void writeConsultantsToDisk(String filename, ArrayList <Consultant> consultants) {
-        //write list of patients to file patients.bin
-        try{
-            FileOutputStream writeData = new FileOutputStream(filename);
-            ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
-            writeStream.writeObject(consultants);
-            writeStream.flush();
-            writeStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void writeMeasurementsToDisk(String filename, ArrayList <Measurement> measurements) {
-        //write list of patients to file patients.bin
-        try{
-            FileOutputStream writeData = new FileOutputStream(filename);
-            ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
-            writeStream.writeObject(measurements);
-            writeStream.flush();
-            writeStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static ArrayList <Patient> readPatientsFromDisk(String filename) {
-        ArrayList<Patient> patients = new ArrayList<Patient>();
-        try{
-            FileInputStream readData = new FileInputStream(filename);
-            ObjectInputStream readStream = new ObjectInputStream(readData);
-            try {
-                 patients= (ArrayList<Patient>)readStream.readObject();
-            } catch (EOFException e) {
-                // End of stream
-                System.out.println("reached end of file");
-            } 
-            readStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return patients;
-    }
-
-    public static ArrayList <Consultant> readConsultantsFromDisk(String filename) {
-        ArrayList<Consultant> consultants = new ArrayList<Consultant>();
-        try{
-            FileInputStream readData = new FileInputStream(filename);
-            ObjectInputStream readStream = new ObjectInputStream(readData);
-            try {
-                consultants= (ArrayList<Consultant>)readStream.readObject();
-            } catch (EOFException e) {
-                // End of stream
-                System.out.println("reached end of file");
-            }
-            readStream.close();
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-        return consultants;
-    }
-
-    public static ArrayList <Measurement> readMeasurementsFromDisk(String filename) {
-        ArrayList<Measurement> measurements = new ArrayList<Measurement>();
-        try{
-            FileInputStream readData = new FileInputStream(filename);
-            ObjectInputStream readStream = new ObjectInputStream(readData);
-            try {
-                measurements = (ArrayList<Measurement>)readStream.readObject();
-            } catch (EOFException e) {
-                // End of stream
-                System.out.println("reached end of file");
-            }
-            readStream.close();
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-        return measurements;
-    }
-
-    public static int getMaxPatientNo(ArrayList<Patient> patients) {
-        int maxPatientNo=0;
-        for (Patient patient: patients) {
-            if (patient.getPatientNo()>maxPatientNo) {
-                maxPatientNo=patient.getPatientNo();
-            }
-        }
-        return maxPatientNo;
-    }
-
-    public static int getMaxConsultantNo(ArrayList<Consultant> consultants) {
-        int maxConsultantNo=0;
-        for (Consultant consultant: consultants) {
-            if (consultant.getConsultantNo()>maxConsultantNo) {
-                maxConsultantNo=consultant.getConsultantNo();
-            }
-        }
-        return maxConsultantNo;
     }
 }

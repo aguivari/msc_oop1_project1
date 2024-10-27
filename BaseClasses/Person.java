@@ -20,11 +20,11 @@ public class Person implements Serializable {
         this("","",1,1,1,Gender.UNDEFINED);
     }
 
-    //Constructor with all parameters 
-    public Person(  String personName, 
-                    String personSurname, 
-                    int personDoB, 
-                    int personMoB, 
+    //Constructor with all parameters
+    public Person(  String personName,
+                    String personSurname,
+                    int personDoB,
+                    int personMoB,
                     int personYoB,
                     Gender personGender) {
         this.name=personName;
@@ -60,7 +60,7 @@ public class Person implements Serializable {
     public void setGender(Gender argument) {
         this.gender = argument;
     }
- 
+
     //Assessor methods
     //assess person Name
     public String getName(){
@@ -91,7 +91,7 @@ public class Person implements Serializable {
     @Override
     public String toString() {
         String childType;
-        StringBuilder sb = new StringBuilder(); 
+        StringBuilder sb = new StringBuilder();
 
         childType="Person";
         if ( this instanceof Patient) {
