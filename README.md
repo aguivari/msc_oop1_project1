@@ -1,12 +1,12 @@
 # Repository for Java application for Class Project - OOP1
 
 ## Course: [MSc in Software Design With Artificial Intelligence](https://tus.ie/courses/msc-in-software-design-with-artificial-intelligence/)
-## gitHub: [aguivari/msc_oop1_project1](https://github.com/aguivari/msc_oop1_project1)
+## personal github: [aguivari/msc_oop1_project1](https://github.com/aguivari/msc_oop1_project1)
+## TUS github Mirror: [tussoftwaredesign/ca-aguivari](https://github.com/tussoftwaredesign/ca-aguivari/)
 
 ## Application: Simple Health Collector Application for Basic Biomedical information
 
 ## Project File & Directory Structure:
-
 ```
 +Project
 +--AuxClasses/          ->> Auxiliary Classes used by the applications
