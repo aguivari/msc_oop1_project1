@@ -1,8 +1,5 @@
-#set Java FX location below
-JAVAFXDIR=~/MSC/Java/javafx/javafx-sdk-21.0.2/lib
-JAVAFXOPT=javafx.controls,javafx.fxml
-JFXFLAGS = --module-path $(JAVAFXDIR) --add-modules $(JAVAFXOPT)
 JC = javac
+JFLAGS =
 
 .SUFFIXES: .java .class
 
@@ -19,7 +16,6 @@ DIR_BASE=$(SRC)/BaseClasses
 CLASSES_BASE=$(DIR_BASE)/Person.java \
 			$(DIR_BASE)/Patient.java \
 			$(DIR_BASE)/Consultant.java \
-
 
 DIR_ENUM=$(SRC)/Enums
 CLASSES_ENUM=$(DIR_ENUM)/ContractType.java \
@@ -48,35 +44,29 @@ CLASSES_APPS=HealthCollector.java \
 			$(DIR_APPS)/MeasurementsTesterWrite.java \
 			$(DIR_APPS)/MeasurementsTesterRead.java
 			
-
-CLASSES_JAVAFX_APPS=$(DIR_APPS)/PatientTesterGUI.java
-
-CLASSES =$(CLASSES_ENUM) \
+CLASSES=$(CLASSES_ENUM) \
 		$(CLASSES_RECORDS) \
 		$(CLASSES_BASE) \
 		$(CLASSES_AUX) \
 		$(CLASSES_INTERFACES) \
 		$(CLASSES_APPS)
 		
-
 classes: $(CLASSES:.java=.class)
-
-javafx:
-	$(JC) $(JFXFLAGS) $(CLASSES_JAVAFX_APPS)
 
 clean:
 	$(RM) -R */*.class *.class
 
-distclean: clean
-	$(RM) *.zip files/*.bin
+dataclean: 
+	$(RM) files/*.bin
+
+distclean: clean dataclean
+	$(RM) *.zip
 
 default: classes
 
 all: clean classes
 
-PROJECTFILES= $(CLASSES) $(CLASSES_JAVAFX_APPS) \
-	Makefile \
-	README.md \
+PROJECTFILES= $(CLASSES) Makefile README.md
 
 dist: clean
 	zip msc_oop1_1 $(PROJECTFILES)
