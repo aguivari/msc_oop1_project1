@@ -22,7 +22,7 @@
 \--README.md            ->> This file
 ```
 
-#### This project will me regularly mirrored between this personal GIT repo and the repoo provided by TUS
+#### This project will me regularly mirrored between this personal GIT repo and the repo provided by TUS
 
 ## Main Entities definition skeleton:
 
@@ -128,6 +128,6 @@ class Date {
 
 ### HealthCollector (CLI)
 
-Includes a command line / text program to use the classes
-with basic operations like adding, editing and removing patients
+Includes a command line / text program to use the main interfaces
+with basic operations like adding patients, consultants and measumenres
 and some database operations, like save, restore, etc.
