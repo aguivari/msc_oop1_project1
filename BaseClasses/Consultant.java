@@ -82,22 +82,8 @@ public class Consultant extends Person  {
 
         sb.append("Consultant Id: ").append(this.consultantNo);
         sb.append(super.toString());
-        sb.append("\n").append("Consultant Speciality: ").append(
-            switch (this.speciality) {
-                    case Speciality.NUTRITION   -> Speciality.NUTRITION.label;
-                    case Speciality.ENDOCHRINOLOGY -> Speciality.ENDOCHRINOLOGY.label;
-                    case Speciality.PHYSIOTHERAPY   -> Speciality.PHYSIOTHERAPY.label;
-                    case Speciality.GENERALPRACTICE -> Speciality.GENERALPRACTICE.label;
-                    case Speciality.UNDEFINED -> Speciality.UNDEFINED.label;
-                }
-        );
-        sb.append("\n").append("Consultant Contract Type: ").append(
-            switch (this.contractType) {
-                    case ContractType.PERMANENT -> ContractType.PERMANENT.label;
-                    case ContractType.TEMPORARY -> ContractType.TEMPORARY.label;
-                    case ContractType.UNDEFINED -> ContractType.UNDEFINED.label;
-                }
-        );
+        sb.append("\n").append("Consultant Speciality: ").append(this.speciality.label);
+        sb.append("\n").append("Consultant Contract Type: ").append(this.contractType.label);
         return sb.toString();
     }
 }

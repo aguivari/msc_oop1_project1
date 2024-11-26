@@ -4,7 +4,6 @@ import java.io.Serializable;
 import Enums.DateFormat;
 import Enums.Gender;
 import AuxClasses.Utils;
-import AuxClasses.Date;
 
 public class Person implements Serializable {
     private String name;
@@ -102,15 +101,9 @@ public class Person implements Serializable {
 
         sb.append("\n").append(childType).append(" Name: ").append(this.name);
         sb.append("\n").append(childType).append(" Surname: ").append(this.surname);
-        sb.append("\n").append(childType).append(" DoB: ").append(Utils.getFullDoB(this, DateFormat.DMY));
+        sb.append("\n").append(childType).append(" DoB: ").append(Utils.getFullDate(this, DateFormat.DMY));
         sb.append("\n").append(childType).append(" Age: ").append(Utils.getAge(this));
-        sb.append("\n").append(childType).append(" Gender: ").append(
-            switch (this.gender) {
-                case Gender.MALE   -> Gender.MALE.label;
-                case Gender.FEMALE -> Gender.FEMALE.label;
-                case Gender.UNDEFINED -> Gender.UNDEFINED.label;
-            }
-        );
+        sb.append("\n").append(childType).append(" Gender: ").append(this.gender.label);
         return sb.toString();
     }
 }

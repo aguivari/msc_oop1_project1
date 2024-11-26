@@ -10,8 +10,9 @@ public class Date implements Serializable {
     private int month;
     private int year;
 
+    //empty constructor gets "today" as 
     public Date() {
-        this(1,1,1);
+        this(LocalDate.now().getDayOfMonth(),LocalDate.now().getMonthValue(),LocalDate.now().getYear());
     }
 
     public Date(int day, int month, int year) {
@@ -36,20 +37,20 @@ public class Date implements Serializable {
 
     //mutator methods
     // set day of the date
-    public void getDay(int argument) {
+    public void setDay(int argument) {
         this.day=argument;
     }
     // set month of the date
-    public void getMonth(int argument) {
+    public void setMonth(int argument) {
         this.month=argument;
     }
     // set year of the date
-    public void getYear(int argument) {
+    public void setYear(int argument) {
         this.year=argument;
     }
 
     //return full date in specified format
-    public String getFullDoB(DateFormat format){
+    public String getFullDate(DateFormat format){
         String sdob=String.format("%02d", this.day);
         String smob=String.format("%02d", this.month);
         String syob=String.format("%04d", this.year);
@@ -63,7 +64,7 @@ public class Date implements Serializable {
     //return date age in years, months, days
     public String getAge() {
         LocalDate today = LocalDate.now();
-        LocalDate birth = LocalDate.parse(this.getFullDoB(DateFormat.YMD));
+        LocalDate birth = LocalDate.parse(this.getFullDate(DateFormat.YMD));
 
         if ((birth != null) && (today != null)) {
             Period age=Period.between(birth, today);

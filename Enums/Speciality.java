@@ -5,6 +5,7 @@ public enum Speciality {
     ENDOCHRINOLOGY("Endochrinology"),
     PHYSIOTHERAPY("Physiotherapy"),
     GENERALPRACTICE("General Practice"),
+    PAEDIATRICIAN("Paediatrician"),
     UNDEFINED("Undefined");
 
     public final String label;

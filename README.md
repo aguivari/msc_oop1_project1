@@ -53,6 +53,7 @@ enum Speciality {
     ENDOCHRINOLOGY("Endochrinology"),
     PHYSIOTHERAPY("Physiotherapy"),
     GENERALPRACTICE("General Practice"),
+    PAEDIATRICIAN("Paediatrician"),
     UNDEFINED("Undefined");
 }
 ````
@@ -128,11 +129,5 @@ class Date {
 ### HealthCollector (CLI)
 
 Includes a command line / text program to use the classes
-with basic operations like added, editing and removing patients
-and some database operations, like save, restore, etc.
-
-### HealthCollector (GUI) (if time allows)
-
-Includes a JavaFX GUI program to use the classes
-with basic operations like added, editing and removing patients
+with basic operations like adding, editing and removing patients
 and some database operations, like save, restore, etc.
