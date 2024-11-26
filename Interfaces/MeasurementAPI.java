@@ -85,6 +85,7 @@ public class MeasurementAPI implements MeasurementAPIDefinitions {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public void readFromDisk(String filename) {
         this.trim();
         ArrayList<Measurement> tempList = new ArrayList<Measurement>();
