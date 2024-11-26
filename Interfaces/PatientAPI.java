@@ -11,7 +11,6 @@ import java.io.ObjectOutputStream;
 import BaseClasses.Patient;
 import Enums.DateFormat;
 import AuxClasses.Utils;
-import AuxClasses.Date;
 
 public class PatientAPI implements PatientAPIDefinitions {
     private ArrayList<Patient> patientList;
@@ -53,6 +52,7 @@ public class PatientAPI implements PatientAPIDefinitions {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public void readFromDisk(String filename) {
         this.trim();
         ArrayList<Patient> tempList = new ArrayList<Patient>();

@@ -11,8 +11,6 @@ import java.io.ObjectOutputStream;
 import BaseClasses.Consultant;
 import Enums.DateFormat;
 import AuxClasses.Utils;
-import AuxClasses.Date;
-
 
 public class ConsultantAPI implements ConsultantAPIDefinitions {
     private ArrayList<Consultant> consultantList;
@@ -54,6 +52,7 @@ public class ConsultantAPI implements ConsultantAPIDefinitions {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public void readFromDisk(String filename) {
         this.trim();
         ArrayList<Consultant> tempList = new ArrayList<Consultant>();
