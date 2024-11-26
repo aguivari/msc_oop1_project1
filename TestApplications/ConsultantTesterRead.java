@@ -1,7 +1,5 @@
 package TestApplications;
-import java.util.ArrayList;
 
-import AuxClasses.Utils;
 import BaseClasses.Consultant;
 import Enums.ContractType;
 import Enums.Gender;
@@ -11,7 +9,6 @@ import Interfaces.ConsultantAPI;
 public class ConsultantTesterRead {
     public static void main(String[] args) {
         String consultantsFile = "files/consultants.bin";
-        int max;
         ConsultantAPI consultants=new ConsultantAPI();
   
         System.out.println("Reading list of consultants from file"+ consultantsFile);

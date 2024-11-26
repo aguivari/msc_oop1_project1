@@ -7,7 +7,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
 import BaseClasses.Consultant;
+import Enums.DateFormat;
+import AuxClasses.Utils;
+import AuxClasses.Date;
+
 
 public class ConsultantAPI implements ConsultantAPIDefinitions {
     private ArrayList<Consultant> consultantList;
@@ -84,4 +89,19 @@ public class ConsultantAPI implements ConsultantAPIDefinitions {
         return maxIndex;
     }
 
+    public void dumpConsultantCSV() {
+        //generates CSV list of patients
+        //print header
+        System.out.println("Consultant Number,Name,Surname,DoB,Age,Gender,Speciality,Contract Type");
+        for (Consultant consultant: this.consultantList) {
+            System.out.print(consultant.getConsultantNo()+",");
+            System.out.print(consultant.getName()+",");
+            System.out.print(consultant.getSurname()+",");
+            System.out.print(Utils.getFullDate(consultant, DateFormat.DMY)+",");
+            System.out.print(Utils.getAge(consultant)+",");
+            System.out.print(consultant.getGender().label+",");
+            System.out.print(consultant.getSpeciality()+",");
+            System.out.println(consultant.getContractType());
+        }
+    }
 }

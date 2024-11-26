@@ -1,7 +1,5 @@
 package TestApplications;
-import java.util.ArrayList;
 
-import AuxClasses.Utils;
 import BaseClasses.Patient;
 import Enums.Gender;
 import Interfaces.PatientAPI;
@@ -9,7 +7,6 @@ import Interfaces.PatientAPI;
 public class PatientTesterRead {
     public static void main(String[] args) {
         String patientsFile = "files/patients.bin";
-        int max;
         PatientAPI patients=new PatientAPI();
 
         System.out.println("Reading list of patients from file"+ patientsFile);

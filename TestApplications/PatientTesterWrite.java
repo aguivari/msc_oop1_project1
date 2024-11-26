@@ -1,7 +1,5 @@
 package TestApplications;
-import java.util.ArrayList;
 
-import  AuxClasses.Utils;
 import  BaseClasses.Patient;
 import  Enums.Gender;
 import Interfaces.PatientAPI;

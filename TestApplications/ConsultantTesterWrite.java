@@ -1,7 +1,5 @@
 package TestApplications;
-import java.util.ArrayList;
 
-import  AuxClasses.Utils;
 import  BaseClasses.Consultant;
 import  Enums.ContractType;
 import  Enums.Gender;

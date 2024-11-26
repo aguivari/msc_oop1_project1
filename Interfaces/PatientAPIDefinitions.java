@@ -12,4 +12,5 @@ public interface PatientAPIDefinitions {
     public Patient getLast();
     public void writeToDisk(String filename);
     public void readFromDisk(String filename);
+    public void dumpCSV();
 }

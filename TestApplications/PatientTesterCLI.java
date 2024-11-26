@@ -25,7 +25,7 @@ public class PatientTesterCLI {
                     System.out.println();
         }
 
-        Utils.dumpPatientsCSV(patientList);
+        //Utils.dumpPatientsCSV(patientList);
 
         System.out.println("Average Heigth: "+Utils.averageHeigth(patientList.get(1), patientList.get(2), patientList.get(3)));
         System.out.println("Average Weigth: "+Utils.averageWeigth(patientList.get(1), patientList.get(2), patientList.get(3)));

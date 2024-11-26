@@ -9,6 +9,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import BaseClasses.Patient;
+import Enums.DateFormat;
+import AuxClasses.Utils;
+import AuxClasses.Date;
 
 public class PatientAPI implements PatientAPIDefinitions {
     private ArrayList<Patient> patientList;
@@ -83,4 +86,28 @@ public class PatientAPI implements PatientAPIDefinitions {
         }
         return maxIndex;
     }
+
+    public void dumpCSV() {
+        //generates CSV list of patients
+        //print header
+        System.out.println("Patient Number,Name,Surname,DoB,Age,Gender,Heigth,Weigth,Abdominal Circunference,IMC,IMC Classification,Abdominal Risk Classification");
+        for (Patient patient: this.patientList) {
+            System.out.print(patient.getPatientNo()+",");
+            System.out.print(patient.getName()+",");
+            System.out.print(patient.getSurname()+",");
+            System.out.print(Utils.getFullDate(patient, DateFormat.DMY)+",");
+            System.out.print(Utils.getAge(patient)+",");
+            System.out.print(patient.getGender().label+",");
+            System.out.print(patient.getHeight()+",");
+            System.out.print(patient.getWeight()+",");
+            System.out.print(patient.getIMC()+",");
+            System.out.print(patient.getIMCClass()+",");
+            System.out.print(patient.getAbdCirc()+",");
+            System.out.println(patient.getAbdCircRisk());
+        }
+    }
+
+
+
+
 }
