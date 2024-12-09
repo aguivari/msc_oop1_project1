@@ -7,7 +7,7 @@ import BaseClasses.Patient;
 public interface PatientAPIDefinitions {
     public void trim();
     public int getSize();
-    public void add(Patient measurement);
+    public void add(Patient patient);
     public ArrayList<Patient> getAll();
     public Patient getLast();
     public void writeToDisk(String filename);

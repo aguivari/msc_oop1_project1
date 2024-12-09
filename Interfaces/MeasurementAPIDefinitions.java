@@ -14,7 +14,6 @@ public interface MeasurementAPIDefinitions {
     public ArrayList<Measurement> getAllByDate(Date argument);
     public ArrayList<Measurement> getAllByConsultant(int argument);
     public ArrayList<Measurement> getAllByPatient(int argument);
-    public ArrayList<Measurement> getAllByPatientAge();
     public void writeToDisk(String filename);
     public void readFromDisk(String filename);
 }

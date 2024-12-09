@@ -1,7 +1,6 @@
 package BaseClasses;
 
 import AuxClasses.Utils;
-import Enums.DateFormat;
 import Enums.Gender;
 
 public class Patient extends Person {
@@ -83,32 +82,32 @@ public class Patient extends Person {
     }
 
     //Calculation methods
-    //calculate IMC
-    public double getIMC() {
+    //calculate CMI
+    public double getCMI() {
         if ((this.weight>0) && (this.height>0)) {
-            double imc=this.weight*1E4/(this.height*this.height);
-            return Utils.round2digits(imc);
+            double cmi=this.weight*1E4/(this.height*this.height);
+            return Utils.round2digits(cmi);
         } else {
             return -1;
         }
     }
     //provide IMC health classification
-    public String getIMCClass() {
+    public String getCMIClass() {
         String message;
-        double imc=getIMC();
-        if (imc<0) { //error in IMC calculation
-            message="Undefined IMC, undefined classification";
-        } else if (imc < 17 ) {
+        double cmi=getCMI();
+        if (cmi<0) { //error in CMI calculation
+            message="Undefined CMI, undefined classification";
+        } else if (cmi < 17 ) {
             message="Very underweight";
-        } else if (imc < 18.5 ) {
+        } else if (cmi < 18.5 ) {
             message="Underweight";
-        } else if (imc < 25 ) {
+        } else if (cmi < 25 ) {
             message="Normal weight";
-        } else if (imc < 30 ) {
+        } else if (cmi < 30 ) {
             message="Overweight";
-        } else if (imc < 35 ) {
+        } else if (cmi < 35 ) {
             message="Grade I Obesity";
-        } else if (imc < 40 ) {
+        } else if (cmi < 40 ) {
             message="Grade II Obesity";
         } else {
             message="Grade III Obesity";
@@ -169,8 +168,8 @@ public class Patient extends Person {
         sb.append(super.toString());
         sb.append("\n").append("Patient Height: ").append(this.height);
         sb.append("\n").append("Patient Weight: ").append(this.weight);
-        sb.append("\n").append("Patient IMC: ").append(this.getIMC());
-        sb.append("\n").append("Patient IMC Classification: ").append(this.getIMCClass());
+        sb.append("\n").append("Patient Corporal Mass Index: ").append(this.getCMI());
+        sb.append("\n").append("Patient CMI Classification: ").append(this.getCMIClass());
         sb.append("\n").append("Patient Abdominal Circunference: ").append(this.circunference);
         sb.append("\n").append("Patient Abdominal Circunference Risk Classification: ").append(getAbdCircRisk());
         return sb.toString();

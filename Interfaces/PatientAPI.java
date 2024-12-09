@@ -100,8 +100,8 @@ public class PatientAPI implements PatientAPIDefinitions {
             System.out.print(patient.getGender().label+",");
             System.out.print(patient.getHeight()+",");
             System.out.print(patient.getWeight()+",");
-            System.out.print(patient.getIMC()+",");
-            System.out.print(patient.getIMCClass()+",");
+            System.out.print(patient.getCMI()+",");
+            System.out.print(patient.getCMIClass()+",");
             System.out.print(patient.getAbdCirc()+",");
             System.out.println(patient.getAbdCircRisk());
         }

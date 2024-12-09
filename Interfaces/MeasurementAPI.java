@@ -69,10 +69,6 @@ public class MeasurementAPI implements MeasurementAPIDefinitions {
         return tempList;
     }
 
-    public ArrayList<Measurement> getAllByPatientAge() {
-        return measurementList;
-    }
-
     public void writeToDisk(String filename) {
         try{
             FileOutputStream writeData = new FileOutputStream(filename);
