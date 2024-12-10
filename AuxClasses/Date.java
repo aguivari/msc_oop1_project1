@@ -10,7 +10,7 @@ public class Date implements Serializable {
     private int month;
     private int year;
 
-    //empty constructor gets "today" as 
+    //empty constructor gets "today" as default date
     public Date() {
         this(LocalDate.now().getDayOfMonth(),LocalDate.now().getMonthValue(),LocalDate.now().getYear());
     }
