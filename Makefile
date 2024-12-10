@@ -34,15 +34,7 @@ CLASSES_INTERFACES=$(DIR_INTERFACES)/ConsultantAPIDefinitions.java \
 DIR_RECORDS=$(SRC)/Records
 CLASSES_RECORDS=$(DIR_RECORDS)/Measurement.java
 
-DIR_APPS=$(SRC)/TestApplications
-CLASSES_APPS=HealthCollector.java \
-			$(DIR_APPS)/PatientTesterCLI.java \
-			$(DIR_APPS)/PatientTesterWrite.java \
-			$(DIR_APPS)/PatientTesterRead.java \
-			$(DIR_APPS)/ConsultantTesterWrite.java \
-			$(DIR_APPS)/ConsultantTesterRead.java \
-			$(DIR_APPS)/MeasurementsTesterWrite.java \
-			$(DIR_APPS)/MeasurementsTesterRead.java
+CLASSES_APPS=HealthCollector.java
 			
 CLASSES=$(CLASSES_ENUM) \
 		$(CLASSES_RECORDS) \
