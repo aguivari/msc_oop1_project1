@@ -55,7 +55,7 @@ public class PatientAPI implements PatientAPIDefinitions {
     @SuppressWarnings("unchecked")
     public void readFromDisk(String filename) {
         this.trim();
-        ArrayList<Patient> tempList = new ArrayList<>();
+        var tempList = new ArrayList<Patient>();
         try{
             FileInputStream readData = new FileInputStream(filename);
             ObjectInputStream readStream = new ObjectInputStream(readData);

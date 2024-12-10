@@ -55,7 +55,7 @@ public class ConsultantAPI implements ConsultantAPIDefinitions {
     @SuppressWarnings("unchecked")
     public void readFromDisk(String filename) {
         this.trim();
-        ArrayList<Consultant> tempList = new ArrayList<>();
+        var tempList = new ArrayList<Consultant>();
         try{
             FileInputStream readData = new FileInputStream(filename);
             ObjectInputStream readStream = new ObjectInputStream(readData);

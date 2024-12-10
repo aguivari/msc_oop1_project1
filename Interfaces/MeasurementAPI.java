@@ -43,7 +43,7 @@ public class MeasurementAPI implements MeasurementAPIDefinitions {
     }
 
     public ArrayList<Measurement> getAll(Date argument) {
-        ArrayList<Measurement> tempList = new ArrayList<>();
+        var tempList = new ArrayList<Measurement>();
         for (Measurement measurement: measurementList) {
             if (measurement.measurementDate() == argument) {
                 tempList.add(measurement);
