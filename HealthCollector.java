@@ -18,9 +18,6 @@ import Records.Measurement;
 import AuxClasses.Date;
 import AuxClasses.Utils;
 
-
-
-
 public class HealthCollector {
     public static void main(String[] args) {
 
@@ -92,7 +89,6 @@ public class HealthCollector {
                     measurements.add(new Measurement(patient, consultant, date, Utils.round2digits(50+60*Math.random()), Utils.round2digits(50+150*Math.random()),Utils.round2digits(50+100*Math.random())));
                 }
             }
-
 
             System.out.println("Showing Current Contents");
             for (Consultant consultant: consultants.getAll()) {
