@@ -9,6 +9,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import Records.Measurement;
+import BaseClasses.Consultant;
+import BaseClasses.Patient;
+
 import AuxClasses.Date;
 
 public class MeasurementAPI implements MeasurementAPIDefinitions {
@@ -31,15 +34,15 @@ public class MeasurementAPI implements MeasurementAPIDefinitions {
         measurementList.add(measurement);
     }
 
-    public ArrayList<Measurement> getAll() {
-        return measurementList;
-    }
-
     public Measurement getLast() {
         return measurementList.get(measurementList.size()-1);
     }
 
-    public ArrayList<Measurement> getAllByDate(Date argument) {
+    public ArrayList<Measurement> getAll() {
+        return measurementList;
+    }
+
+    public ArrayList<Measurement> getAll(Date argument) {
         ArrayList<Measurement> tempList = new ArrayList<Measurement>();
         for (Measurement measurement: measurementList) {
             if (measurement.measurementDate() == argument) {
@@ -49,20 +52,20 @@ public class MeasurementAPI implements MeasurementAPIDefinitions {
         return tempList;
     }
 
-    public ArrayList<Measurement> getAllByConsultant(int argument) {
+    public ArrayList<Measurement> getAll(Consultant argument) {
         ArrayList<Measurement> tempList = new ArrayList<Measurement>();
         for (Measurement measurement: measurementList) {
-            if (measurement.consultant().getConsultantNo() == argument) {
+            if (measurement.consultant().getConsultantNo() == argument.getConsultantNo()) {
                 tempList.add(measurement);
             }
         }
         return tempList;
     }
 
-    public ArrayList<Measurement> getAllByPatient(int argument) {
+    public ArrayList<Measurement> getAll(Patient argument) {
         ArrayList<Measurement> tempList = new ArrayList<Measurement>();
         for (Measurement measurement: measurementList) {
-            if (measurement.patient().getPatientNo() == argument) {
+            if (measurement.patient().getPatientNo() == argument.getPatientNo()) {
                 tempList.add(measurement);
             }
         }

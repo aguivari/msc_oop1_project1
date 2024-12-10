@@ -11,7 +11,6 @@ TMPMIRRORDIR=/tmp/clonedir${RANDOM}${RANDOM}
 echo "creating temporary directory $TMPMIRRORDIR... "
 mkdir $TMPMIRRORDIR && echo "done..." || echo "failed..."
 
-
 echo "Entering temporary directory $TMPMIRRORDIR... "
 cd $TMPMIRRORDIR && echo "done..." || echo "failed..."
 
