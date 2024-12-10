@@ -16,7 +16,7 @@ public class PatientAPI implements PatientAPIDefinitions {
     private ArrayList<Patient> patientList;
 
     public PatientAPI() {
-        patientList = new ArrayList<Patient>();
+        patientList = new ArrayList<>();
     }
 
     public void trim() {
@@ -55,7 +55,7 @@ public class PatientAPI implements PatientAPIDefinitions {
     @SuppressWarnings("unchecked")
     public void readFromDisk(String filename) {
         this.trim();
-        ArrayList<Patient> tempList = new ArrayList<Patient>();
+        ArrayList<Patient> tempList = new ArrayList<>();
         try{
             FileInputStream readData = new FileInputStream(filename);
             ObjectInputStream readStream = new ObjectInputStream(readData);

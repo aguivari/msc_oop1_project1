@@ -18,7 +18,7 @@ public class MeasurementAPI implements MeasurementAPIDefinitions {
     private ArrayList<Measurement> measurementList;
 
     public MeasurementAPI() {
-        measurementList = new ArrayList<Measurement>();
+        measurementList = new ArrayList<>();
     }
 
     public void trim() {
@@ -43,7 +43,7 @@ public class MeasurementAPI implements MeasurementAPIDefinitions {
     }
 
     public ArrayList<Measurement> getAll(Date argument) {
-        ArrayList<Measurement> tempList = new ArrayList<Measurement>();
+        ArrayList<Measurement> tempList = new ArrayList<>();
         for (Measurement measurement: measurementList) {
             if (measurement.measurementDate() == argument) {
                 tempList.add(measurement);
@@ -53,7 +53,7 @@ public class MeasurementAPI implements MeasurementAPIDefinitions {
     }
 
     public ArrayList<Measurement> getAll(Consultant argument) {
-        ArrayList<Measurement> tempList = new ArrayList<Measurement>();
+        ArrayList<Measurement> tempList = new ArrayList<>();
         for (Measurement measurement: measurementList) {
             if (measurement.consultant().getConsultantNo() == argument.getConsultantNo()) {
                 tempList.add(measurement);
@@ -63,7 +63,7 @@ public class MeasurementAPI implements MeasurementAPIDefinitions {
     }
 
     public ArrayList<Measurement> getAll(Patient argument) {
-        ArrayList<Measurement> tempList = new ArrayList<Measurement>();
+        ArrayList<Measurement> tempList = new ArrayList<>();
         for (Measurement measurement: measurementList) {
             if (measurement.patient().getPatientNo() == argument.getPatientNo()) {
                 tempList.add(measurement);
@@ -87,7 +87,7 @@ public class MeasurementAPI implements MeasurementAPIDefinitions {
     @SuppressWarnings("unchecked")
     public void readFromDisk(String filename) {
         this.trim();
-        ArrayList<Measurement> tempList = new ArrayList<Measurement>();
+        ArrayList<Measurement> tempList = new ArrayList<>();
         try{
             FileInputStream readData = new FileInputStream(filename);
             ObjectInputStream readStream = new ObjectInputStream(readData);

@@ -16,7 +16,7 @@ public class ConsultantAPI implements ConsultantAPIDefinitions {
     private ArrayList<Consultant> consultantList;
 
     public ConsultantAPI() {
-        consultantList = new ArrayList<Consultant>();
+        consultantList = new ArrayList<>();
     }
 
     public void trim() {
@@ -55,7 +55,7 @@ public class ConsultantAPI implements ConsultantAPIDefinitions {
     @SuppressWarnings("unchecked")
     public void readFromDisk(String filename) {
         this.trim();
-        ArrayList<Consultant> tempList = new ArrayList<Consultant>();
+        ArrayList<Consultant> tempList = new ArrayList<>();
         try{
             FileInputStream readData = new FileInputStream(filename);
             ObjectInputStream readStream = new ObjectInputStream(readData);
