@@ -20,6 +20,17 @@ public class Person implements Serializable {
     //Constructor with all parameters
     public Person(  String personName,
                     String personSurname,
+                    Date birthDate,
+                    Gender personGender) {
+        this.name=personName;
+        this.surname=personSurname;
+        this.dob=birthDate;
+        this.gender=personGender;
+    }
+
+    //Constructor with all parameters, discrete DoB parameters
+    public Person(  String personName,
+                    String personSurname,
                     int personDoB,
                     int personMoB,
                     int personYoB,
@@ -39,6 +50,16 @@ public class Person implements Serializable {
     public void setSurname(String argument) {
         this.surname = argument;
     }
+    //set person Date f birth (date)
+    public void setDoB(Date argument) {
+        this.dob=argument; 
+    }
+    //set person Date f birth (day, month, year)
+    public void setDoB(int day, int month, int year) {
+        this.dob.setDay(day); 
+        this.dob.setMonth(month);
+        this.dob.setYear(year);
+    }
     //set person DoB
     public void setBirthDay(int argument) {
         this.dob.setDay(argument); 
@@ -50,10 +71,6 @@ public class Person implements Serializable {
     //set person YoB
     public void setBirthYear(int argument) {
         this.dob.setYear(argument); 
-    }
-    //set person Date f birth (date)
-    public void setDoB(Date argument) {
-        this.dob=argument; 
     }
     //set person Gender
     public void setGender(Gender argument) {
