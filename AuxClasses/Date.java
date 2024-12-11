@@ -62,21 +62,27 @@ public class Date implements Serializable {
         };
     }
     //return date age in years, months, days
-    public String getAge() {
+    public String getDateAge() {
         LocalDate today = LocalDate.now();
         LocalDate birth = LocalDate.parse(this.getFullDate(DateFormat.YMD));
 
         if ((birth != null) && (today != null)) {
             Period age=Period.between(birth, today);
             String message="";
-            if (age.getYears()>0) {
+            if (age.getYears()>1) {
                 message+=age.getYears()+" Years ";
+            } else if (age.getYears()==1) {
+                message+=age.getYears()+" Year ";
             }
-            if (age.getMonths()>0) {
+            if (age.getMonths()>1) {
                 message+=age.getMonths()+" Months ";
+            } else if (age.getMonths()==1) {
+                message+=age.getMonths()+" Month ";
             }
-            if (age.getDays()>0) {
+            if (age.getDays()>1) {
                 message+=age.getDays()+" Days";
+            } else if (age.getDays()==1) {
+                message+=age.getDays()+" Day";
             }
             return message;
         } else {

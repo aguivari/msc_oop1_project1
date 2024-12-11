@@ -45,7 +45,7 @@ public class HealthCollector {
             System.out.println("Reading list of patients from file"+ patientsFile);
             patients.readFromDisk(patientsFile);
         } else {
-            System.out.println("No database found, starting anew");
+            System.out.println("No patient database found, starting anew");
         }
         System.out.println("Checking for measurements database");
         measurementsFileExist=checkFile(measurementsFile);
@@ -56,7 +56,7 @@ public class HealthCollector {
             System.out.println("No measurements database found, starting anew");
         }
 
-        if (patientsFileExist & consultantsFileExist && measurementsFileExist) {
+        if (patientsFileExist & consultantsFileExist & measurementsFileExist) {
             //show data read from files into memory
             for (Consultant consultant: consultants.getAll()) {
                 System.out.println(consultant);
