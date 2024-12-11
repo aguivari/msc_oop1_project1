@@ -9,8 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import BaseClasses.Patient;
-import Enums.DateFormat;
-import AuxClasses.Utils;
+
 
 public class PatientAPI implements PatientAPIDefinitions {
     private ArrayList<Patient> patientList;
@@ -95,8 +94,8 @@ public class PatientAPI implements PatientAPIDefinitions {
             System.out.print(patient.getPatientNo()+",");
             System.out.print(patient.getName()+",");
             System.out.print(patient.getSurname()+",");
-            System.out.print(Utils.getFullDate(patient, DateFormat.DMY)+",");
-            System.out.print(Utils.getAge(patient)+",");
+            System.out.print(patient.getFullDate()+",");
+            System.out.print(patient.getAge()+",");
             System.out.print(patient.getGender().label+",");
             System.out.print(patient.getHeight()+",");
             System.out.print(patient.getWeight()+",");

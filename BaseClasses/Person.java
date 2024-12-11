@@ -3,14 +3,12 @@ import java.io.Serializable;
 
 import Enums.DateFormat;
 import Enums.Gender;
-import AuxClasses.Utils;
+import AuxClasses.Date;
 
 public class Person implements Serializable {
     private String name;
     private String surname;
-    private int dob;
-    private int mob;
-    private int yob;
+    private Date dob;
     private Gender gender;
 
     //Constructors
@@ -28,9 +26,7 @@ public class Person implements Serializable {
                     Gender personGender) {
         this.name=personName;
         this.surname=personSurname;
-        this.dob=personDoB;
-        this.mob=personMoB;
-        this.yob=personYoB;
+        this.dob=new Date(personDoB, personMoB, personYoB);
         this.gender=personGender;
     }
 
@@ -44,16 +40,20 @@ public class Person implements Serializable {
         this.surname = argument;
     }
     //set person DoB
-    public void setDoB(int argument) {
-        this.dob = argument;
+    public void setBirthDay(int argument) {
+        this.dob.setDay(argument); 
     }
     //set person MoB
-    public void setMoB(int argument) {
-        this.mob = argument;
+    public void setBirthMonth(int argument) {
+        this.dob.setMonth(argument); 
     }
     //set person YoB
-    public void setYoB(int argument) {
-        this.yob = argument;
+    public void setBirthYear(int argument) {
+        this.dob.setYear(argument); 
+    }
+    //set person Date f birth (date)
+    public void setDoB(Date argument) {
+        this.dob=argument; 
     }
     //set person Gender
     public void setGender(Gender argument) {
@@ -70,16 +70,36 @@ public class Person implements Serializable {
         return this.surname;
     }
     //assess person DoB
-    public int getDoB(){
-        return this.dob;
+    public int getBirthDay(){
+        //return this.dob;
+        return this.dob.getDay();
     }
     //assess person MoB
-    public int getMoB(){
-        return this.mob;
+    public int getBirthMonth(){
+        //return this.mob;
+        return this.dob.getMonth();
     }
     //assess person YoB
-    public int getYoB(){
-        return this.yob;
+    public int getBirthYear(){
+        //return this.yob;
+        return this.dob.getYear();
+    }
+    //assess person YoB
+    public Date getDoB(){
+        //return this.yob;
+        return this.dob;
+    }
+    //assess DOB in default format (DMY)
+    public String getFullDate() {
+        return this.getFullDate(DateFormat.DMY);
+    }
+    //assess DOB in specified format
+    public String getFullDate(DateFormat format) {
+        return this.dob.getFullDate(format);
+    }
+    //assess person age in days, months years
+    public String getAge() {
+        return this.dob.getDateAge();
     }
     //assess person gender
     public Gender getGender(){
@@ -101,8 +121,8 @@ public class Person implements Serializable {
 
         sb.append("\n").append(childType).append(" Name: ").append(this.name);
         sb.append("\n").append(childType).append(" Surname: ").append(this.surname);
-        sb.append("\n").append(childType).append(" DoB: ").append(Utils.getFullDate(this, DateFormat.DMY));
-        sb.append("\n").append(childType).append(" Age: ").append(Utils.getAge(this));
+        sb.append("\n").append(childType).append(" DoB: ").append(this.getFullDate());
+        sb.append("\n").append(childType).append(" Age: ").append(this.getAge());
         sb.append("\n").append(childType).append(" Gender: ").append(this.gender.label);
         return sb.toString();
     }

@@ -9,8 +9,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import BaseClasses.Consultant;
-import Enums.DateFormat;
-import AuxClasses.Utils;
 
 public class ConsultantAPI implements ConsultantAPIDefinitions {
     private ArrayList<Consultant> consultantList;
@@ -96,8 +94,8 @@ public class ConsultantAPI implements ConsultantAPIDefinitions {
             System.out.print(consultant.getConsultantNo()+",");
             System.out.print(consultant.getName()+",");
             System.out.print(consultant.getSurname()+",");
-            System.out.print(Utils.getFullDate(consultant, DateFormat.DMY)+",");
-            System.out.print(Utils.getAge(consultant)+",");
+            System.out.print(consultant.getFullDate()+",");
+            System.out.print(consultant.getAge()+",");
             System.out.print(consultant.getGender().label+",");
             System.out.print(consultant.getSpeciality()+",");
             System.out.println(consultant.getContractType());
