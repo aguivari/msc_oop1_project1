@@ -4,7 +4,7 @@ import  Enums.ContractType;
 import  Enums.Gender;
 import  Enums.Speciality;
 
-public class Consultant extends Person  {
+public final class Consultant extends Person  {
     private static int baseConsultantNo=0;
     private int consultantNo;
     private Speciality speciality;
@@ -18,23 +18,23 @@ public class Consultant extends Person  {
 
     //Constructor with some parameter, using this()
     public Consultant(String consultantName,
-                String consultantSurname,
-                int consultantDoB,
-                int consultantMoB,
-                int consultantYoB,
-                Gender consultantGender) {
+                      String consultantSurname,
+                      int consultantDoB,
+                      int consultantMoB,
+                      int consultantYoB,
+                      Gender consultantGender) {
         this(consultantName,consultantSurname,consultantDoB,consultantMoB,consultantYoB,consultantGender, Speciality.UNDEFINED, ContractType.UNDEFINED);
     }
 
     //Constructor with all parameters , using super() to pass values to base Person class
-    public Consultant( String consultantName,
-                    String consultantSurname,
-                    int consultantDoB,
-                    int consultantMoB,
-                    int consultantYoB,
-                    Gender consultantGender,
-                    Speciality consultantSpeciality,
-                    ContractType consultantContractType) {
+    public Consultant(String consultantName,
+                      String consultantSurname,
+                      int consultantDoB,
+                      int consultantMoB,
+                      int consultantYoB,
+                      Gender consultantGender,
+                      Speciality consultantSpeciality,
+                      ContractType consultantContractType) {
         super(consultantName,consultantSurname,consultantDoB,consultantMoB,consultantYoB,consultantGender);
         incrementBaseConsultantNo();
         this.consultantNo=baseConsultantNo;

@@ -7,7 +7,7 @@ import BaseClasses.Consultant;
 import BaseClasses.Patient;
 import AuxClasses.Date;
 
-public interface MeasurementAPIDefinitions {
+public sealed interface MeasurementAPIDefinitions permits MeasurementAPI {
     public void trim();
     public int getSize();
     public void add(Measurement measurement);

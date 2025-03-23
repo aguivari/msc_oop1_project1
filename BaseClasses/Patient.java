@@ -3,7 +3,7 @@ package BaseClasses;
 import AuxClasses.Utils;
 import Enums.Gender;
 
-public class Patient extends Person {
+public final class Patient extends Person {
     private static int basePatientNo=0;
     private int patientNo;
     private double height;
@@ -17,25 +17,25 @@ public class Patient extends Person {
     }
 
      //Constructor with some parameters, using this()
-    public Patient( String patientName,
-                    String patientSurname,
-                    int patientDoB,
-                    int patientMoB,
-                    int patientYoB,
-                    Gender patientGender) {
+    public Patient(String patientName,
+                   String patientSurname,
+                   int patientDoB,
+                   int patientMoB,
+                   int patientYoB,
+                   Gender patientGender) {
         this(patientName,patientSurname,patientDoB,patientMoB,patientYoB,patientGender, 0, 0, 0);
      }
 
     //Constructor with all parameters , using super() to to base Person class
-    public Patient( String patientName,
-                    String patientSurname,
-                    int patientDoB,
-                    int patientMoB,
-                    int patientYoB,
-                    Gender patientGender,
-                    double patientHeight,
-                    double patienteWeight,
-                    double patientCircunference) {
+    public Patient(String patientName,
+                   String patientSurname,
+                   int patientDoB,
+                   int patientMoB,
+                   int patientYoB,
+                   Gender patientGender,
+                   double patientHeight,
+                   double patienteWeight,
+                   double patientCircunference) {
         super(patientName,patientSurname,patientDoB,patientMoB,patientYoB,patientGender);
         incrementBasePatientNo();
         this.patientNo=basePatientNo;

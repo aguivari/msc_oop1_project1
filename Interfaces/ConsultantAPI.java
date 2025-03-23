@@ -10,7 +10,7 @@ import java.io.ObjectOutputStream;
 
 import BaseClasses.Consultant;
 
-public class ConsultantAPI implements ConsultantAPIDefinitions {
+public final class ConsultantAPI implements ConsultantAPIDefinitions {
     private ArrayList<Consultant> consultantList;
 
     public ConsultantAPI() {

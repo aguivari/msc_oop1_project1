@@ -5,7 +5,7 @@ import Enums.DateFormat;
 import Enums.Gender;
 import AuxClasses.Date;
 
-public class Person implements Serializable {
+public sealed class Person implements Serializable permits Patient, Consultant   {
     private String name;
     private String surname;
     private Date dob;
@@ -18,10 +18,10 @@ public class Person implements Serializable {
     }
 
     //Constructor with all parameters
-    public Person(  String personName,
-                    String personSurname,
-                    Date birthDate,
-                    Gender personGender) {
+    public Person(String personName,
+                  String personSurname,
+                  Date birthDate,
+                  Gender personGender) {
         this.name=personName;
         this.surname=personSurname;
         this.dob=birthDate;
@@ -29,12 +29,12 @@ public class Person implements Serializable {
     }
 
     //Constructor with all parameters, discrete DoB parameters
-    public Person(  String personName,
-                    String personSurname,
-                    int personDoB,
-                    int personMoB,
-                    int personYoB,
-                    Gender personGender) {
+    public Person(String personName,
+                  String personSurname,
+                  int personDoB,
+                  int personMoB,
+                  int personYoB,
+                  Gender personGender) {
         this.name=personName;
         this.surname=personSurname;
         this.dob=new Date(personDoB, personMoB, personYoB);

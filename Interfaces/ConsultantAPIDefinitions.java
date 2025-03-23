@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import BaseClasses.Consultant;
 
-public interface ConsultantAPIDefinitions {
+public sealed interface ConsultantAPIDefinitions permits ConsultantAPI {
     public void trim();
     public int getSize();
     public void add(Consultant consultant);

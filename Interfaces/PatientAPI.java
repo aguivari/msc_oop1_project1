@@ -11,7 +11,7 @@ import java.io.ObjectOutputStream;
 import BaseClasses.Patient;
 
 
-public class PatientAPI implements PatientAPIDefinitions {
+public final class PatientAPI implements PatientAPIDefinitions {
     private ArrayList<Patient> patientList;
 
     public PatientAPI() {

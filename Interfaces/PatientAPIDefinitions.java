@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import BaseClasses.Patient;
 
-public interface PatientAPIDefinitions {
+public sealed interface PatientAPIDefinitions permits PatientAPI {
     public void trim();
     public int getSize();
     public void add(Patient patient);

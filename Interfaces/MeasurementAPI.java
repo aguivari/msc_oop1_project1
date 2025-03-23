@@ -14,7 +14,7 @@ import BaseClasses.Patient;
 
 import AuxClasses.Date;
 
-public class MeasurementAPI implements MeasurementAPIDefinitions {
+public final class MeasurementAPI implements MeasurementAPIDefinitions {
     private ArrayList<Measurement> measurementList;
 
     public MeasurementAPI() {
