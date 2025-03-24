@@ -1,6 +1,7 @@
 package Records;
 
 import java.io.Serializable;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import AuxClasses.Date;
@@ -19,13 +20,23 @@ public record Measurement  (
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Measurement date: ").append(this.measurementDate.getFullDate(DateFormat.DMY));
-        sb.append("\n").append("Measurement for patient: ").append(this.patient.getName()).append(" ").append(this.patient().getSurname());
-        sb.append("\n").append("Measurement by consultant: ").append(this.consultant.getName()).append(" ").append(this.consultant().getSurname());
-        sb.append("\n").append("Measurements:\n");
-        sb.append(" - Height: ").append(this.height()).append("\n");
-        sb.append(" - Weight: ").append(this.weight()).append("\n");
-        sb.append(" - Abdominal Circunference: ").append(this.circunference());
+        ResourceBundle measurementsResourceBundle = ResourceBundle.getBundle("HealthCollector", Locale.getDefault());
+
+        sb.append(measurementsResourceBundle.getString("Measurementdate"));
+        sb.append(": ").append(this.measurementDate.getFullDate(DateFormat.DMY));
+        sb.append("\n").append(measurementsResourceBundle.getString("MeasurementForPatient"));
+        sb.append(": ").append(this.patient.getName());
+        sb.append(" ").append(this.patient().getSurname());
+        sb.append("\n").append(measurementsResourceBundle.getString("MeasurementByConsultant"));
+        sb.append(": ").append(this.consultant.getName());
+        sb.append(" ").append(this.consultant().getSurname());
+        sb.append("\n").append(measurementsResourceBundle.getString("Measurements")).append("\n");
+        sb.append(" - ").append(measurementsResourceBundle.getString("Height"));
+        sb.append(": ").append(this.height()).append("\n");
+        sb.append(" - ").append(measurementsResourceBundle.getString("Weight"));
+        sb.append(": ").append(this.weight()).append("\n");
+        sb.append(" - ").append(measurementsResourceBundle.getString("AbdominalCirc"));
+        sb.append(": ").append(this.circunference()).append("\n");
         sb.append("\n");
         return sb.toString();
     }
