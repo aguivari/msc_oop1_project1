@@ -35,6 +35,10 @@ Includes a command line / text program to use the main interfaces
 with basic operations like adding patients, consultants and measumenres
 and some database operations, like save, restore, etc.
 
+To run on computer's default Locale, use _make run_
+
+To run in Brazilian Portuguese Locale, use _make run_pt_
+
 ## Project Requirements from Assignment
 
 ### Fundamentals:

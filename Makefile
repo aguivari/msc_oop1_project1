@@ -1,4 +1,5 @@
 JC = javac
+JAVA_RUNTIME = java
 JFLAGS =
 
 .SUFFIXES: .java .class
@@ -62,3 +63,6 @@ PROJECTFILES= $(CLASSES) Makefile README.md
 
 dist: clean
 	zip msc_oop1_1 $(PROJECTFILES)
+
+run_pt:
+	$(JAVA_RUNTIME) -Duser.language=pt -Duser.region=BR HealthCollector

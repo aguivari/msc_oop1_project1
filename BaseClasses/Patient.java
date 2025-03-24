@@ -1,5 +1,8 @@
 package BaseClasses;
 
+import java.util.ResourceBundle;
+import java.util.Locale;
+
 import AuxClasses.Utils;
 import Enums.Gender;
 
@@ -163,15 +166,16 @@ public final class Patient extends Person {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        ResourceBundle patientResourceBundle = ResourceBundle.getBundle("HealthCollector", Locale.getDefault());
 
-        sb.append("Patient Id: ").append(this.patientNo);
+        sb.append(patientResourceBundle.getString("PatientId")).append(": ").append(this.patientNo);
         sb.append(super.toString());
-        sb.append("\n").append("Patient Height: ").append(this.height);
-        sb.append("\n").append("Patient Weight: ").append(this.weight);
-        sb.append("\n").append("Patient Corporal Mass Index: ").append(this.getCMI());
-        sb.append("\n").append("Patient CMI Classification: ").append(this.getCMIClass());
-        sb.append("\n").append("Patient Abdominal Circunference: ").append(this.circunference);
-        sb.append("\n").append("Patient Abdominal Circunference Risk Classification: ").append(getAbdCircRisk());
+        sb.append("\n").append(patientResourceBundle.getString("PatientHeight")).append(": ").append(this.height);
+        sb.append("\n").append(patientResourceBundle.getString("PatientWeight")).append(": ").append(this.weight);
+        sb.append("\n").append(patientResourceBundle.getString("PatientCMI")).append(": ").append(this.getCMI());
+        sb.append("\n").append(patientResourceBundle.getString("PatientCMIClass")).append(": ").append(this.getCMIClass());
+        sb.append("\n").append(patientResourceBundle.getString("PatientAbdCirc")).append(": ").append(this.circunference);
+        sb.append("\n").append(patientResourceBundle.getString("PatientAbdCircRiskClass")).append(": ").append(getAbdCircRisk());
         return sb.toString();
     }
 }

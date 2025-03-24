@@ -1,5 +1,8 @@
 package BaseClasses;
 
+import java.util.ResourceBundle;
+import java.util.Locale;
+
 import  Enums.ContractType;
 import  Enums.Gender;
 import  Enums.Speciality;
@@ -79,11 +82,12 @@ public final class Consultant extends Person  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        ResourceBundle consultantResourceBundle = ResourceBundle.getBundle("HealthCollector", Locale.getDefault());
 
-        sb.append("Consultant Id: ").append(this.consultantNo);
+        sb.append(consultantResourceBundle.getString("ConsultantId")).append(": ").append(this.consultantNo);
         sb.append(super.toString());
-        sb.append("\n").append("Consultant Speciality: ").append(this.speciality.label);
-        sb.append("\n").append("Consultant Contract Type: ").append(this.contractType.label);
+        sb.append("\n").append(consultantResourceBundle.getString("ConsultantSpeciality")).append(": ").append(this.speciality.label);
+        sb.append("\n").append(consultantResourceBundle.getString("ConsultantContractType")).append(": ").append(this.contractType.label);
         return sb.toString();
     }
 }

@@ -1,6 +1,7 @@
 package Records;
 
 import java.io.Serializable;
+import java.util.ResourceBundle;
 
 import AuxClasses.Date;
 import BaseClasses.Consultant;

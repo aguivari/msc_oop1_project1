@@ -18,7 +18,10 @@ import Records.Measurement;
 import AuxClasses.Date;
 import AuxClasses.Utils;
 
+import java.util.Locale; 
+
 public class HealthCollector {
+    
     public static void main(String[] args) {
 
         Boolean consultantsFileExist, patientsFileExist, measurementsFileExist;
@@ -30,6 +33,10 @@ public class HealthCollector {
         MeasurementAPI measurements=new MeasurementAPI();
         ConsultantAPI consultants=new ConsultantAPI();
         PatientAPI patients=new PatientAPI();
+
+        Locale locale; 
+        locale = Locale.getDefault(); 
+        System.out.println("System locale: "+locale); 
 
         System.out.println("Checking for consultants database");
 

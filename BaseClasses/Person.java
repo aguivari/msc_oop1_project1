@@ -1,5 +1,7 @@
 package BaseClasses;
 import java.io.Serializable;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import Enums.DateFormat;
 import Enums.Gender;
@@ -129,18 +131,20 @@ public sealed class Person implements Serializable permits Patient, Consultant  
         String childType;
         StringBuilder sb = new StringBuilder();
 
-        childType="Person";
+        ResourceBundle personResourceBundle = ResourceBundle.getBundle("HealthCollector", Locale.getDefault());
+
+        childType=personResourceBundle.getString("Person");
         if ( this instanceof Patient) {
-            childType="Patient";
+            childType=personResourceBundle.getString("Patient");
         } else if ( this instanceof Consultant) {
-            childType="Consultant";
+            childType=personResourceBundle.getString("Consultant");
         }
 
-        sb.append("\n").append(childType).append(" Name: ").append(this.name);
-        sb.append("\n").append(childType).append(" Surname: ").append(this.surname);
-        sb.append("\n").append(childType).append(" DoB: ").append(this.getFullDate());
-        sb.append("\n").append(childType).append(" Age: ").append(this.getAge());
-        sb.append("\n").append(childType).append(" Gender: ").append(this.gender.label);
+        sb.append("\n").append(childType).append(" ").append(personResourceBundle.getString("Name")).append(": ").append(this.name);
+        sb.append("\n").append(childType).append(" ").append(personResourceBundle.getString("Surname")).append(": ").append(this.surname);
+        sb.append("\n").append(childType).append(" ").append(personResourceBundle.getString("DoB")).append(": ").append(this.getFullDate());
+        sb.append("\n").append(childType).append(" ").append(personResourceBundle.getString("Age")).append(": ").append(this.getAge());
+        sb.append("\n").append(childType).append(" ").append(personResourceBundle.getString("Gender")).append(": ").append(this.gender.label);
         return sb.toString();
     }
 }
