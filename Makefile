@@ -9,6 +9,8 @@ JFLAGS =
 
 SRC=.
 
+APP_NAME=HealthCollector
+
 DIR_AUX=$(SRC)/AuxClasses
 CLASSES_AUX=$(DIR_AUX)/Utils.java \
 			$(DIR_AUX)/Date.java
@@ -35,7 +37,7 @@ CLASSES_INTERFACES=$(DIR_INTERFACES)/ConsultantAPIDefinitions.java \
 DIR_RECORDS=$(SRC)/Records
 CLASSES_RECORDS=$(DIR_RECORDS)/Measurement.java
 
-CLASSES_APPS=HealthCollector.java
+CLASSES_APPS=$(APP_NAME).java
 			
 CLASSES=$(CLASSES_ENUM) \
 		$(CLASSES_RECORDS) \
@@ -65,4 +67,7 @@ dist: clean
 	zip msc_oop1_1 $(PROJECTFILES)
 
 run_pt:
-	$(JAVA_RUNTIME) -Duser.language=pt -Duser.region=BR HealthCollector
+	$(JAVA_RUNTIME) -Duser.language=pt -Duser.region=BR $(APP_NAME)
+
+run:
+	$(JAVA_RUNTIME) $(APP_NAME)

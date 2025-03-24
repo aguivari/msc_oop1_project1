@@ -4,7 +4,7 @@ public enum Speciality {
     NUTRITION("Nutrition"),
     ENDOCHRINOLOGY("Endochrinology"),
     PHYSIOTHERAPY("Physiotherapy"),
-    GENERALPRACTICE("General Practice"),
+    GENERALPRACTICE("GeneralPractice"),
     PAEDIATRICIAN("Paediatrician"),
     NURSE("Nurse"),
     UNDEFINED("Undefined");

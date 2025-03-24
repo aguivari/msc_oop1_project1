@@ -86,8 +86,8 @@ public final class Consultant extends Person  {
 
         sb.append(consultantResourceBundle.getString("ConsultantId")).append(": ").append(this.consultantNo);
         sb.append(super.toString());
-        sb.append("\n").append(consultantResourceBundle.getString("ConsultantSpeciality")).append(": ").append(this.speciality.label);
-        sb.append("\n").append(consultantResourceBundle.getString("ConsultantContractType")).append(": ").append(this.contractType.label);
+        sb.append("\n").append(consultantResourceBundle.getString("ConsultantSpeciality")).append(": ").append(consultantResourceBundle.getString(this.speciality.label));
+        sb.append("\n").append(consultantResourceBundle.getString("ConsultantContractType")).append(": ").append(consultantResourceBundle.getString(this.contractType.label));
         return sb.toString();
     }
 }

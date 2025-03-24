@@ -144,7 +144,7 @@ public sealed class Person implements Serializable permits Patient, Consultant  
         sb.append("\n").append(childType).append(" ").append(personResourceBundle.getString("Surname")).append(": ").append(this.surname);
         sb.append("\n").append(childType).append(" ").append(personResourceBundle.getString("DoB")).append(": ").append(this.getFullDate());
         sb.append("\n").append(childType).append(" ").append(personResourceBundle.getString("Age")).append(": ").append(this.getAge());
-        sb.append("\n").append(childType).append(" ").append(personResourceBundle.getString("Gender")).append(": ").append(this.gender.label);
+        sb.append("\n").append(childType).append(" ").append(personResourceBundle.getString("Gender")).append(": ").append(personResourceBundle.getString(this.gender.label));
         return sb.toString();
     }
 }
