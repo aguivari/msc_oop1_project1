@@ -84,10 +84,13 @@ public final class Consultant extends Person  {
         StringBuilder sb = new StringBuilder();
         ResourceBundle consultantResourceBundle = ResourceBundle.getBundle("HealthCollector", Locale.getDefault());
 
-        sb.append(consultantResourceBundle.getString("ConsultantId")).append(": ").append(this.consultantNo);
+        sb.append(consultantResourceBundle.getString("ConsultantId"));
+        sb.append(": ").append(this.consultantNo);
         sb.append(super.toString());
-        sb.append("\n").append(consultantResourceBundle.getString("ConsultantSpeciality")).append(": ").append(consultantResourceBundle.getString(this.speciality.label));
-        sb.append("\n").append(consultantResourceBundle.getString("ConsultantContractType")).append(": ").append(consultantResourceBundle.getString(this.contractType.label));
+        sb.append("\n").append(consultantResourceBundle.getString("ConsultantSpeciality"));
+        sb.append(": ").append(consultantResourceBundle.getString(this.speciality.label));
+        sb.append("\n").append(consultantResourceBundle.getString("ConsultantContractType"));
+        sb.append(": ").append(consultantResourceBundle.getString(this.contractType.label));
         return sb.toString();
     }
 }

@@ -170,12 +170,18 @@ public final class Patient extends Person {
 
         sb.append(patientResourceBundle.getString("PatientId")).append(": ").append(this.patientNo);
         sb.append(super.toString());
-        sb.append("\n").append(patientResourceBundle.getString("PatientHeight")).append(": ").append(this.height);
-        sb.append("\n").append(patientResourceBundle.getString("PatientWeight")).append(": ").append(this.weight);
-        sb.append("\n").append(patientResourceBundle.getString("PatientCMI")).append(": ").append(this.getCMI());
-        sb.append("\n").append(patientResourceBundle.getString("PatientCMIClass")).append(": ").append(this.getCMIClass());
-        sb.append("\n").append(patientResourceBundle.getString("PatientAbdCirc")).append(": ").append(this.circunference);
-        sb.append("\n").append(patientResourceBundle.getString("PatientAbdCircRiskClass")).append(": ").append(getAbdCircRisk());
+        sb.append("\n").append(patientResourceBundle.getString("PatientHeight"));
+        sb.append(": ").append(this.height);
+        sb.append("\n").append(patientResourceBundle.getString("PatientWeight"));
+        sb.append(": ").append(this.weight);
+        sb.append("\n").append(patientResourceBundle.getString("PatientCMI"));
+        sb.append(": ").append(this.getCMI());
+        sb.append("\n").append(patientResourceBundle.getString("PatientCMIClass"));
+        sb.append(": ").append(this.getCMIClass());
+        sb.append("\n").append(patientResourceBundle.getString("PatientAbdCirc"));
+        sb.append(": ").append(this.circunference);
+        sb.append("\n").append(patientResourceBundle.getString("PatientAbdCircRiskClass"));
+        sb.append(": ").append(getAbdCircRisk());
         return sb.toString();
     }
 }

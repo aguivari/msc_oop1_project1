@@ -13,16 +13,18 @@ Branch name for OOP2 extension is called "oop2_project"
 ## Project File & Directory Structure:
 ```
 +Project
-+--AuxClasses/          ->> Auxiliary Classes used by the applications
-+--BaseClasses/         ->> Base Classes used by the applications
-+--Enums/               ->> Base Eunumerations used by the applications
-+--Interfaces/          ->> Interfaces used by the applications
-+--Records/             ->> Records used by the applications
-+--files/               ->> binary files used to testing objects read & write to/from disk
-+--HealthCollector.java ->> Main application
-+--Makefile             ->> Makefile for easy handling of compilation & clean up
-+--mirrorgit.sh         ->> script to mirror personal & TUS git repos
-\--README.md            ->> This file
++--AuxClasses/                  ->> Auxiliary Classes used by the applications
++--BaseClasses/                 ->> Base Classes used by the applications
++--Enums/                       ->> Base Eunumerations used by the applications
++--Interfaces/                  ->> Interfaces used by the applications
++--Records/                     ->> Records used by the applications
++--files/                       ->> binary files used to testing objects read & write to/from disk
++--HealthCollector.java         ->> Main application
++--HealthCollector.properties   ->> Localisation File for English
++--HealthCollector_pt.properties->> Localisation File for Brazilian Portuguese
++--Makefile                     ->> Makefile for easy handling of compilation & clean up
++--mirrorgit.sh                 ->> script to mirror personal & TUS git repos
+\--README.md                    ->> This file
 ```
 
 #### This project will me regularly mirrored between this personal GIT repo and the repo provided by TUS
@@ -57,7 +59,7 @@ To run in Brazilian Portuguese Locale, use _make run_pt_
 - collections/generics - for example: use of Comparator.comparing() for sorting ❌
 - concurrency e.g. using ExecutorService to process a list of Callable’s ❌
 - NIO2 ❌
-- Localisation ❌
+- Localisation ✅ (on base classes' tostring() methods)
 
 ### Extra marks:
 - any topics from Java 22 and/or 23 - be sure to clearly explain these topics and what you had to do to get the newer code to compile/run ❌

@@ -140,11 +140,17 @@ public sealed class Person implements Serializable permits Patient, Consultant  
             childType=personResourceBundle.getString("Consultant");
         }
 
-        sb.append("\n").append(childType).append(" ").append(personResourceBundle.getString("Name")).append(": ").append(this.name);
-        sb.append("\n").append(childType).append(" ").append(personResourceBundle.getString("Surname")).append(": ").append(this.surname);
-        sb.append("\n").append(childType).append(" ").append(personResourceBundle.getString("DoB")).append(": ").append(this.getFullDate());
-        sb.append("\n").append(childType).append(" ").append(personResourceBundle.getString("Age")).append(": ").append(this.getAge());
-        sb.append("\n").append(childType).append(" ").append(personResourceBundle.getString("Gender")).append(": ").append(personResourceBundle.getString(this.gender.label));
+        sb.append("\n").append(childType).append(" ");
+        sb.append(personResourceBundle.getString("Name")).append(": ").append(this.name);
+        sb.append("\n").append(childType).append(" ");
+        sb.append(personResourceBundle.getString("Surname")).append(": ").append(this.surname);
+        sb.append("\n").append(childType).append(" ");
+        sb.append(personResourceBundle.getString("DoB")).append(": ").append(this.getFullDate());
+        sb.append("\n").append(childType).append(" ");
+        sb.append(personResourceBundle.getString("Age")).append(": ").append(this.getAge());
+        sb.append("\n").append(childType).append(" ");
+        sb.append(personResourceBundle.getString("Gender")).append(": ");
+        sb.append(personResourceBundle.getString(this.gender.label));
         return sb.toString();
     }
 }
