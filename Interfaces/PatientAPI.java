@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import BaseClasses.Patient;
 
 
@@ -54,6 +57,7 @@ public final class PatientAPI implements PatientAPIDefinitions {
     @SuppressWarnings("unchecked")
     public void readFromDisk(String filename) {
         this.trim();
+        ResourceBundle patientAPIResourceBundle = ResourceBundle.getBundle("HealthCollector", Locale.getDefault());
         var tempList = new ArrayList<Patient>();
         try{
             FileInputStream readData = new FileInputStream(filename);
@@ -61,14 +65,14 @@ public final class PatientAPI implements PatientAPIDefinitions {
             try {
                 tempList = (ArrayList<Patient>)readStream.readObject();
             } catch (EOFException e) {
-                System.out.println("error: reached end of file");
+                System.out.println(patientAPIResourceBundle.getString("ErrorEOF"));
             }
             readStream.close();
             for (Patient patient: tempList) {
                 this.add(patient);
             }
             int max=getMaxIndex();
-            System.out.println("Resetting basePatientNo to "+max);
+            System.out.println(patientAPIResourceBundle.getString("ResetBasePatientNo")+" "+max);
             patientList.get(0).resetBasePatientNo(max);
 
         }catch (Exception e) {

@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import BaseClasses.Consultant;
 
 public final class ConsultantAPI implements ConsultantAPIDefinitions {
@@ -53,21 +56,23 @@ public final class ConsultantAPI implements ConsultantAPIDefinitions {
     @SuppressWarnings("unchecked")
     public void readFromDisk(String filename) {
         this.trim();
+        ResourceBundle consultantAPIResourceBundle = ResourceBundle.getBundle("HealthCollector", Locale.getDefault());
         var tempList = new ArrayList<Consultant>();
+
         try{
             FileInputStream readData = new FileInputStream(filename);
             ObjectInputStream readStream = new ObjectInputStream(readData);
             try {
                 tempList = (ArrayList<Consultant>)readStream.readObject();
             } catch (EOFException e) {
-                System.out.println("error: reached end of file");
+                System.out.println(consultantAPIResourceBundle.getString("ErrorEOF"));
             }
             readStream.close();
             for (Consultant consultant: tempList) {
                 this.add(consultant);
             }
             int max=getMaxIndex();
-            System.out.println("Resetting baseConsultantNo to "+max);
+            System.out.println(consultantAPIResourceBundle.getString("ResetBaseConsultantNo")+" "+max);
             this.consultantList.get(0).resetBaseConsultantNo(max);
 
 

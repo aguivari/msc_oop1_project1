@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import Records.Measurement;
 import BaseClasses.Consultant;
 import BaseClasses.Patient;
@@ -87,6 +90,7 @@ public final class MeasurementAPI implements MeasurementAPIDefinitions {
     @SuppressWarnings("unchecked")
     public void readFromDisk(String filename) {
         this.trim();
+        ResourceBundle measurementAPIResourceBundle = ResourceBundle.getBundle("HealthCollector", Locale.getDefault());
         ArrayList<Measurement> tempList = new ArrayList<>();
         try{
             FileInputStream readData = new FileInputStream(filename);
@@ -94,7 +98,7 @@ public final class MeasurementAPI implements MeasurementAPIDefinitions {
             try {
                 tempList = (ArrayList<Measurement>)readStream.readObject();
             } catch (EOFException e) {
-                System.out.println("error: reached end of file");
+                System.out.println(measurementAPIResourceBundle.getString("ErrorEOF"));
             }
             readStream.close();
             for (Measurement measurement: tempList) {
