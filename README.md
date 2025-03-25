@@ -41,6 +41,8 @@ To run on computer's default Locale, use _make run_
 
 To run in Brazilian Portuguese Locale, use _make run_pt_
 
+As a test for non-existent localisation, use _make run_es to show default (english) messages as there is no Spanish messages file.
+
 ## Project Requirements from Assignment
 
 ### Fundamentals:

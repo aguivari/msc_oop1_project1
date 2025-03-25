@@ -66,8 +66,11 @@ PROJECTFILES= $(CLASSES) Makefile README.md
 dist: clean
 	zip msc_oop1_1 $(PROJECTFILES)
 
-run_pt:
+run_pt: default
 	$(JAVA_RUNTIME) -Duser.language=pt -Duser.region=BR $(APP_NAME)
 
-run:
+run_es: default
+	$(JAVA_RUNTIME) -Duser.language=es -Duser.region=ES $(APP_NAME)
+
+run: default
 	$(JAVA_RUNTIME) $(APP_NAME)
