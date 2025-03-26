@@ -17,6 +17,12 @@ public record Measurement  (
         double weight,
         double circunference) implements Serializable {
 
+    //copy constructor
+    public Measurement(Measurement m) {
+        this(new Patient(m.patient), new Consultant(m.consultant()), new Date(m.measurementDate()), m.height(), m.weight(), m.circunference());
+    }
+    
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

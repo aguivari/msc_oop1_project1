@@ -7,7 +7,7 @@ import  Enums.ContractType;
 import  Enums.Gender;
 import  Enums.Speciality;
 
-public final class Consultant extends Person  {
+public final class Consultant extends Person {
     private static int baseConsultantNo=0;
     private int consultantNo;
     private Speciality speciality;
@@ -44,6 +44,12 @@ public final class Consultant extends Person  {
         this.speciality=consultantSpeciality;
         this.contractType=consultantContractType;
     }
+
+    //copy constructor
+    public Consultant(Consultant c) {
+        this(c.getName(), c.getSurname(), c.getBirthDay(), c.getBirthMonth(), c.getBirthYear(), c.getGender(),c.getSpeciality(), c.getContractType());
+    }
+
 
     private void incrementBaseConsultantNo() {
         baseConsultantNo++;
@@ -93,4 +99,5 @@ public final class Consultant extends Person  {
         sb.append(": ").append(consultantResourceBundle.getString(this.contractType.label));
         return sb.toString();
     }
+
 }

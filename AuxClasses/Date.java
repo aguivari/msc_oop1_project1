@@ -23,6 +23,11 @@ public class Date implements Serializable {
         this.year = year ;
     }
 
+    //copy constructor
+    public Date(Date d) {
+        this(d.getDay(), d.getMonth(), d.getYear());
+    }
+
     //assessor methods
     // get day of the date
     public int getDay() {

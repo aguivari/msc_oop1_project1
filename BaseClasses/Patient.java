@@ -46,6 +46,11 @@ public final class Patient extends Person implements Comparable<Patient> {
         this.circunference=patientCircunference;
     }
 
+    //copy constructor
+    public Patient(Patient p) {
+        this(p.getName(), p.getSurname(), p.getBirthDay(), p.getBirthMonth(), p.getBirthYear(), p.getGender(), p.getHeight(), p.getWeight(), p.getAbdCirc());
+    }
+
     private void incrementBasePatientNo() {
         basePatientNo++;
     }
@@ -56,7 +61,7 @@ public final class Patient extends Person implements Comparable<Patient> {
         this.height = argument;
     }
     //set patient Weight
-    public void setWeith(double argument) {
+    public void setWeight(double argument) {
         this.weight = argument;
     }
     //set patient abdominal circunference
@@ -170,9 +175,9 @@ public final class Patient extends Person implements Comparable<Patient> {
         sb.append(patientResourceBundle.getString("PatientId")).append(": ").append(this.patientNo);
         sb.append(super.toString());
         sb.append("\n").append(patientResourceBundle.getString("PatientHeight"));
-        sb.append(": ").append(this.height);
+        sb.append(": ").append(this.height).append(" cm");
         sb.append("\n").append(patientResourceBundle.getString("PatientWeight"));
-        sb.append(": ").append(this.weight);
+        sb.append(": ").append(this.weight).append(" Kg");
         sb.append("\n").append(patientResourceBundle.getString("PatientCMI"));
         sb.append(": ").append(this.getCMI());
         sb.append("\n").append(patientResourceBundle.getString("PatientCMIClass"));
@@ -180,7 +185,7 @@ public final class Patient extends Person implements Comparable<Patient> {
         sb.append("\n").append(patientResourceBundle.getString("PatientAbdCirc"));
         sb.append(": ").append(this.circunference);
         sb.append("\n").append(patientResourceBundle.getString("PatientAbdCircRiskClass"));
-        sb.append(": ").append(getAbdCircRisk());
+        sb.append(": ").append(getAbdCircRisk()).append("\n");
         return sb.toString();
     }
 
@@ -188,5 +193,31 @@ public final class Patient extends Person implements Comparable<Patient> {
         return this.getWeight() > p.getWeight() ? 1 : 
                this.getWeight() < p.getWeight() ? -1 : 0;
     }
+
+    public static int compareWeight(Patient lhs, Patient rhs) {
+        if (lhs.getWeight() > rhs.getWeight())
+            return 1;
+        if (lhs.getWeight() < rhs.getWeight())
+            return -1;
+        return 0;
+    }
   
+    public static int compareHeight(Patient lhs, Patient rhs) {
+        if (lhs.getHeight() > rhs.getHeight())
+            return 1;
+        if (lhs.getHeight() < rhs.getHeight())
+            return -1;
+        return 0;
+    }
+  
+    public static int compareAbdCirc(Patient lhs, Patient rhs) {
+        if (lhs.getAbdCirc() > rhs.getAbdCirc())
+            return 1;
+        if (lhs.getAbdCirc() < rhs.getAbdCirc())
+            return -1;
+        return 0;
+    }
+
+
+
 }

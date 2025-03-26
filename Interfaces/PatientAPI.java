@@ -1,6 +1,7 @@
 package Interfaces;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
 import java.util.Comparator;
 import java.io.EOFException;
 import java.io.FileInputStream;
@@ -40,17 +41,22 @@ public final class PatientAPI implements PatientAPIDefinitions {
     }
 
     public Patient getLast() {
-        return patientList.get(patientList.size()-1);
+        //return defensive copy of patient
+        return new Patient(patientList.get(patientList.size()-1));
     }
 
     public Patient getMinWeightPatient() {
-        //ArrayList<Patient> copy = new ArrayList<Patient>(patientList);
-        //Collections.sort(copy);
-        //return copy.get(0);
         return patientList
                 .stream()
                 .min(Comparator.comparing(Patient::getWeight))
                 .orElseThrow(NoSuchElementException::new);
+    }
+
+    public Stream<Patient> getMinWeightPatient(int n) {
+        return patientList
+                .stream()
+                .sorted(Patient::compareWeight)
+                .limit(n);
     }
     
     public Patient getMaxWeightPatient() {
@@ -60,11 +66,25 @@ public final class PatientAPI implements PatientAPIDefinitions {
                 .orElseThrow(NoSuchElementException::new);
     }
 
+    public Stream<Patient> getMaxWeightPatient(int n) {
+        return patientList
+                .stream()
+                .sorted(Patient::compareWeight)
+                .limit(n);
+    }
+
     public Patient getMinHeightPatient() {
         return patientList
                 .stream()
                 .min(Comparator.comparing(Patient::getHeight))
                 .orElseThrow(NoSuchElementException::new);
+    }
+
+    public Stream<Patient> getMinHeightPatient(int n) {
+        return patientList
+                .stream()
+                .sorted(Patient::compareHeight)
+                .limit(n);
     }
 
     public Patient getMaxHeightPatient() {
@@ -74,6 +94,12 @@ public final class PatientAPI implements PatientAPIDefinitions {
                 .orElseThrow(NoSuchElementException::new);
     }
 
+    public Stream<Patient> getMaxHeightPatient(int n) {
+        return patientList
+                .stream()
+                .sorted(Patient::compareHeight)
+                .limit(n);
+    }
 
     public void writeToDisk(String filename) {
         try{

@@ -34,11 +34,11 @@ public final class ConsultantAPI implements ConsultantAPIDefinitions {
     }
 
     public ArrayList<Consultant> getAll() {
-        return consultantList;
+        return new ArrayList<Consultant>(consultantList);
     }
 
     public Consultant getLast() {
-        return consultantList.get(consultantList.size()-1);
+        return new Consultant(consultantList.get(consultantList.size()-1));
     }
 
     public void writeToDisk(String filename) {

@@ -35,16 +35,20 @@ public final class MeasurementAPI implements MeasurementAPIDefinitions {
 
     public void add(Measurement measurement) {
         measurementList.add(measurement);
+        // update Patient with new measurements
+        measurement.patient().setHeight(measurement.height());
+        measurement.patient().setWeight(measurement.weight());
+        measurement.patient().setAbdCirc(measurement.circunference());
     }
 
     public Measurement getLast() {
-        return measurementList.get(measurementList.size()-1);
+        return new Measurement(measurementList.get(measurementList.size()-1));
     }
 
     public ArrayList<Measurement> getAll() {
-        return measurementList;
+        return new ArrayList<Measurement>(measurementList);
     }
-
+    
     public ArrayList<Measurement> getAll(Date argument) {
         var tempList = new ArrayList<Measurement>();
         for (Measurement measurement: measurementList) {
