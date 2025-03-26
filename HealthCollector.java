@@ -86,7 +86,7 @@ public class HealthCollector {
             System.out.println(appResourceBundle.getString("AddingEntries")+":");
             consultants.add(new Consultant("John", "Snow", 23,10,1985, Gender.MALE, Speciality.ENDOCHRINOLOGY, ContractType.PERMANENT));
             patients.add(new Patient("Ivan", "The Terrible", 24,10,1985, Gender.MALE, 173,90,105));
-            patients.add(new Patient("John", "Snow", 23,10,1984, Gender.MALE, 173,60,90));
+            patients.add(new Patient("John", "Snow", 23,10,1984, Gender.MALE, 183,60,90));
             System.out.println(appResourceBundle.getString("Adding"));
             for (Consultant consultant: consultants.getAll()) {
                 System.out.println(appResourceBundle.getString("Using")+" "+appResourceBundle.getString("Consultant")+": "+consultant.getName()+" "+consultant.getSurname());
@@ -171,6 +171,22 @@ public class HealthCollector {
             System.out.println(appResourceBundle.getString("Patient")+": "+appResourceBundle.getString("WritingListToFile")+" "+patientsFile);
             patients.writeToDisk(patientsFile);
         }
+
+        System.out.println("List of Patients");
+        
+        for (Patient patient: patients.getAll()) {
+            System.out.println(patient);
+            System.out.println();
+        }
+        System.out.println("Skinniest Patient");
+        System.out.println(patients.getMinWeightPatient());
+        System.out.println("Fattest Patient");
+        System.out.println(patients.getMaxWeightPatient());
+        System.out.println("Shortest Patient");
+        System.out.println(patients.getMinHeightPatient());
+        System.out.println("Talles Patient");
+        System.out.println(patients.getMaxHeightPatient());
+
     }
 
     public static Boolean checkFile(String fileName) {

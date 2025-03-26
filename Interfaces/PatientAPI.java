@@ -1,6 +1,7 @@
 package Interfaces;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -9,10 +10,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import java.util.Locale;
+import java.util.NoSuchElementException;
 import java.util.ResourceBundle;
 
 import BaseClasses.Patient;
-
 
 public final class PatientAPI implements PatientAPIDefinitions {
     private ArrayList<Patient> patientList;
@@ -35,12 +36,44 @@ public final class PatientAPI implements PatientAPIDefinitions {
     }
 
     public ArrayList<Patient> getAll() {
-        return patientList;
+        return new ArrayList<Patient>(patientList);
     }
 
     public Patient getLast() {
         return patientList.get(patientList.size()-1);
     }
+
+    public Patient getMinWeightPatient() {
+        //ArrayList<Patient> copy = new ArrayList<Patient>(patientList);
+        //Collections.sort(copy);
+        //return copy.get(0);
+        return patientList
+                .stream()
+                .min(Comparator.comparing(Patient::getWeight))
+                .orElseThrow(NoSuchElementException::new);
+    }
+    
+    public Patient getMaxWeightPatient() {
+        return patientList
+                .stream()
+                .max(Comparator.comparing(Patient::getWeight))
+                .orElseThrow(NoSuchElementException::new);
+    }
+
+    public Patient getMinHeightPatient() {
+        return patientList
+                .stream()
+                .min(Comparator.comparing(Patient::getHeight))
+                .orElseThrow(NoSuchElementException::new);
+    }
+
+    public Patient getMaxHeightPatient() {
+        return patientList
+                .stream()
+                .max(Comparator.comparing(Patient::getHeight))
+                .orElseThrow(NoSuchElementException::new);
+    }
+
 
     public void writeToDisk(String filename) {
         try{

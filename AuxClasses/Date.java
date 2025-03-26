@@ -69,7 +69,6 @@ public class Date implements Serializable {
         LocalDate birth = LocalDate.parse(this.getFullDate(DateFormat.YMD));
         ResourceBundle dateResourceBundle = ResourceBundle.getBundle("HealthCollector", Locale.getDefault());
 
-
         if ((birth != null) && (today != null)) {
             Period age=Period.between(birth, today);
             String message="";

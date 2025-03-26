@@ -5,8 +5,7 @@ import java.util.Locale;
 
 import AuxClasses.Utils;
 import Enums.Gender;
-
-public final class Patient extends Person {
+public final class Patient extends Person implements Comparable<Patient> {
     private static int basePatientNo=0;
     private int patientNo;
     private double height;
@@ -184,4 +183,10 @@ public final class Patient extends Person {
         sb.append(": ").append(getAbdCircRisk());
         return sb.toString();
     }
+
+    public int compareTo(Patient p) {
+        return this.getWeight() > p.getWeight() ? 1 : 
+               this.getWeight() < p.getWeight() ? -1 : 0;
+    }
+  
 }
