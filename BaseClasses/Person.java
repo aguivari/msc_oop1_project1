@@ -1,11 +1,13 @@
 package BaseClasses;
 import java.io.Serializable;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import Enums.DateFormat;
 import Enums.Gender;
 import AuxClasses.Date;
 
-public class Person implements Serializable {
+public sealed class Person implements Serializable permits Patient, Consultant   {
     private String name;
     private String surname;
     private Date dob;
@@ -18,10 +20,10 @@ public class Person implements Serializable {
     }
 
     //Constructor with all parameters
-    public Person(  String personName,
-                    String personSurname,
-                    Date birthDate,
-                    Gender personGender) {
+    public Person(String personName,
+                  String personSurname,
+                  Date birthDate,
+                  Gender personGender) {
         this.name=personName;
         this.surname=personSurname;
         this.dob=birthDate;
@@ -29,12 +31,12 @@ public class Person implements Serializable {
     }
 
     //Constructor with all parameters, discrete DoB parameters
-    public Person(  String personName,
-                    String personSurname,
-                    int personDoB,
-                    int personMoB,
-                    int personYoB,
-                    Gender personGender) {
+    public Person(String personName,
+                  String personSurname,
+                  int personDoB,
+                  int personMoB,
+                  int personYoB,
+                  Gender personGender) {
         this.name=personName;
         this.surname=personSurname;
         this.dob=new Date(personDoB, personMoB, personYoB);
@@ -129,18 +131,26 @@ public class Person implements Serializable {
         String childType;
         StringBuilder sb = new StringBuilder();
 
-        childType="Person";
+        ResourceBundle personResourceBundle = ResourceBundle.getBundle("HealthCollector", Locale.getDefault());
+
+        childType=personResourceBundle.getString("Person");
         if ( this instanceof Patient) {
-            childType="Patient";
+            childType=personResourceBundle.getString("Patient");
         } else if ( this instanceof Consultant) {
-            childType="Consultant";
+            childType=personResourceBundle.getString("Consultant");
         }
 
-        sb.append("\n").append(childType).append(" Name: ").append(this.name);
-        sb.append("\n").append(childType).append(" Surname: ").append(this.surname);
-        sb.append("\n").append(childType).append(" DoB: ").append(this.getFullDate());
-        sb.append("\n").append(childType).append(" Age: ").append(this.getAge());
-        sb.append("\n").append(childType).append(" Gender: ").append(this.gender.label);
+        sb.append("\n").append(childType).append(" ");
+        sb.append(personResourceBundle.getString("Name")).append(": ").append(this.name);
+        sb.append("\n").append(childType).append(" ");
+        sb.append(personResourceBundle.getString("Surname")).append(": ").append(this.surname);
+        sb.append("\n").append(childType).append(" ");
+        sb.append(personResourceBundle.getString("DoB")).append(": ").append(this.getFullDate());
+        sb.append("\n").append(childType).append(" ");
+        sb.append(personResourceBundle.getString("Age")).append(": ").append(this.getAge());
+        sb.append("\n").append(childType).append(" ");
+        sb.append(personResourceBundle.getString("Gender")).append(": ");
+        sb.append(personResourceBundle.getString(this.gender.label));
         return sb.toString();
     }
 }

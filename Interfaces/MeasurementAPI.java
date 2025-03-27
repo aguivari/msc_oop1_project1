@@ -8,13 +8,16 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import Records.Measurement;
 import BaseClasses.Consultant;
 import BaseClasses.Patient;
 
 import AuxClasses.Date;
 
-public class MeasurementAPI implements MeasurementAPIDefinitions {
+public final class MeasurementAPI implements MeasurementAPIDefinitions {
     private ArrayList<Measurement> measurementList;
 
     public MeasurementAPI() {
@@ -32,16 +35,20 @@ public class MeasurementAPI implements MeasurementAPIDefinitions {
 
     public void add(Measurement measurement) {
         measurementList.add(measurement);
+        // update Patient with new measurements
+        measurement.patient().setHeight(measurement.height());
+        measurement.patient().setWeight(measurement.weight());
+        measurement.patient().setAbdCirc(measurement.circunference());
     }
 
     public Measurement getLast() {
-        return measurementList.get(measurementList.size()-1);
+        return new Measurement(measurementList.get(measurementList.size()-1));
     }
 
     public ArrayList<Measurement> getAll() {
-        return measurementList;
+        return new ArrayList<Measurement>(measurementList);
     }
-
+    
     public ArrayList<Measurement> getAll(Date argument) {
         var tempList = new ArrayList<Measurement>();
         for (Measurement measurement: measurementList) {
@@ -87,6 +94,7 @@ public class MeasurementAPI implements MeasurementAPIDefinitions {
     @SuppressWarnings("unchecked")
     public void readFromDisk(String filename) {
         this.trim();
+        ResourceBundle measurementAPIResourceBundle = ResourceBundle.getBundle("HealthCollector", Locale.getDefault());
         ArrayList<Measurement> tempList = new ArrayList<>();
         try{
             FileInputStream readData = new FileInputStream(filename);
@@ -94,7 +102,7 @@ public class MeasurementAPI implements MeasurementAPIDefinitions {
             try {
                 tempList = (ArrayList<Measurement>)readStream.readObject();
             } catch (EOFException e) {
-                System.out.println("error: reached end of file");
+                System.out.println(measurementAPIResourceBundle.getString("ErrorEOF"));
             }
             readStream.close();
             for (Measurement measurement: tempList) {

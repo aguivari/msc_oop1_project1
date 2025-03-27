@@ -2,6 +2,8 @@ package AuxClasses;
 import java.time.LocalDate;
 import java.time.Period;
 import java.io.Serializable;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import Enums.DateFormat;
 
@@ -19,6 +21,11 @@ public class Date implements Serializable {
         this.day = day;
         this.month = month;
         this.year = year ;
+    }
+
+    //copy constructor
+    public Date(Date d) {
+        this(d.getDay(), d.getMonth(), d.getYear());
     }
 
     //assessor methods
@@ -65,28 +72,29 @@ public class Date implements Serializable {
     public String getDateAge() {
         LocalDate today = LocalDate.now();
         LocalDate birth = LocalDate.parse(this.getFullDate(DateFormat.YMD));
+        ResourceBundle dateResourceBundle = ResourceBundle.getBundle("HealthCollector", Locale.getDefault());
 
         if ((birth != null) && (today != null)) {
             Period age=Period.between(birth, today);
             String message="";
             if (age.getYears()>1) {
-                message+=age.getYears()+" Years ";
+                message+=age.getYears()+" "+dateResourceBundle.getString("Years")+" ";
             } else if (age.getYears()==1) {
-                message+=age.getYears()+" Year ";
+                message+=age.getYears()+" "+dateResourceBundle.getString("Year"+" ");
             }
             if (age.getMonths()>1) {
-                message+=age.getMonths()+" Months ";
+                message+=age.getMonths()+" "+dateResourceBundle.getString("Months")+" ";
             } else if (age.getMonths()==1) {
-                message+=age.getMonths()+" Month ";
+                message+=age.getMonths()+" "+dateResourceBundle.getString("Month")+" ";
             }
             if (age.getDays()>1) {
-                message+=age.getDays()+" Days";
+                message+=age.getDays()+" "+dateResourceBundle.getString("Days");
             } else if (age.getDays()==1) {
-                message+=age.getDays()+" Day";
+                message+=age.getDays()+" "+dateResourceBundle.getString("Day");
             }
             return message;
         } else {
-            return "Error getting age";
+            return dateResourceBundle.getString("ErrorGettingAge");
         }
     }
 }

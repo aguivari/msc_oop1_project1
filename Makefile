@@ -1,4 +1,5 @@
 JC = javac
+JAVA_RUNTIME = java
 JFLAGS =
 
 .SUFFIXES: .java .class
@@ -7,6 +8,8 @@ JFLAGS =
 	$(JC) $(JFLAGS) $*.java
 
 SRC=.
+
+APP_NAME=HealthCollector
 
 DIR_AUX=$(SRC)/AuxClasses
 CLASSES_AUX=$(DIR_AUX)/Utils.java \
@@ -34,7 +37,7 @@ CLASSES_INTERFACES=$(DIR_INTERFACES)/ConsultantAPIDefinitions.java \
 DIR_RECORDS=$(SRC)/Records
 CLASSES_RECORDS=$(DIR_RECORDS)/Measurement.java
 
-CLASSES_APPS=HealthCollector.java
+CLASSES_APPS=$(APP_NAME).java
 			
 CLASSES=$(CLASSES_ENUM) \
 		$(CLASSES_RECORDS) \
@@ -62,3 +65,12 @@ PROJECTFILES= $(CLASSES) Makefile README.md
 
 dist: clean
 	zip msc_oop1_1 $(PROJECTFILES)
+
+run_pt: default
+	$(JAVA_RUNTIME) -Duser.language=pt -Duser.region=BR $(APP_NAME)
+
+run_es: default
+	$(JAVA_RUNTIME) -Duser.language=es -Duser.region=ES $(APP_NAME)
+
+run: default
+	$(JAVA_RUNTIME) $(APP_NAME)

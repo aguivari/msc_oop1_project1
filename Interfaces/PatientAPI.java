@@ -1,6 +1,8 @@
 package Interfaces;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
+import java.util.Comparator;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -8,10 +10,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import java.util.Locale;
+import java.util.NoSuchElementException;
+import java.util.ResourceBundle;
+
 import BaseClasses.Patient;
 
-
-public class PatientAPI implements PatientAPIDefinitions {
+public final class PatientAPI implements PatientAPIDefinitions {
     private ArrayList<Patient> patientList;
 
     public PatientAPI() {
@@ -32,11 +37,68 @@ public class PatientAPI implements PatientAPIDefinitions {
     }
 
     public ArrayList<Patient> getAll() {
-        return patientList;
+        return new ArrayList<Patient>(patientList);
     }
 
     public Patient getLast() {
-        return patientList.get(patientList.size()-1);
+        //return defensive copy of patient
+        return new Patient(patientList.get(patientList.size()-1));
+    }
+
+    public Patient getMinWeightPatient() {
+        return patientList
+                .stream()
+                .min(Comparator.comparing(Patient::getWeight))
+                .orElseThrow(NoSuchElementException::new);
+    }
+
+    public Stream<Patient> getMinWeightPatient(int n) {
+        return patientList
+                .stream()
+                .sorted(Patient::compareWeight)
+                .limit(n);
+    }
+    
+    public Patient getMaxWeightPatient() {
+        return patientList
+                .stream()
+                .max(Comparator.comparing(Patient::getWeight))
+                .orElseThrow(NoSuchElementException::new);
+    }
+
+    public Stream<Patient> getMaxWeightPatient(int n) {
+        return patientList
+                .stream()
+                .sorted(Patient::compareWeight)
+                .limit(n);
+    }
+
+    public Patient getMinHeightPatient() {
+        return patientList
+                .stream()
+                .min(Comparator.comparing(Patient::getHeight))
+                .orElseThrow(NoSuchElementException::new);
+    }
+
+    public Stream<Patient> getMinHeightPatient(int n) {
+        return patientList
+                .stream()
+                .sorted(Patient::compareHeight)
+                .limit(n);
+    }
+
+    public Patient getMaxHeightPatient() {
+        return patientList
+                .stream()
+                .max(Comparator.comparing(Patient::getHeight))
+                .orElseThrow(NoSuchElementException::new);
+    }
+
+    public Stream<Patient> getMaxHeightPatient(int n) {
+        return patientList
+                .stream()
+                .sorted(Patient::compareHeight)
+                .limit(n);
     }
 
     public void writeToDisk(String filename) {
@@ -54,6 +116,7 @@ public class PatientAPI implements PatientAPIDefinitions {
     @SuppressWarnings("unchecked")
     public void readFromDisk(String filename) {
         this.trim();
+        ResourceBundle patientAPIResourceBundle = ResourceBundle.getBundle("HealthCollector", Locale.getDefault());
         var tempList = new ArrayList<Patient>();
         try{
             FileInputStream readData = new FileInputStream(filename);
@@ -61,14 +124,14 @@ public class PatientAPI implements PatientAPIDefinitions {
             try {
                 tempList = (ArrayList<Patient>)readStream.readObject();
             } catch (EOFException e) {
-                System.out.println("error: reached end of file");
+                System.out.println(patientAPIResourceBundle.getString("ErrorEOF"));
             }
             readStream.close();
             for (Patient patient: tempList) {
                 this.add(patient);
             }
             int max=getMaxIndex();
-            System.out.println("Resetting basePatientNo to "+max);
+            System.out.println(patientAPIResourceBundle.getString("ResetBasePatientNo")+" "+max);
             patientList.get(0).resetBasePatientNo(max);
 
         }catch (Exception e) {

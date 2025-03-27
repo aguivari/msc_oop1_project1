@@ -1,9 +1,11 @@
 package BaseClasses;
 
+import java.util.ResourceBundle;
+import java.util.Locale;
+
 import AuxClasses.Utils;
 import Enums.Gender;
-
-public class Patient extends Person {
+public final class Patient extends Person implements Comparable<Patient> {
     private static int basePatientNo=0;
     private int patientNo;
     private double height;
@@ -17,31 +19,36 @@ public class Patient extends Person {
     }
 
      //Constructor with some parameters, using this()
-    public Patient( String patientName,
-                    String patientSurname,
-                    int patientDoB,
-                    int patientMoB,
-                    int patientYoB,
-                    Gender patientGender) {
+    public Patient(String patientName,
+                   String patientSurname,
+                   int patientDoB,
+                   int patientMoB,
+                   int patientYoB,
+                   Gender patientGender) {
         this(patientName,patientSurname,patientDoB,patientMoB,patientYoB,patientGender, 0, 0, 0);
      }
 
     //Constructor with all parameters , using super() to to base Person class
-    public Patient( String patientName,
-                    String patientSurname,
-                    int patientDoB,
-                    int patientMoB,
-                    int patientYoB,
-                    Gender patientGender,
-                    double patientHeight,
-                    double patienteWeight,
-                    double patientCircunference) {
+    public Patient(String patientName,
+                   String patientSurname,
+                   int patientDoB,
+                   int patientMoB,
+                   int patientYoB,
+                   Gender patientGender,
+                   double patientHeight,
+                   double patienteWeight,
+                   double patientCircunference) {
         super(patientName,patientSurname,patientDoB,patientMoB,patientYoB,patientGender);
         incrementBasePatientNo();
         this.patientNo=basePatientNo;
         this.height=patientHeight;
         this.weight=patienteWeight;
         this.circunference=patientCircunference;
+    }
+
+    //copy constructor
+    public Patient(Patient p) {
+        this(p.getName(), p.getSurname(), p.getBirthDay(), p.getBirthMonth(), p.getBirthYear(), p.getGender(), p.getHeight(), p.getWeight(), p.getAbdCirc());
     }
 
     private void incrementBasePatientNo() {
@@ -54,7 +61,7 @@ public class Patient extends Person {
         this.height = argument;
     }
     //set patient Weight
-    public void setWeith(double argument) {
+    public void setWeight(double argument) {
         this.weight = argument;
     }
     //set patient abdominal circunference
@@ -163,15 +170,54 @@ public class Patient extends Person {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        ResourceBundle patientResourceBundle = ResourceBundle.getBundle("HealthCollector", Locale.getDefault());
 
-        sb.append("Patient Id: ").append(this.patientNo);
+        sb.append(patientResourceBundle.getString("PatientId")).append(": ").append(this.patientNo);
         sb.append(super.toString());
-        sb.append("\n").append("Patient Height: ").append(this.height);
-        sb.append("\n").append("Patient Weight: ").append(this.weight);
-        sb.append("\n").append("Patient Corporal Mass Index: ").append(this.getCMI());
-        sb.append("\n").append("Patient CMI Classification: ").append(this.getCMIClass());
-        sb.append("\n").append("Patient Abdominal Circunference: ").append(this.circunference);
-        sb.append("\n").append("Patient Abdominal Circunference Risk Classification: ").append(getAbdCircRisk());
+        sb.append("\n").append(patientResourceBundle.getString("PatientHeight"));
+        sb.append(": ").append(this.height).append(" cm");
+        sb.append("\n").append(patientResourceBundle.getString("PatientWeight"));
+        sb.append(": ").append(this.weight).append(" Kg");
+        sb.append("\n").append(patientResourceBundle.getString("PatientCMI"));
+        sb.append(": ").append(this.getCMI());
+        sb.append("\n").append(patientResourceBundle.getString("PatientCMIClass"));
+        sb.append(": ").append(this.getCMIClass());
+        sb.append("\n").append(patientResourceBundle.getString("PatientAbdCirc"));
+        sb.append(": ").append(this.circunference);
+        sb.append("\n").append(patientResourceBundle.getString("PatientAbdCircRiskClass"));
+        sb.append(": ").append(getAbdCircRisk()).append("\n");
         return sb.toString();
     }
+
+    public int compareTo(Patient p) {
+        return this.getWeight() > p.getWeight() ? 1 : 
+               this.getWeight() < p.getWeight() ? -1 : 0;
+    }
+
+    public static int compareWeight(Patient lhs, Patient rhs) {
+        if (lhs.getWeight() > rhs.getWeight())
+            return 1;
+        if (lhs.getWeight() < rhs.getWeight())
+            return -1;
+        return 0;
+    }
+  
+    public static int compareHeight(Patient lhs, Patient rhs) {
+        if (lhs.getHeight() > rhs.getHeight())
+            return 1;
+        if (lhs.getHeight() < rhs.getHeight())
+            return -1;
+        return 0;
+    }
+  
+    public static int compareAbdCirc(Patient lhs, Patient rhs) {
+        if (lhs.getAbdCirc() > rhs.getAbdCirc())
+            return 1;
+        if (lhs.getAbdCirc() < rhs.getAbdCirc())
+            return -1;
+        return 0;
+    }
+
+
+
 }
