@@ -37,6 +37,10 @@ CLASSES_INTERFACES=$(DIR_INTERFACES)/ConsultantAPIDefinitions.java \
 DIR_RECORDS=$(SRC)/Records
 CLASSES_RECORDS=$(DIR_RECORDS)/Measurement.java
 
+PROPERTY_FILES=$(SRC)/HealthCollector.properties \
+	$(SRC)/HealthCollector_en.properties \
+	$(SRC)/HealthCollector_pt.properties \
+
 CLASSES_APPS=$(APP_NAME).java
 			
 CLASSES=$(CLASSES_ENUM) \
@@ -61,7 +65,7 @@ default: classes
 
 all: clean classes
 
-PROJECTFILES= $(CLASSES) Makefile README.md
+PROJECTFILES= $(CLASSES) $(PROPERTY_FILES) Makefile README.md
 
 dist: clean
 	zip msc_oop1_1 $(PROJECTFILES)
