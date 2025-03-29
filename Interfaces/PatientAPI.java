@@ -1,10 +1,9 @@
 package Interfaces;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.Comparator;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -18,7 +17,6 @@ import java.util.NoSuchElementException;
 import java.util.ResourceBundle;
 
 import BaseClasses.Patient;
-import Enums.Speciality;
 
 public final class PatientAPI implements PatientAPIDefinitions {
     private ArrayList<Patient> patientList;
@@ -126,6 +124,24 @@ public final class PatientAPI implements PatientAPIDefinitions {
         return patientCountBySurname;
     }
 
+    public Long getPatientCountBornFrom(int year) {
+        Long patientCountBySurname = patientList
+        .stream()
+        .collect(Collectors.partitioningBy(p -> p.getBirthYear() >= year, Collectors.counting()))
+        .get(true);
+
+        return patientCountBySurname;
+    }
+    
+    
+    public Long getPatientCountBefore(int year) {
+        Long patientCountBySurname = patientList
+        .stream()
+        .collect(Collectors.partitioningBy(p -> p.getBirthYear() < year, Collectors.counting()))
+        .get(true);
+
+        return patientCountBySurname;
+    }
 
     public void writeToDisk(String filename) {
         try{

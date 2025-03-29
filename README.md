@@ -50,7 +50,7 @@ As a test for non-existent localisation, use _make run_es to show default (engli
 - streams ❌
     - terminal operations
         - min()✅, max()✅, count()✅, findAny(), findFirst(), allMatch(), anyMatch(), noneMatch(), forEach()
-        - collect() - Collectors.toMap(), Collectors.groupingBy()✅ and Collectors.partitioningBy()
+        - collect() - Collectors.toMap() ✅, Collectors.groupingBy()✅ and Collectors.partitioningBy()✅
     - intermediate operations e.g. filter()✅, distinct(), limit()✅, map() and sorted()✅
 - switch expressions and pattern matching ❌
 - sealed classes and interfaces ✅

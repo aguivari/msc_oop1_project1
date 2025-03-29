@@ -194,6 +194,12 @@ public class HealthCollector {
         System.out.println(patients.getPatientCountBySurname());
         System.out.println(patients.getPatientCountBySurname("Snow"));
 
+        System.out.println(patients.getPatientCountBornFrom(1985) );
+        System.out.println(patients.getPatientCountBefore(1985) );
+
+        System.out.println(consultants.getConsultantMap());
+        
+
     }
 
     public static Boolean checkFile(String fileName) {

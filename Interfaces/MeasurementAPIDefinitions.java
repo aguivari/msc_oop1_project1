@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import Records.Measurement;
 import BaseClasses.Consultant;
 import BaseClasses.Patient;
-import Enums.Speciality;
 import AuxClasses.Date;
 
 public sealed interface MeasurementAPIDefinitions permits MeasurementAPI {

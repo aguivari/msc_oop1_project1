@@ -1,8 +1,6 @@
 package Interfaces;
 
 import java.util.ArrayList;
-import java.util.stream.*;
-import java.util.List;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -56,6 +54,12 @@ public final class ConsultantAPI implements ConsultantAPIDefinitions {
             .filter(c -> c.getSpeciality() == argument)
             .count();
         return consultantCountBySpeciality;
+    }
+
+    public Map<Integer, String> getConsultantMap() {   
+        Map<Integer, String> getConsultantMap = consultantList.stream()
+            .collect(Collectors.toMap(Consultant::getConsultantNo, Consultant::getName));
+        return getConsultantMap;
     }
 
     public Consultant getLast() {

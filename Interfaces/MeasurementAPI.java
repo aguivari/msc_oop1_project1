@@ -1,7 +1,6 @@
 package Interfaces;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -10,16 +9,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import java.util.Locale;
-import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 import Records.Measurement;
 import BaseClasses.Consultant;
 import BaseClasses.Patient;
 
 import AuxClasses.Date;
-import Enums.Speciality;
 
 public final class MeasurementAPI implements MeasurementAPIDefinitions {
     private ArrayList<Measurement> measurementList;

@@ -1,8 +1,8 @@
 package Interfaces;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
 
 import BaseClasses.Patient;
 
@@ -22,6 +22,8 @@ public sealed interface PatientAPIDefinitions permits PatientAPI {
     public ArrayList<Patient> getMaxHeightPatient(int n);
     public long getPatientCountBySurname(String argument);
     public Map<String, Long> getPatientCountBySurname();
+    public Long getPatientCountBornFrom(int year);
+    public Long getPatientCountBefore(int year);
     public void writeToDisk(String filename);
     public void readFromDisk(String filename);
     public void dumpCSV();
