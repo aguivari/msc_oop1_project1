@@ -9,9 +9,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 import BaseClasses.Consultant;
+import Enums.Speciality;
 
 public final class ConsultantAPI implements ConsultantAPIDefinitions {
     private ArrayList<Consultant> consultantList;
@@ -35,6 +38,28 @@ public final class ConsultantAPI implements ConsultantAPIDefinitions {
 
     public ArrayList<Consultant> getAll() {
         return new ArrayList<Consultant>(consultantList);
+    }
+
+    public Map<Speciality, Long> getConsultantCountBySpecialty() {   
+        Map<Speciality, Long> consultantCountBySpeciality = consultantList
+            .stream()
+            .collect(Collectors.groupingBy(Consultant::getSpeciality,
+                     Collectors.counting()));
+        return consultantCountBySpeciality;
+    }
+
+    public long getConsultantCountBySpecialty(Speciality argument) {   
+        long  consultantCountBySpeciality = consultantList
+            .stream()
+            .filter(c -> c.getSpeciality() == argument)
+            .count();
+        return consultantCountBySpeciality;
+    }
+
+    public Map<Integer, String> getConsultantMap() {   
+        Map<Integer, String> getConsultantMap = consultantList.stream()
+            .collect(Collectors.toMap(Consultant::getConsultantNo, Consultant::getName));
+        return getConsultantMap;
     }
 
     public Consultant getLast() {

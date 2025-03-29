@@ -84,7 +84,7 @@ public class HealthCollector {
             }
 
             System.out.println(appResourceBundle.getString("AddingEntries")+":");
-            consultants.add(new Consultant("John", "Snow", 23,10,1985, Gender.MALE, Speciality.ENDOCHRINOLOGY, ContractType.PERMANENT));
+            consultants.add(new Consultant("John", "Snow", 23,10,1985, Gender.MALE, Speciality.PHYSIOTHERAPY, ContractType.PERMANENT));
             patients.add(new Patient("Ivan", "The Terrible", 24,10,1985, Gender.MALE, 173,90,105));
             patients.add(new Patient("John", "Snow", 23,10,1984, Gender.MALE, 183,60,90));
             System.out.println(appResourceBundle.getString("Adding"));
@@ -128,7 +128,7 @@ public class HealthCollector {
             //Nothing found on files, adding some entries
             System.out.println(appResourceBundle.getString("Consultant")+": "+appResourceBundle.getString("AddingEntries"));
             consultants.add(new Consultant("Joanne", "Winter", 24,10,1985, Gender.MALE, Speciality.ENDOCHRINOLOGY, ContractType.PERMANENT));
-            consultants.add(new Consultant("Ivan", "Hall", 25,10,1985, Gender.MALE, Speciality.ENDOCHRINOLOGY, ContractType.PERMANENT));
+            consultants.add(new Consultant("Ivan", "Hall", 25,10,1985, Gender.MALE, Speciality.PAEDIATRICIAN, ContractType.PERMANENT));
 
             for (Consultant consultant: consultants.getAll()) {
                 System.out.println(consultant);
@@ -181,13 +181,24 @@ public class HealthCollector {
         System.out.println("Skinniest Patient");
         System.out.println(patients.getMinWeightPatient(1));
         System.out.println("4 Skinniest Patients");
-        patients.getMinWeightPatient(4).forEach(System.out::print); 
+        patients.getMinWeightPatient(4).stream().forEach(System.out::print); 
         System.out.println("Fattest Patient");
         System.out.println(patients.getMaxWeightPatient());
         System.out.println("Shortest Patient");
         System.out.println(patients.getMinHeightPatient());
         System.out.println("Talles Patient");
         System.out.println(patients.getMaxHeightPatient());
+
+        System.out.println(consultants.getConsultantCountBySpecialty());
+        System.out.println(consultants.getConsultantCountBySpecialty(Speciality.PAEDIATRICIAN));
+        System.out.println(patients.getPatientCountBySurname());
+        System.out.println(patients.getPatientCountBySurname("Snow"));
+
+        System.out.println(patients.getPatientCountBornFrom(1985) );
+        System.out.println(patients.getPatientCountBefore(1985) );
+
+        System.out.println(consultants.getConsultantMap());
+        
 
     }
 

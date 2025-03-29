@@ -1,7 +1,8 @@
 package Interfaces;
 
 import java.util.ArrayList;
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.Comparator;
 import java.io.EOFException;
 import java.io.FileInputStream;
@@ -11,6 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import java.util.Locale;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.ResourceBundle;
 
@@ -52,11 +54,12 @@ public final class PatientAPI implements PatientAPIDefinitions {
                 .orElseThrow(NoSuchElementException::new);
     }
 
-    public Stream<Patient> getMinWeightPatient(int n) {
-        return patientList
+    public ArrayList<Patient> getMinWeightPatient(int n) {
+        return new ArrayList<Patient>(patientList
                 .stream()
                 .sorted(Patient::compareWeight)
-                .limit(n);
+                .limit(n)
+                .collect(Collectors.toList()));
     }
     
     public Patient getMaxWeightPatient() {
@@ -66,11 +69,12 @@ public final class PatientAPI implements PatientAPIDefinitions {
                 .orElseThrow(NoSuchElementException::new);
     }
 
-    public Stream<Patient> getMaxWeightPatient(int n) {
-        return patientList
+    public ArrayList<Patient>  getMaxWeightPatient(int n) {
+        return new ArrayList<Patient>(patientList
                 .stream()
                 .sorted(Patient::compareWeight)
-                .limit(n);
+                .limit(n)
+                .collect(Collectors.toList()));
     }
 
     public Patient getMinHeightPatient() {
@@ -80,11 +84,12 @@ public final class PatientAPI implements PatientAPIDefinitions {
                 .orElseThrow(NoSuchElementException::new);
     }
 
-    public Stream<Patient> getMinHeightPatient(int n) {
-        return patientList
+    public ArrayList<Patient> getMinHeightPatient(int n) {
+        return new ArrayList<Patient>(patientList
                 .stream()
                 .sorted(Patient::compareHeight)
-                .limit(n);
+                .limit(n)
+                .collect(Collectors.toList()));
     }
 
     public Patient getMaxHeightPatient() {
@@ -94,11 +99,48 @@ public final class PatientAPI implements PatientAPIDefinitions {
                 .orElseThrow(NoSuchElementException::new);
     }
 
-    public Stream<Patient> getMaxHeightPatient(int n) {
-        return patientList
+    public ArrayList<Patient>  getMaxHeightPatient(int n) {
+        return new ArrayList<Patient>(patientList
                 .stream()
                 .sorted(Patient::compareHeight)
-                .limit(n);
+                .limit(n)
+                .collect(Collectors.toList()));
+    }
+
+
+    public long getPatientCountBySurname(String argument) {
+        long  patientCountBySurname = patientList
+        .stream()
+        .filter(c -> c.getSurname() == argument)
+        .count();
+        return patientCountBySurname;
+    }
+
+    public Map<String, Long> getPatientCountBySurname() {
+        Map<String, Long> patientCountBySurname = patientList
+        .stream()
+        .collect(Collectors.groupingBy(Patient::getSurname,
+                 Collectors.counting()));
+        return patientCountBySurname;
+    }
+
+    public Long getPatientCountBornFrom(int year) {
+        Long patientCountBySurname = patientList
+        .stream()
+        .collect(Collectors.partitioningBy(p -> p.getBirthYear() >= year, Collectors.counting()))
+        .get(true);
+
+        return patientCountBySurname;
+    }
+    
+    
+    public Long getPatientCountBefore(int year) {
+        Long patientCountBySurname = patientList
+        .stream()
+        .collect(Collectors.partitioningBy(p -> p.getBirthYear() < year, Collectors.counting()))
+        .get(true);
+
+        return patientCountBySurname;
     }
 
     public void writeToDisk(String filename) {
