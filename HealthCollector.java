@@ -181,7 +181,7 @@ public class HealthCollector {
         System.out.println("Skinniest Patient");
         System.out.println(patients.getMinWeightPatient(1));
         System.out.println("4 Skinniest Patients");
-        patients.getMinWeightPatient(4).forEach(System.out::print); 
+        patients.getMinWeightPatient(4).stream().forEach(System.out::print); 
         System.out.println("Fattest Patient");
         System.out.println(patients.getMaxWeightPatient());
         System.out.println("Shortest Patient");

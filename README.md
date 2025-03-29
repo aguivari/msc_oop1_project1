@@ -51,14 +51,14 @@ As a test for non-existent localisation, use _make run_es to show default (engli
     - terminal operations
         - min() ✅, max() ✅, count(), findAny(), findFirst(), allMatch(), anyMatch(), noneMatch(), forEach()
         - collect() - Collectors.toMap(), Collectors.groupingBy() and Collectors.partitioningBy()
-    - intermediate operations e.g. filter(), distinct(), limit(), map() and sorted()
+    - intermediate operations e.g. filter(), distinct(), limit()✅, map() and sorted() ✅
 - switch expressions and pattern matching ❌
 - sealed classes and interfaces ✅
 - Date/Time API ❌
 - records ✅
 
 ### Advanced:
-- collections/generics - for example: use of Comparator.comparing() for sorting ❌
+- collections/generics - for example: use of Comparator.comparing() for sorting ✅
 - concurrency e.g. using ExecutorService to process a list of Callable’s ❌
 - NIO2 ❌
 - Localisation ✅ (on base classes' tostring() methods)
