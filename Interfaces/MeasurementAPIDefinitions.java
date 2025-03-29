@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Records.Measurement;
 import BaseClasses.Consultant;
 import BaseClasses.Patient;
+import Enums.Speciality;
 import AuxClasses.Date;
 
 public sealed interface MeasurementAPIDefinitions permits MeasurementAPI {
@@ -16,6 +17,7 @@ public sealed interface MeasurementAPIDefinitions permits MeasurementAPI {
     public ArrayList<Measurement> getAll(Date argument);
     public ArrayList<Measurement> getAll(Patient argument);
     public ArrayList<Measurement> getAll(Consultant argument);
+    //public ArrayList<Measurement> getAllBySpecialty(Speciality argument);
     public void writeToDisk(String filename);
     public void readFromDisk(String filename);
 }

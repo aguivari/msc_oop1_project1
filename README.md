@@ -49,9 +49,9 @@ As a test for non-existent localisation, use _make run_es to show default (engli
 - lambdas: for example: Consumer, Predicate, Supplier, Function etc.. ❌
 - streams ❌
     - terminal operations
-        - min() ✅, max() ✅, count(), findAny(), findFirst(), allMatch(), anyMatch(), noneMatch(), forEach()
-        - collect() - Collectors.toMap(), Collectors.groupingBy() and Collectors.partitioningBy()
-    - intermediate operations e.g. filter(), distinct(), limit()✅, map() and sorted() ✅
+        - min()✅, max()✅, count()✅, findAny(), findFirst(), allMatch(), anyMatch(), noneMatch(), forEach()
+        - collect() - Collectors.toMap(), Collectors.groupingBy()✅ and Collectors.partitioningBy()
+    - intermediate operations e.g. filter()✅, distinct(), limit()✅, map() and sorted()✅
 - switch expressions and pattern matching ❌
 - sealed classes and interfaces ✅
 - Date/Time API ❌
@@ -67,3 +67,4 @@ As a test for non-existent localisation, use _make run_es to show default (engli
 - any topics from Java 22 and/or 23 - be sure to clearly explain these topics and what you had to do to get the newer code to compile/run ❌
     - specifically, only unnamed variables and patterns required here (permanent in Java 22).  ❌
         - https://docs.oracle.com/en/java/javase/22/language/unnamed-variables-and-patterns.html#GUID-D54E1CF1-BDFD-4B57-8A6E-5B4C87F4D58A ❌
+- consistent updates to a public repository ✅

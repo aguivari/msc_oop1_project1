@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.Comparator;
+import java.util.List;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -12,10 +13,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import java.util.Locale;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.ResourceBundle;
 
 import BaseClasses.Patient;
+import Enums.Speciality;
 
 public final class PatientAPI implements PatientAPIDefinitions {
     private ArrayList<Patient> patientList;
@@ -104,8 +107,25 @@ public final class PatientAPI implements PatientAPIDefinitions {
                 .sorted(Patient::compareHeight)
                 .limit(n)
                 .collect(Collectors.toList()));
-
     }
+
+
+    public long getPatientCountBySurname(String argument) {
+        long  patientCountBySurname = patientList
+        .stream()
+        .filter(c -> c.getSurname() == argument)
+        .count();
+        return patientCountBySurname;
+    }
+
+    public Map<String, Long> getPatientCountBySurname() {
+        Map<String, Long> patientCountBySurname = patientList
+        .stream()
+        .collect(Collectors.groupingBy(Patient::getSurname,
+                 Collectors.counting()));
+        return patientCountBySurname;
+    }
+
 
     public void writeToDisk(String filename) {
         try{
