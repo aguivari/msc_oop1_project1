@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 import java.lang.Math;
-//import java.io.File;
 import java.nio.file.*;
 
 import Interfaces.MeasurementAPI;
@@ -235,13 +234,8 @@ public class HealthCollector {
 
     }
 
+    // reimplemented using NIO2 methods
     public static Boolean checkFile(String fileName) {
-        // File f = new File(fileName);
-        // if(f.exists() && !f.isDirectory()) {
-        // return true;
-        // } else {
-        // return false;
-        // }
         Path file = Paths.get(fileName);
         Files.exists(file);
         if (Files.exists(file) && Files.isRegularFile(file)) {
