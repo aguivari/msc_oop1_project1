@@ -10,6 +10,7 @@ public enum Speciality {
     UNDEFINED("Undefined");
 
     public final String label;
+
     private Speciality(String label) {
         this.label = label;
     }

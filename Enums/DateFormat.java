@@ -6,7 +6,8 @@ public enum DateFormat {
     MDY("MDY");
 
     public final String label;
+
     private DateFormat(String label) {
-    this.label = label;
+        this.label = label;
     }
 }
