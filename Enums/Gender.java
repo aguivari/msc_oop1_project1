@@ -6,6 +6,7 @@ public enum Gender {
     UNDEFINED("Undefined");
 
     public final String label;
+
     private Gender(String label) {
         this.label = label;
     }

@@ -59,8 +59,8 @@ As a test for non-existent localisation, use _make run_es to show default (engli
 
 ### Advanced:
 - collections/generics - for example: use of Comparator.comparing() for sorting ✅
-- concurrency e.g. using ExecutorService to process a list of Callable’s ❌
-- NIO2 ❌
+- concurrency e.g. using ExecutorService to process a list of Callable’s ✅ (Lock/Synchronisation)
+- NIO2 ✅
 - Localisation ✅ (on base classes' tostring() methods)
 
 ### Extra marks:

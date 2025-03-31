@@ -9,7 +9,7 @@ import BaseClasses.Consultant;
 import BaseClasses.Patient;
 import Enums.DateFormat;
 
-public record Measurement  (
+public record Measurement(
         Patient patient,
         Consultant consultant,
         Date measurementDate,
@@ -17,11 +17,11 @@ public record Measurement  (
         double weight,
         double circunference) implements Serializable {
 
-    //copy constructor
+    // copy constructor
     public Measurement(Measurement m) {
-        this(new Patient(m.patient), new Consultant(m.consultant()), new Date(m.measurementDate()), m.height(), m.weight(), m.circunference());
+        this(new Patient(m.patient), new Consultant(m.consultant()), new Date(m.measurementDate()), m.height(),
+                m.weight(), m.circunference());
     }
-    
 
     @Override
     public String toString() {
@@ -37,7 +37,7 @@ public record Measurement  (
         sb.append(": ").append(this.consultant.getName());
         sb.append(" ").append(this.consultant().getSurname());
         sb.append("\n").append(measurementsResourceBundle.getString("ConsultantSpeciality"));
-        sb.append(": ").append(this.consultant.getSpeciality());        
+        sb.append(": ").append(this.consultant.getSpeciality());
         sb.append("\n").append(measurementsResourceBundle.getString("Measurements")).append("\n");
         sb.append(" - ").append(measurementsResourceBundle.getString("Height"));
         sb.append(": ").append(this.height()).append("\n");

@@ -6,6 +6,7 @@ public enum ContractType {
     UNDEFINED("Undefined");
 
     public final String label;
+
     private ContractType(String label) {
         this.label = label;
     }
