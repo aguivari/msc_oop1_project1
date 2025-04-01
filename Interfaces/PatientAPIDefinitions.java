@@ -2,6 +2,7 @@ package Interfaces;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Optional;
 
 import BaseClasses.Patient;
 
@@ -45,4 +46,21 @@ public sealed interface PatientAPIDefinitions permits PatientAPI {
     public void readFromDisk(String filename);
 
     public void dumpCSV();
+
+    public Optional<Patient> getAnyPatient();
+
+    public double getAverageWeight();
+
+    public double getAverageHeight();
+
+    public Optional<Patient> getFirstPatient();
+
+    public boolean areAllPatientsBornBefore(int year);
+
+    public boolean areAnyPatientsBornBefore(int year);
+
+    public boolean areNoPatientsBornBefore(int year);
+
+    public void dumpPatients();
+
 }

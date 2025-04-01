@@ -219,7 +219,7 @@ public class HealthCollector {
         System.out.println(patients.getMaxWeightPatient());
         System.out.println("Shortest Patient");
         System.out.println(patients.getMinHeightPatient());
-        System.out.println("Talles Patient");
+        System.out.println("Tallest Patient");
         System.out.println(patients.getMaxHeightPatient());
 
         System.out.println(consultants.getConsultantCountBySpecialty());
