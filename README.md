@@ -46,15 +46,15 @@ As a test for non-existent localisation, use _make run_es to show default (engli
 ## Project Requirements from Assignment
 
 ### Fundamentals:
-- lambdas: for example: Consumer, Predicate, Supplier, Function etc.. ❌
-- streams ❌
+- lambdas: for example: Consumer, Predicate, Supplier, Function etc.. ✅ (mixed use with streams)
+- streams ✅
     - terminal operations
-        - min()✅, max()✅, count()✅, findAny(), findFirst(), allMatch(), anyMatch(), noneMatch(), forEach()
+        - min()✅, max()✅, count()✅, findAny()✅, findFirst()✅, allMatch()✅, anyMatch()✅, noneMatch()✅, forEach()✅
         - collect() - Collectors.toMap() ✅, Collectors.groupingBy()✅ and Collectors.partitioningBy()✅
     - intermediate operations e.g. filter()✅, distinct(), limit()✅, map() and sorted()✅
-- switch expressions and pattern matching ❌
+- switch expressions and pattern matching ✅ (Switch expressions)
 - sealed classes and interfaces ✅
-- Date/Time API ❌
+- Date/Time API ✅ (LocalDate)
 - records ✅
 
 ### Advanced:

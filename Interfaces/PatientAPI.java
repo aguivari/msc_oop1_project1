@@ -3,6 +3,7 @@ package Interfaces;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.Comparator;
+import java.util.Optional;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -220,8 +221,113 @@ public final class PatientAPI implements PatientAPIDefinitions {
                     .stream()
                     .collect(Collectors.partitioningBy(p -> p.getBirthYear() < year, Collectors.counting()))
                     .get(true);
-
             return patientCountBySurname;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public Optional<Patient> getAnyPatient() {
+        lock.lock();
+        try {
+            Optional<Patient> patient = patientList
+                    .stream()
+                    .findAny();
+            if (patient.isPresent()) {
+                return patient;
+            } else
+                return null;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public double getAverageWeight() {
+        lock.lock();
+        try {
+            double avgWeightent = patientList
+                    .stream()
+                    .mapToDouble(Patient::getWeight)
+                    .average()
+                    .orElse(0.0);            
+                return avgWeightent;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+
+    public double getAverageHeight() {
+        lock.lock();
+        try {
+            double avgWeightent = patientList
+                    .stream()
+                    .mapToDouble(Patient::getHeight)
+                    .average()
+                    .orElse(0.0);            
+                return avgWeightent;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public Optional<Patient> getFirstPatient() {
+        lock.lock();
+        try {
+            Optional<Patient> patient = patientList
+                    .stream()
+                    .findFirst();
+            if (patient.isPresent()) {
+                return patient;
+            } else
+                return null;
+
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public boolean areAllPatientsBornBefore(int year) {
+        lock.lock();
+        try {
+            boolean result = patientList
+                    .stream()
+                    .allMatch((p -> p.getBirthYear() < year));
+            return result;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public boolean areAnyPatientsBornBefore(int year) {
+        lock.lock();
+        try {
+            boolean result = patientList
+                    .stream()
+                    .anyMatch((p -> p.getBirthYear() < year));
+            return result;
+        } finally {
+            lock.unlock();
+        }
+    }
+    public boolean areNoPatientsBornBefore(int year) {
+        lock.lock();
+        try {
+            boolean result = patientList
+                    .stream()
+                    .noneMatch((p -> p.getBirthYear() < year));
+            return result;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public void dumpPatients() {
+        lock.lock();
+        try {
+            patientList
+                    .stream()
+                    .forEach(patient -> System.out.println(patient));
         } finally {
             lock.unlock();
         }
