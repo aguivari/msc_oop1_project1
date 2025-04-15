@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 import java.lang.Math;
-import java.nio.file.*;
 
 import Interfaces.MeasurementAPI;
 import Interfaces.PatientAPI;
@@ -42,7 +41,7 @@ public class HealthCollector {
 
         System.out.println(
                 appResourceBundle.getString("Consultant") + ": " + appResourceBundle.getString("CheckingDatabase"));
-        consultantsFileExist = checkFile(consultantsFile);
+        consultantsFileExist = Utils.checkFile(consultantsFile);
         if (consultantsFileExist) {
             System.out.println(appResourceBundle.getString("Consultant") + ": "
                     + appResourceBundle.getString("ReadingDatabaseFromFile") + ": " + consultantsFile);
@@ -54,7 +53,7 @@ public class HealthCollector {
 
         System.out.println(
                 appResourceBundle.getString("Patient") + ": " + appResourceBundle.getString("CheckingDatabase"));
-        patientsFileExist = checkFile(patientsFile);
+        patientsFileExist = Utils.checkFile(patientsFile);
         if (patientsFileExist) {
             System.out.println(appResourceBundle.getString("Patient") + ": "
                     + appResourceBundle.getString("ReadingDatabaseFromFile") + ": " + patientsFile);
@@ -66,7 +65,7 @@ public class HealthCollector {
 
         System.out.println(
                 appResourceBundle.getString("Measurements") + ": " + appResourceBundle.getString("CheckingDatabase"));
-        measurementsFileExist = checkFile(measurementsFile);
+        measurementsFileExist = Utils.checkFile(measurementsFile);
         if (measurementsFileExist) {
             System.out.println(appResourceBundle.getString("Measurements") + ": "
                     + appResourceBundle.getString("ReadingDatabaseFromFile") + ": " + measurementsFile);
@@ -231,18 +230,5 @@ public class HealthCollector {
         System.out.println(patients.getPatientCountBefore(1985));
 
         System.out.println(consultants.getConsultantMap());
-
     }
-
-    // reimplemented using NIO2 methods
-    public static Boolean checkFile(String fileName) {
-        Path file = Paths.get(fileName);
-        Files.exists(file);
-        if (Files.exists(file) && Files.isRegularFile(file)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
 }

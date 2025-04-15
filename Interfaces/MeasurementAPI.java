@@ -17,6 +17,7 @@ import BaseClasses.Consultant;
 import BaseClasses.Patient;
 
 import AuxClasses.Date;
+import AuxClasses.Utils;
 
 public final class MeasurementAPI implements MeasurementAPIDefinitions {
     private ArrayList<Measurement> measurementList;
@@ -140,10 +141,14 @@ public final class MeasurementAPI implements MeasurementAPIDefinitions {
     @SuppressWarnings("unchecked")
     public void readFromDisk(String filename) {
         lock.lock();
+        ResourceBundle measurementAPIResourceBundle = ResourceBundle.getBundle("HealthCollector",
+                Locale.getDefault());
         try {
+            if (!Utils.checkFile(filename)) {
+                System.out.println(measurementAPIResourceBundle.getString("ErrorNotFound"));
+                return;
+            }
             this.trim();
-            ResourceBundle measurementAPIResourceBundle = ResourceBundle.getBundle("HealthCollector",
-                    Locale.getDefault());
             ArrayList<Measurement> tempList = new ArrayList<>();
             try {
                 FileInputStream readData = new FileInputStream(filename);

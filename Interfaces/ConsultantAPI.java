@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
 
+import AuxClasses.Utils;
 import BaseClasses.Consultant;
 import Enums.Speciality;
 
@@ -136,12 +137,16 @@ public final class ConsultantAPI implements ConsultantAPIDefinitions {
     public void readFromDisk(String filename) {
         lock.lock();
         try {
-            this.trim();
             ResourceBundle consultantAPIResourceBundle = ResourceBundle.getBundle("HealthCollector",
                     Locale.getDefault());
             var tempList = new ArrayList<Consultant>();
 
             try {
+                if (!Utils.checkFile(filename)) {
+                    System.out.println(consultantAPIResourceBundle.getString("ErrorNotFound"));
+                    return;
+                }
+                this.trim();
                 FileInputStream readData = new FileInputStream(filename);
                 ObjectInputStream readStream = new ObjectInputStream(readData);
                 try {

@@ -2,10 +2,14 @@ package Interfaces;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
+
+import AuxClasses.Utils;
+
 import java.util.Comparator;
 import java.util.Optional;
 import java.io.EOFException;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -249,13 +253,12 @@ public final class PatientAPI implements PatientAPIDefinitions {
                     .stream()
                     .mapToDouble(Patient::getWeight)
                     .average()
-                    .orElse(0.0);            
-                return avgWeightent;
+                    .orElse(0.0);
+            return avgWeightent;
         } finally {
             lock.unlock();
         }
     }
-
 
     public double getAverageHeight() {
         lock.lock();
@@ -264,8 +267,8 @@ public final class PatientAPI implements PatientAPIDefinitions {
                     .stream()
                     .mapToDouble(Patient::getHeight)
                     .average()
-                    .orElse(0.0);            
-                return avgWeightent;
+                    .orElse(0.0);
+            return avgWeightent;
         } finally {
             lock.unlock();
         }
@@ -310,6 +313,7 @@ public final class PatientAPI implements PatientAPIDefinitions {
             lock.unlock();
         }
     }
+
     public boolean areNoPatientsBornBefore(int year) {
         lock.lock();
         try {
@@ -354,10 +358,14 @@ public final class PatientAPI implements PatientAPIDefinitions {
     public void readFromDisk(String filename) {
         lock.lock();
         try {
-            this.trim();
             ResourceBundle patientAPIResourceBundle = ResourceBundle.getBundle("HealthCollector", Locale.getDefault());
             var tempList = new ArrayList<Patient>();
             try {
+                if (!Utils.checkFile(filename)) {
+                    System.out.println(patientAPIResourceBundle.getString("ErrorNotFound"));
+                    return;
+                }
+                this.trim();
                 FileInputStream readData = new FileInputStream(filename);
                 ObjectInputStream readStream = new ObjectInputStream(readData);
                 try {

@@ -43,7 +43,7 @@ public sealed interface PatientAPIDefinitions permits PatientAPI {
 
     public void writeToDisk(String filename);
 
-    public void readFromDisk(String filename);
+    public void readFromDisk(String filename) throws java.io.FileNotFoundException;
 
     public void dumpCSV();
 
