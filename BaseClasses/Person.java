@@ -51,9 +51,12 @@ public sealed class Person implements Serializable permits Patient, Consultant {
 
     // copy constructor
     public Person(Person p) {
-        this(p.getName(), p.getSurname(), new Date(p.getDoB()), p.getGender());
+        this(p.getName(),
+                p.getSurname(),
+                new Date(p.getDoB()),
+                p.getGender());
     }
-    
+
     // Mutator methods
     // set person Name
     public void setName(String argument) {
