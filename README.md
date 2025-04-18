@@ -51,7 +51,7 @@ As a test for non-existent localisation, use _make run_es_ to show default (engl
     - terminal operations
         - min()✅, max()✅, count()✅, findAny()✅, findFirst()✅, allMatch()✅, anyMatch()✅, noneMatch()✅, forEach()✅
         - collect() - Collectors.toMap() ✅, Collectors.groupingBy()✅ and Collectors.partitioningBy()✅
-    - intermediate operations e.g. filter()✅, distinct(), limit()✅, map() and sorted()✅
+    - intermediate operations e.g. filter()✅, distinct()✅, limit()✅, map() and sorted()✅
 - switch expressions and pattern matching ✅ (Switch expressions)
 - sealed classes and interfaces ✅
 - Date/Time API ✅ (LocalDate)

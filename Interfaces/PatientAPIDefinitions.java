@@ -41,12 +41,6 @@ public sealed interface PatientAPIDefinitions permits PatientAPI {
 
     public Long getPatientCountBefore(int year);
 
-    public void writeToDisk(String filename);
-
-    public void readFromDisk(String filename) throws java.io.FileNotFoundException;
-
-    public void dumpCSV();
-
     public Optional<Patient> getAnyPatient();
 
     public double getAverageWeight();
@@ -60,6 +54,12 @@ public sealed interface PatientAPIDefinitions permits PatientAPI {
     public boolean areAnyPatientsBornBefore(int year);
 
     public boolean areNoPatientsBornBefore(int year);
+
+    public void writeToDisk(String filename);
+
+    public void readFromDisk(String filename) throws java.io.FileNotFoundException;
+
+    public void dumpCSV();
 
     public void dumpPatients();
 

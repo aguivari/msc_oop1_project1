@@ -183,6 +183,7 @@ public final class PatientAPI implements PatientAPIDefinitions {
             long patientCountBySurname = patientList
                     .stream()
                     .filter(c -> c.getSurname() == argument)
+                    .distinct()
                     .count();
             return patientCountBySurname;
         } finally {
@@ -206,12 +207,12 @@ public final class PatientAPI implements PatientAPIDefinitions {
     public Long getPatientCountBornFrom(int year) {
         lock.lock();
         try {
-            Long patientCountBySurname = patientList
+            Long patientCount = patientList
                     .stream()
                     .collect(Collectors.partitioningBy(p -> p.getBirthYear() >= year, Collectors.counting()))
                     .get(true);
 
-            return patientCountBySurname;
+            return patientCount;
         } finally {
             lock.unlock();
         }
@@ -220,11 +221,11 @@ public final class PatientAPI implements PatientAPIDefinitions {
     public Long getPatientCountBefore(int year) {
         lock.lock();
         try {
-            Long patientCountBySurname = patientList
+            Long patientCount = patientList
                     .stream()
                     .collect(Collectors.partitioningBy(p -> p.getBirthYear() < year, Collectors.counting()))
                     .get(true);
-            return patientCountBySurname;
+            return patientCount;
         } finally {
             lock.unlock();
         }
