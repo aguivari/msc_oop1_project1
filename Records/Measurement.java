@@ -19,8 +19,12 @@ public record Measurement(
 
     // copy constructor
     public Measurement(Measurement m) {
-        this(new Patient(m.patient), new Consultant(m.consultant()), new Date(m.measurementDate()), m.height(),
-                m.weight(), m.circunference());
+        this(new Patient(m.patient),
+                new Consultant(m.consultant()),
+                new Date(m.measurementDate()),
+                m.height(),
+                m.weight(),
+                m.circunference());
     }
 
     @Override

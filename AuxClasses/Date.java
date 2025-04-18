@@ -15,7 +15,9 @@ public class Date implements Serializable {
 
     // empty constructor gets "today" as default date
     public Date() {
-        this(LocalDate.now().getDayOfMonth(), LocalDate.now().getMonthValue(), LocalDate.now().getYear());
+        this(LocalDate.now().getDayOfMonth(),
+                LocalDate.now().getMonthValue(),
+                LocalDate.now().getYear());
     }
 
     public Date(int day, int month, int year) {

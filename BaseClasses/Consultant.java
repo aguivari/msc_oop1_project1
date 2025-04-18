@@ -6,6 +6,7 @@ import java.util.Locale;
 import Enums.ContractType;
 import Enums.Gender;
 import Enums.Speciality;
+import AuxClasses.Date;
 
 public final class Consultant extends Person {
     private static int baseConsultantNo = 0;
@@ -16,7 +17,14 @@ public final class Consultant extends Person {
     // Constructors
     // Constructor with no parameter, using this()
     public Consultant() {
-        this("", "", 1, 1, 1, Gender.UNDEFINED, Speciality.UNDEFINED, ContractType.UNDEFINED);
+        this("",
+                "",
+                1,
+                1,
+                1,
+                Gender.UNDEFINED,
+                Speciality.UNDEFINED,
+                ContractType.UNDEFINED);
     }
 
     // Constructor with some parameter, using this()
@@ -26,8 +34,14 @@ public final class Consultant extends Person {
             int consultantMoB,
             int consultantYoB,
             Gender consultantGender) {
-        this(consultantName, consultantSurname, consultantDoB, consultantMoB, consultantYoB, consultantGender,
-                Speciality.UNDEFINED, ContractType.UNDEFINED);
+        this(consultantName,
+                consultantSurname,
+                consultantDoB,
+                consultantMoB,
+                consultantYoB,
+                consultantGender,
+                Speciality.UNDEFINED,
+                ContractType.UNDEFINED);
     }
 
     // Constructor with all parameters , using super() to pass values to base Person
@@ -40,7 +54,30 @@ public final class Consultant extends Person {
             Gender consultantGender,
             Speciality consultantSpeciality,
             ContractType consultantContractType) {
-        super(consultantName, consultantSurname, consultantDoB, consultantMoB, consultantYoB, consultantGender);
+        super(consultantName,
+                consultantSurname,
+                consultantDoB,
+                consultantMoB,
+                consultantYoB,
+                consultantGender);
+        incrementBaseConsultantNo();
+        this.consultantNo = baseConsultantNo;
+        this.speciality = consultantSpeciality;
+        this.contractType = consultantContractType;
+    }
+
+    // Constructor with all parameter, DoB as Date class,
+    // using super() to pass values to base Person class
+    public Consultant(String consultantName,
+            String consultantSurname,
+            Date consultantDateOfBirth,
+            Gender consultantGender,
+            Speciality consultantSpeciality,
+            ContractType consultantContractType) {
+        super(consultantName,
+                consultantSurname,
+                consultantDateOfBirth,
+                consultantGender);
         incrementBaseConsultantNo();
         this.consultantNo = baseConsultantNo;
         this.speciality = consultantSpeciality;
@@ -49,8 +86,12 @@ public final class Consultant extends Person {
 
     // copy constructor
     public Consultant(Consultant c) {
-        this(c.getName(), c.getSurname(), c.getBirthDay(), c.getBirthMonth(), c.getBirthYear(), c.getGender(),
-                c.getSpeciality(), c.getContractType());
+        this(c.getName(),
+                c.getSurname(),
+                new Date(c.getDoB()),
+                c.getGender(),
+                c.getSpeciality(),
+                c.getContractType());
     }
 
     private void incrementBaseConsultantNo() {
