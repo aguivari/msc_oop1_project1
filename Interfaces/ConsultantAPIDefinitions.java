@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import BaseClasses.Consultant;
-import Enums.Speciality;
+import Enums.Specialty;
 
 public sealed interface ConsultantAPIDefinitions permits ConsultantAPI {
     public void trim();
@@ -15,9 +15,9 @@ public sealed interface ConsultantAPIDefinitions permits ConsultantAPI {
 
     public ArrayList<Consultant> getAll();
 
-    public Map<Speciality, Long> getConsultantCountBySpecialty();
+    public Map<Specialty, Long> getConsultantCountBySpecialty();
 
-    public long getConsultantCountBySpecialty(Speciality argument);
+    public long getConsultantCountBySpecialty(Specialty argument);
 
     public Consultant getLast();
 

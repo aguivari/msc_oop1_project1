@@ -24,7 +24,7 @@ DIR_ENUM=$(SRC)/Enums
 CLASSES_ENUM=$(DIR_ENUM)/ContractType.java \
 			$(DIR_ENUM)/DateFormat.java \
 			$(DIR_ENUM)/Gender.java \
-			$(DIR_ENUM)/Speciality.java
+			$(DIR_ENUM)/Specialty.java
 
 DIR_INTERFACES=$(SRC)/Interfaces
 CLASSES_INTERFACES=$(DIR_INTERFACES)/ConsultantAPIDefinitions.java \

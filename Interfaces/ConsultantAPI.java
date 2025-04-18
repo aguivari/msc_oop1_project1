@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 import AuxClasses.Utils;
 import BaseClasses.Consultant;
-import Enums.Speciality;
+import Enums.Specialty;
 
 public final class ConsultantAPI implements ConsultantAPIDefinitions {
     private ArrayList<Consultant> consultantList;
@@ -66,28 +66,28 @@ public final class ConsultantAPI implements ConsultantAPIDefinitions {
 
     }
 
-    public Map<Speciality, Long> getConsultantCountBySpecialty() {
+    public Map<Specialty, Long> getConsultantCountBySpecialty() {
         lock.lock();
         try {
-            Map<Speciality, Long> consultantCountBySpeciality = consultantList
+            Map<Specialty, Long> consultantCountBySpecialty = consultantList
                     .stream()
-                    .collect(Collectors.groupingBy(Consultant::getSpeciality,
+                    .collect(Collectors.groupingBy(Consultant::getSpecialty,
                             Collectors.counting()));
-            return consultantCountBySpeciality;
+            return consultantCountBySpecialty;
         } finally {
             lock.unlock();
         }
 
     }
 
-    public long getConsultantCountBySpecialty(Speciality argument) {
+    public long getConsultantCountBySpecialty(Specialty argument) {
         lock.lock();
         try {
-            long consultantCountBySpeciality = consultantList
+            long consultantCountBySpecialty = consultantList
                     .stream()
-                    .filter(c -> c.getSpeciality() == argument)
+                    .filter(c -> c.getSpecialty() == argument)
                     .count();
-            return consultantCountBySpeciality;
+            return consultantCountBySpecialty;
         } finally {
             lock.unlock();
         }
@@ -192,7 +192,7 @@ public final class ConsultantAPI implements ConsultantAPIDefinitions {
         try {
             // generates CSV list of patients
             // print header
-            System.out.println("Consultant Number,Name,Surname,DoB,Age,Gender,Speciality,Contract Type");
+            System.out.println("Consultant Number,Name,Surname,DoB,Age,Gender,Specialty,Contract Type");
             for (Consultant consultant : this.consultantList) {
                 System.out.print(consultant.getConsultantNo() + ",");
                 System.out.print(consultant.getName() + ",");
@@ -200,7 +200,7 @@ public final class ConsultantAPI implements ConsultantAPIDefinitions {
                 System.out.print(consultant.getFullDate() + ",");
                 System.out.print(consultant.getAge() + ",");
                 System.out.print(consultant.getGender().label + ",");
-                System.out.print(consultant.getSpeciality() + ",");
+                System.out.print(consultant.getSpecialty() + ",");
                 System.out.println(consultant.getContractType());
             }
         } finally {

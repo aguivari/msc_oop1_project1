@@ -24,7 +24,7 @@ public sealed interface MeasurementAPIDefinitions permits MeasurementAPI {
 
     public ArrayList<Measurement> getAll(Consultant argument);
 
-    // public ArrayList<Measurement> getAllBySpecialty(Speciality argument);
+    // public ArrayList<Measurement> getAllBySpecialty(Specialty argument);
     public void writeToDisk(String filename);
 
     public void readFromDisk(String filename);
