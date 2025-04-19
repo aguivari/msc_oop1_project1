@@ -20,7 +20,7 @@ import Enums.Specialty;
 
 public final class ConsultantAPI implements ConsultantAPIDefinitions {
     private ArrayList<Consultant> consultantList;
-    private static ReentrantLock lock = new ReentrantLock();;
+    private static ReentrantLock lock = new ReentrantLock();
 
     public ConsultantAPI() {
         consultantList = new ArrayList<>();
@@ -33,7 +33,6 @@ public final class ConsultantAPI implements ConsultantAPIDefinitions {
         } finally {
             lock.unlock();
         }
-
     };
 
     public int getSize() {
