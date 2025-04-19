@@ -10,7 +10,7 @@ import BaseClasses.Consultant;
 
 import Enums.ContractType;
 import Enums.Gender;
-import Enums.Speciality;
+import Enums.Specialty;
 
 import Records.Measurement;
 
@@ -92,7 +92,7 @@ public class HealthCollector {
             }
 
             System.out.println(appResourceBundle.getString("AddingEntries") + ":");
-            consultants.add(new Consultant("John", "Snow", 23, 10, 1985, Gender.MALE, Speciality.PHYSIOTHERAPY,
+            consultants.add(new Consultant("John", "Snow", 23, 10, 1985, Gender.MALE, Specialty.PHYSIOTHERAPY,
                     ContractType.PERMANENT));
             patients.add(new Patient("Ivan", "The Terrible", 24, 10, 1985, Gender.MALE, 173, 90, 105));
             patients.add(new Patient("John", "Snow", 23, 10, 1984, Gender.MALE, 183, 60, 90));
@@ -146,9 +146,9 @@ public class HealthCollector {
             // Nothing found on files, adding some entries
             System.out.println(
                     appResourceBundle.getString("Consultant") + ": " + appResourceBundle.getString("AddingEntries"));
-            consultants.add(new Consultant("Joanne", "Winter", 24, 10, 1985, Gender.MALE, Speciality.ENDOCHRINOLOGY,
+            consultants.add(new Consultant("Joanne", "Winter", 24, 10, 1985, Gender.MALE, Specialty.ENDOCHRINOLOGY,
                     ContractType.PERMANENT));
-            consultants.add(new Consultant("Ivan", "Hall", 25, 10, 1985, Gender.MALE, Speciality.PAEDIATRICIAN,
+            consultants.add(new Consultant("Ivan", "Hall", 25, 10, 1985, Gender.MALE, Specialty.PAEDIATRICIAN,
                     ContractType.PERMANENT));
 
             for (Consultant consultant : consultants.getAll()) {
@@ -220,15 +220,18 @@ public class HealthCollector {
         System.out.println(patients.getMinHeightPatient());
         System.out.println("Tallest Patient");
         System.out.println(patients.getMaxHeightPatient());
-
+        System.out.println("Consultants per Specialty");
         System.out.println(consultants.getConsultantCountBySpecialty());
-        System.out.println(consultants.getConsultantCountBySpecialty(Speciality.PAEDIATRICIAN));
+        System.out.println("Number of Peadiatricians");
+        System.out.println(consultants.getConsultantCountBySpecialty(Specialty.PAEDIATRICIAN));
+        System.out.println("Patient count by Surname");
         System.out.println(patients.getPatientCountBySurname());
+        System.out.println("Patient count with \"Snow\" Surname");
         System.out.println(patients.getPatientCountBySurname("Snow"));
-
+        System.out.println("Count of patients born after 1985");
         System.out.println(patients.getPatientCountBornFrom(1985));
+        System.out.println("Count of patients born before 1985");
         System.out.println(patients.getPatientCountBefore(1985));
 
-        System.out.println(consultants.getConsultantMap());
     }
 }

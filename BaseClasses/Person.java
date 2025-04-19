@@ -15,9 +15,14 @@ public sealed class Person implements Serializable permits Patient, Consultant {
     private Gender gender;
 
     // Constructors
-    // Constructor with no parameter, using this()
+    // Constructor with no parameter, using this(), uses current date
     public Person() {
-        this("", "", 1, 1, 1, Gender.UNDEFINED);
+        this("",
+                "",
+                1,
+                1,
+                1,
+                Gender.UNDEFINED);
     }
 
     // Constructor with all parameters
@@ -44,6 +49,14 @@ public sealed class Person implements Serializable permits Patient, Consultant {
         this.gender = personGender;
     }
 
+    // copy constructor
+    public Person(Person p) {
+        this(p.getName(),
+                p.getSurname(),
+                new Date(p.getDoB()),
+                p.getGender());
+    }
+
     // Mutator methods
     // set person Name
     public void setName(String argument) {
@@ -55,12 +68,12 @@ public sealed class Person implements Serializable permits Patient, Consultant {
         this.surname = argument;
     }
 
-    // set person Date f birth (date)
+    // set person Date of birth (date)
     public void setDoB(Date argument) {
         this.dob = argument;
     }
 
-    // set person Date f birth (day, month, year)
+    // set person Date of birth (day, month, year)
     public void setDoB(int day, int month, int year) {
         this.dob.setDay(day);
         this.dob.setMonth(month);
@@ -96,6 +109,11 @@ public sealed class Person implements Serializable permits Patient, Consultant {
     // assess person Surname
     public String getSurname() {
         return this.surname;
+    }
+
+    // assess person full nname
+    public String getFullName() {
+        return this.name + " " + this.surname;
     }
 
     // assess person DoB

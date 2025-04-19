@@ -19,8 +19,12 @@ public record Measurement(
 
     // copy constructor
     public Measurement(Measurement m) {
-        this(new Patient(m.patient), new Consultant(m.consultant()), new Date(m.measurementDate()), m.height(),
-                m.weight(), m.circunference());
+        this(new Patient(m.patient),
+                new Consultant(m.consultant()),
+                new Date(m.measurementDate()),
+                m.height(),
+                m.weight(),
+                m.circunference());
     }
 
     @Override
@@ -36,8 +40,8 @@ public record Measurement(
         sb.append("\n").append(measurementsResourceBundle.getString("MeasurementByConsultant"));
         sb.append(": ").append(this.consultant.getName());
         sb.append(" ").append(this.consultant().getSurname());
-        sb.append("\n").append(measurementsResourceBundle.getString("ConsultantSpeciality"));
-        sb.append(": ").append(this.consultant.getSpeciality());
+        sb.append("\n").append(measurementsResourceBundle.getString("ConsultantSpecialty"));
+        sb.append(": ").append(this.consultant.getSpecialty());
         sb.append("\n").append(measurementsResourceBundle.getString("Measurements")).append("\n");
         sb.append(" - ").append(measurementsResourceBundle.getString("Height"));
         sb.append(": ").append(this.height()).append("\n");

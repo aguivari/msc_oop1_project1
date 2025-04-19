@@ -4,6 +4,7 @@ import java.util.ResourceBundle;
 import java.util.Locale;
 
 import AuxClasses.Utils;
+import AuxClasses.Date;
 import Enums.Gender;
 
 public final class Patient extends Person implements Comparable<Patient> {
@@ -16,7 +17,15 @@ public final class Patient extends Person implements Comparable<Patient> {
     // Constructors
     // Constructor with no parameter, using this()
     public Patient() {
-        this("", "", 1, 1, 1, Gender.UNDEFINED, 0, 0, 0);
+        this("",
+                "",
+                1,
+                1,
+                1,
+                Gender.UNDEFINED,
+                0,
+                0,
+                0);
     }
 
     // Constructor with some parameters, using this()
@@ -26,7 +35,15 @@ public final class Patient extends Person implements Comparable<Patient> {
             int patientMoB,
             int patientYoB,
             Gender patientGender) {
-        this(patientName, patientSurname, patientDoB, patientMoB, patientYoB, patientGender, 0, 0, 0);
+        this(patientName,
+                patientSurname,
+                patientDoB,
+                patientMoB,
+                patientYoB,
+                patientGender,
+                0,
+                0,
+                0);
     }
 
     // Constructor with all parameters , using super() to to base Person class
@@ -39,7 +56,32 @@ public final class Patient extends Person implements Comparable<Patient> {
             double patientHeight,
             double patienteWeight,
             double patientCircunference) {
-        super(patientName, patientSurname, patientDoB, patientMoB, patientYoB, patientGender);
+        super(patientName,
+                patientSurname,
+                patientDoB,
+                patientMoB,
+                patientYoB,
+                patientGender);
+        incrementBasePatientNo();
+        this.patientNo = basePatientNo;
+        this.height = patientHeight;
+        this.weight = patienteWeight;
+        this.circunference = patientCircunference;
+    }
+
+    // Constructor with all parameters, Dob as date object,
+    // using super() to base Person class
+    public Patient(String patientName,
+            String patientSurname,
+            Date patientDateOfBirth,
+            Gender patientGender,
+            double patientHeight,
+            double patienteWeight,
+            double patientCircunference) {
+        super(patientName,
+                patientSurname,
+                patientDateOfBirth,
+                patientGender);
         incrementBasePatientNo();
         this.patientNo = basePatientNo;
         this.height = patientHeight;
@@ -49,8 +91,13 @@ public final class Patient extends Person implements Comparable<Patient> {
 
     // copy constructor
     public Patient(Patient p) {
-        this(p.getName(), p.getSurname(), p.getBirthDay(), p.getBirthMonth(), p.getBirthYear(), p.getGender(),
-                p.getHeight(), p.getWeight(), p.getAbdCirc());
+        this(p.getName(),
+                p.getSurname(),
+                new Date(p.getDoB()),
+                p.getGender(),
+                p.getHeight(),
+                p.getWeight(),
+                p.getAbdCirc());
     }
 
     private void incrementBasePatientNo() {

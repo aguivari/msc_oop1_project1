@@ -1,6 +1,6 @@
 package Enums;
 
-public enum Speciality {
+public enum Specialty {
     NUTRITION("Nutrition"),
     ENDOCHRINOLOGY("Endochrinology"),
     PHYSIOTHERAPY("Physiotherapy"),
@@ -11,7 +11,7 @@ public enum Speciality {
 
     public final String label;
 
-    private Speciality(String label) {
+    private Specialty(String label) {
         this.label = label;
     }
 }
